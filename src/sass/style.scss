@@ -40,8 +40,10 @@ img {
   max-width: 320px;
   width: 100%;
   height: 180px;
-  background: url("https://i.ytimg.com/vi/_XI_ZsnupFQ/maxresdefault.jpg") no-repeat;
+  background-color: #000000;
+  background-repeat: no-repeat;
   background-size: contain;
+  background-position: center;
   margin-bottom: 20px;
 }
 

@@ -1,4 +1,9 @@
 var lis = document.getElementsByTagName('li');
+var img = document.querySelector('.main_img');
+var description = document.querySelector('.text_description')
+var date = document.querySelector('.time_item')
+var title = document.querySelector('.title')
+
 for (var i = 0; i < lis.length; i++) {
   lis[i].style.position = 'relative';
   var span = document.createElement('span');
@@ -38,3 +43,24 @@ if (finalPoint.pageX < initialPoint.pageX){
   list.style.marginLeft = position + 'px';}
 }
 }, false);
+
+
+
+let successCB = function(res) {
+  const result = JSON.parse(res);
+  console.log(result);
+  img.style.backgroundImage = `url('https://image.tmdb.org/t/p/w600_and_h900_bestv2/${result.poster_path}')`;
+  description.textContent = result.overview;
+  date.textContent = result.release_date;
+  title.textContent = result.title;
+}
+
+let errorCB = function() {
+  console.log(arguments);
+
+}
+
+
+theMovieDb.movies.getById({"id":76203, "language":"ru-RUS" }, successCB, errorCB)
+
+
