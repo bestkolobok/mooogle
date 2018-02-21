@@ -12,7 +12,7 @@ for (var i = 0; i < lis.length; i++) {
   lis[i].appendChild(span);
 }
 
-var width = 96; 
+var width = 88; 
 var count = 1; 
 
 var carousel = document.getElementById('carousel');
@@ -36,7 +36,7 @@ finalPoint=event.changedTouches[0];
 var xAbs = Math.abs(initialPoint.pageX - finalPoint.pageX);
 if (xAbs > 20) {
 if (finalPoint.pageX < initialPoint.pageX){
-  position = Math.max(position - width * count, -width * (listElems.length - count*3));
+  position = Math.max(position - width * count, -width * (listElems.length - count*4));
   list.style.marginLeft = position + 'px';
 } else{
   position = Math.min(position + width * count, 0)
@@ -60,7 +60,15 @@ let errorCB = function() {
 
 }
 
+let successPeopleCB = function(res) {
+  const result = JSON.parse(res);
+  console.log(result);
+}
+
+let errorPeopleCB = function(){
+  console.log(arguments);
+}
 
 theMovieDb.movies.getById({"id":76203, "language":"ru-RUS" }, successCB, errorCB)
 
-
+theMovieDb.movies.getTrailers({"id":76203, "language":"ru-RUS" }, successPeopleCB, errorPeopleCB)

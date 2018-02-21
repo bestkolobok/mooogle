@@ -7,12 +7,12 @@
 
 .carousel {
   position: relative;
-  width: 285px;
+  width: 348px;
 }
 
 img {
-  width: 86px;
-  height: 86px;  
+  width: 78px;
+  height: 78px;  
   display: block;
 }
 
@@ -49,15 +49,16 @@ img {
 
 .main_img h1 {
   padding: 22px;
-  font: 20px Roboto, sans-serif;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
   color: #ffffff;
   padding-top: 120px;
 }
 
 .text_description {
-  font: 16px MyriadPro, sans-serif;
-  padding: 25px 22px;
-  color: #d4d4d4;
+  font-size: 16px;
+  font-family: 'MyriadPro', sans-serif;
+  color: #757575;
 }
 
 .main_card {
@@ -83,7 +84,8 @@ img {
 }
 
 .actors h2 {
-  font: 20px Roboto, sans-serif;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .links .star {
@@ -114,5 +116,6 @@ img {
 .time_item {
   margin: 0;
   color: #77c1bb;
-  font: 14px Roboto, sans-serif;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
 }
