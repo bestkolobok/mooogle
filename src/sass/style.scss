@@ -1,4 +1,9 @@
-
+@font-face {
+  font-family: "MyriadPro-Regular";
+  src: url("css/fonts/MyriadPro-Regular.otf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
 
 .carousel {
   position: relative;
@@ -42,9 +47,15 @@ img {
 
 .main_img h1 {
   padding: 22px;
-  font-size: 20px;
+  font: 20px Roboto, sans-serif;
   color: #ffffff;
   padding-top: 120px;
+}
+
+.text_description {
+  font: 16px MyriadPro, sans-serif;
+  padding: 25px 22px;
+  color: #d4d4d4;
 }
 
 .main_card {
@@ -67,6 +78,10 @@ img {
   width: 100%;
   align-items: flex-start;
 
+}
+
+.actors h2 {
+  font: 20px Roboto, sans-serif;
 }
 
 .links .star {
@@ -97,4 +112,5 @@ img {
 .time_item {
   margin: 0;
   color: #77c1bb;
+  font: 14px Roboto, sans-serif;
 }
