@@ -1,1 +1,24 @@
 body{background-color:#fff}
+
+.card_wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+}
+
+.card_item {
+    position: relative;
+    padding-bottom: 45%;
+    margin: 5px;
+    background-position: center center;
+}
+
+.title {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    color: white;
+    font-family: Arial;
+    font-size: 2rem;
+}
