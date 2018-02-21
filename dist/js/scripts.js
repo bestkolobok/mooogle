@@ -1430,6 +1430,12 @@ var successGetUpcomming = function successGetUpcomming(res) {
     console.log('get latest movie');
     console.log(result);
     console.log('////////////////////');
+
+    const html = document.getElementById('card').textContent.trim();
+    const output = document.getElementById('output_card');
+    const compiled = _.template(html);
+    const outputResult = compiled(result);
+    output.innerHTML = outputResult;
 };
 
 var errorGetUpcomming = function errorGetUpcomming() {
