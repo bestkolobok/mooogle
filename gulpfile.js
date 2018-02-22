@@ -18,7 +18,8 @@ var pngquant = require('imagemin-pngquant');
 var paths = {
   src: {
     html: 'src/*.html',
-    css: 'src/sass/**/*.scss',
+    css: 'src/sass/style.scss',
+    sass: 'src/sass/**/*.scss',
     js: 'src/js/**/*.js',
     fonts: 'src/fonts/**/*.*',
     img: 'src/img/**/*.+(png|jpg|gif|svg)'
@@ -65,7 +66,7 @@ gulp.task('bundleCss', function() {
       browsers: ['last 2 versions'],
       cascade: false
     }))
-    .pipe(cssnano())
+    // .pipe(cssnano())
     .pipe(gulp.dest(paths.dist.css))
     .pipe(browserSync.reload({
       stream: true
@@ -116,7 +117,7 @@ gulp.task('webServer', function() {
 
 // смотрим за изменениями в файлах
 gulp.task('watch', function() {
-  gulp.watch(paths.src.css, ['bundleCss']);
+  gulp.watch(paths.src.sass, ['bundleCss']);
   gulp.watch(paths.watch.html, ['bundleHtml']);
   gulp.watch(paths.src.js, ['bundleJs']);
   gulp.watch(paths.src.fonts, ['bundleFonts']);

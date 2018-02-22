@@ -1,0 +1,92 @@
+body {
+    background-color: #fff
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.movie-card {
+
+    width: 100%;
+
+    &__wrapper {
+
+        position: relative;
+        background-position: 50%;
+        background-size: cover;
+
+        @include respond-to(mobile-extra-small){
+            min-height: 175px;
+        }
+        @include respond-to(mobile-small){
+            min-height: 220px;
+        }
+    }
+
+    &__title {
+
+        font-family: $title;
+        color: #fff;
+
+        @include respond-to(mobile-extra-small){
+            font-size: 20px;
+        }
+        @include respond-to(mobile-small){
+            font-size: 24px;
+        }
+    }
+
+    &__controls {
+        text-align: right;
+    }
+
+    &__button {
+        
+        border: none;
+        background: none;
+        background-repeat: no-repeat;
+        background-position: 50%;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+
+        &:nth-child(2){
+            margin-left: 5px;
+        }
+
+        &--favorite {
+            background-image: url(../img/favorite.png)
+        }
+
+        &--reminde {
+            background-image: url(../img/reminde.png)
+        }
+    }
+
+    .gradient {
+
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        @include respond-to(mobile-extra-small){
+            min-height: 175px;
+        }
+        @include respond-to(mobile-small){
+            min-height: 220px;
+        }
+    }
+}
+
+
+.gradient {
+    background: -moz-linear-gradient(top, rgba(0,0,0,0) 56%, rgba(0,0,0,0.5) 67%, rgba(0,0,0,1) 78%, rgba(0,0,0,1) 89%);
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 56%,rgba(0,0,0,0.5) 67%,rgba(0,0,0,1) 78%,rgba(0,0,0,1) 89%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 56%,rgba(0,0,0,0.5) 67%,rgba(0,0,0,1) 78%,rgba(0,0,0,1) 89%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 );
+}
+
