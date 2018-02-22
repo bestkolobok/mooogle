@@ -1,4 +1,26 @@
-body{background-color:#fff}
+@font-face {
+    font-family: "Roboto";
+    src: url("../fonts/Roboto.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #fff
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+#latestMovie {
+    display: none;
+}
+
+#searchMovie {
+    display: block;
+}
 
 .card_wrap {
     position: relative;
@@ -14,11 +36,49 @@ body{background-color:#fff}
     background-position: center center;
 }
 
+.card_item>img {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
 .title {
     position: absolute;
-    bottom: 10px;
-    left: 20px;
+    bottom: 5%;
+    left: 5%;
+    max-width: 70%;
     color: white;
+    font-family: Roboto;
+    font-size: 2em;
+}
+
+.release_date {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    color: #77c1bb;
     font-family: Arial;
-    font-size: 2rem;
+    font-size: 1.4em;
+}
+
+.favorits_check {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    color: white;
+    font-size: 1.4em;
+    white-space: nowrap;
+}
+
+.favorits_check>.star-empty {
+    display: inline;
+}
+
+.favorits_check>.star-solid {
+    display: none;
+}
+
+.favorits_check>.fa-bell {
+    display: inline;
+    margin-left: 20%;
 }
