@@ -7,8 +7,9 @@ var title = document.querySelector('.title')
 for (var i = 0; i < lis.length; i++) {
   lis[i].style.position = 'relative';
   var span = document.createElement('span');
-  span.style.cssText = 'position:absolute;left:0;top:0';
+  span.style.cssText = 'position:absolute;left:9px;top:80px;font-size: 14px; color: #77c1bb; font-family: "Roboto", sans-serif;';
   span.innerHTML = i + 1;
+  span.textContent = 'Leonardo Dikaprio'
   lis[i].appendChild(span);
 }
 
@@ -43,6 +44,8 @@ if (finalPoint.pageX < initialPoint.pageX){
   list.style.marginLeft = position + 'px';}
 }
 }, false);
+
+
 
 
 
