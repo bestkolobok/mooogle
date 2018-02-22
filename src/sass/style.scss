@@ -1,3 +1,5 @@
-body {
-  background-color: #fff;
-}
+@import 'variables/variables';
+@import 'mixins/mixins';
+@import 'fonts/fonts';
+@import 'libs/reset';
+@import 'pages/moviecard';

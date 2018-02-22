@@ -77,7 +77,7 @@ theMovieDb.common = {
         status = options.status || 200;
         xhr = new XMLHttpRequest();
 
-        xhr.ontimeout = function() {
+        xhr.ontimeout = function () {
             error('{"status_code":408,"status_message":"Request timed out"}');
         };
 
@@ -90,7 +90,7 @@ theMovieDb.common = {
 
         xhr.timeout = theMovieDb.common.timeout;
 
-        xhr.onload = function(e) {
+        xhr.onload = function (e) {
             if (xhr.readyState === 4) {
                 if (xhr.status === status) {
                     success(xhr.responseText);
@@ -102,7 +102,7 @@ theMovieDb.common = {
             }
         };
 
-        xhr.onerror = function(e) {
+        xhr.onerror = function (e) {
             error(xhr.responseText);
         };
         if (options.method === "POST") {
@@ -1413,3 +1413,43 @@ theMovieDb.tvEpisodes = {
         }, success, error);
     }
 };
+/*jshint esversion: 6 */
+
+//находтим и подготавливаем шаблон карточки фильма для дальнейшей работы
+var card = document.getElementById('movie-card').textContent.trim();
+
+//компилируем наш шаблон в метод с помощью Lodash для дальгейшего использования, где либо
+var compiledCard = _.template(card);
+
+//Находим место, куда мы будет вставлять карточки фильмов.
+var colectionWrapper = document.getElementById('searchMovie');
+
+// метод, который будет выполнен в случае удачного обращения к API MovieDB
+var successGetUpcomming = function successGetUpcomming(res) {
+
+    // парсим JSON в объект
+    var data = JSON.parse(res);
+
+    // выводим его в консоль что бы было наглядно
+    console.log('get movie list on search');
+    console.log(data);
+    console.log('////////////////////');
+
+    //проходимся по коллекции фильмов из ответа и обьект каждого из фильмов 
+    //передаем в ранее "скомпилированный" метод
+    data.results.forEach(function (item) {
+        console.log(item);
+        colectionWrapper.insertAdjacentHTML('beforeend', compiledCard({ item: item }));
+    });
+};
+
+// Метод, который будет вызван в случае ошибки при обращении к API MovieDB 
+
+var errorGetUpcomming = function errorGetUpcomming() {
+    console.log(arguments);
+};
+
+//обращение к методу библиотеки для получения списка предстоящих премьер
+//данный метод приведен в качестве примера использования шаблона карточки фильма.
+//За более детальной информацией обратитесь к документации библиотеки
+theMovieDb.movies.getUpcoming({ "language": "ru-RUS" }, successGetUpcomming, errorGetUpcomming);
