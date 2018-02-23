@@ -1450,7 +1450,7 @@ list.addEventListener('touchend', function (event) {
     var xAbs = Math.abs(initialPoint.pageX - finalPoint.pageX);
     if (xAbs > 20) {
         if (finalPoint.pageX < initialPoint.pageX) {
-            position = Math.max(position - width * count, -width * (7 - count * 4));
+            position = Math.max(position - width * count, -width * (10 - count * 4));
             list.style.marginLeft = position + 'px';
         } else {
             position = Math.min(position + width * count, 0);
@@ -1480,7 +1480,7 @@ var galleryItems = {
 var successPeopleCB = function successPeopleCB(res) {
     var result = JSON.parse(res);
     console.log(result);
-    for (var i = 0; i < 7; i++) {
+    for (var i = 0; i < 10; i++) {
         galleryItems.text.push(result.cast[i].name);
         galleryItems.img.push("https://image.tmdb.org/t/p/w600_and_h900_bestv2" + result.cast[i].profile_path);
     }
@@ -1496,6 +1496,6 @@ var errorPeopleCB = function errorPeopleCB() {
     console.log(arguments);
 };
 
-theMovieDb.movies.getById({ "id": 76203, "language": "ru-RUS" }, successCB, errorCB);
+theMovieDb.movies.getById({ "id": 284054, "language": "ru-RUS" }, successCB, errorCB);
 
-theMovieDb.credits.getCredit({ "id": 76203, "language": "ru-RUS" }, successPeopleCB, errorPeopleCB);
+theMovieDb.credits.getCredit({ "id": 284054, "language": "ru-RUS" }, successPeopleCB, errorPeopleCB);
