@@ -1,0 +1,9 @@
+.search {
+    vertical-align: top;
+    border: none;
+    position: absolute;
+    // visibility: hidden;
+    background-color: $main-background;
+    height: 450px;
+    z-index: 1000;
+}
