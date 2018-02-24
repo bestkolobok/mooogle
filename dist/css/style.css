@@ -82,6 +82,8 @@ a {
     width: 20px;
     height: 20px;
     cursor: pointer; }
+    .movie-card__button:nth-child(2) {
+      margin-left: 5px; }
     .movie-card__button--favorite {
       background-image: url(../img/favorite.png); }
     .movie-card__button--reminde {
@@ -109,3 +111,26 @@ a {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(56%, transparent), color-stop(67%, rgba(0, 0, 0, 0.5)), color-stop(78%, black), color-stop(89%, black));
   background: linear-gradient(to bottom, transparent 56%, rgba(0, 0, 0, 0.5) 67%, black 78%, black 89%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 ); }
+
+.category {
+  font-family: "Roboto";
+  font-size: 20px;
+  color: #372c48;
+  padding-bottom: 10px; }
+
+.subcategory {
+  font-family: "Roboto";
+  font-size: 20px;
+  color: #372c48;
+  padding-bottom: 10px; }
+
+.containerCard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column; }
+  .containerCard .movie-card {
+    margin-bottom: 10px; }
