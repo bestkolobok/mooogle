@@ -5,44 +5,24 @@ var title = document.querySelector('.title')
 var container = document.querySelector('.images');
 
 
-// for (var i = 0; i < 7; i++) {
-//   lis[i].style.position = 'relative';
-//   var span = document.createElement('span');
-//   span.style.cssText = 'position:absolute;left:1px;top:80px;font-size: 14px; color: #77c1bb; font-family: "Roboto", sans-serif; text-align: center;';
-//   lis[i].appendChild(span);
-// }
-
 var width = 88; 
 var count = 1; 
+var index = 0;
+
 
 var carousel = document.getElementById('carousel');
 var list = carousel.querySelector('.images');
-var listElems = carousel.querySelectorAll('.images_item');
+
+
+// var infinitecarousel = new InfiniteCarousel('.images', 'horizontal', 3, {
+//     timerDuration: 2000,
+//     transitionDuration: '1s'
+//   });
+  
 
 var position = 0; 
 
-var initialPoint;
-var finalPoint;
-list.addEventListener('touchstart', function(event) {
-event.preventDefault();
-event.stopPropagation();
-initialPoint=event.changedTouches[0];
-}, false);
-list.addEventListener('touchend', function(event) {
-event.preventDefault();
-event.stopPropagation();
-finalPoint=event.changedTouches[0];
 
-var xAbs = Math.abs(initialPoint.pageX - finalPoint.pageX);
-if (xAbs > 20) {
-if (finalPoint.pageX < initialPoint.pageX){
-  position = Math.max(position - width * count, -width * (10 - count*4));
-  list.style.marginLeft = position + 'px';
-} else{
-  position = Math.min(position + width * count, 0)
-  list.style.marginLeft = position + 'px';}
-}
-}, false);
 
 
 
@@ -81,6 +61,51 @@ let successPeopleCB = function(res) {
   var resultCompiled = compiled(galleryItems);
   
   container.innerHTML = resultCompiled;
+
+  var listElems = carousel.querySelectorAll('.images_item');
+
+
+  var initialPoint;
+  var finalPoint;
+
+  list.addEventListener('touchstart', function(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  initialPoint=event.changedTouches[0];
+    for(let i = 0; i < listElems.length; i++){
+      var clone = listElems[i].cloneNode(true);
+      list.appendChild(clone);
+
+    }
+
+  }, false);
+
+  list.addEventListener('touchend', function(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  finalPoint=event.changedTouches[0];
+
+    // for(let i = 0; i < listElems.length; i++){
+    //   var clone = listElems[i].cloneNode(true);
+    //   list.insertBefore(clone, listElems[i]);
+
+    // }
+
+    index++;
+
+  var xAbs = Math.abs(initialPoint.pageX - finalPoint.pageX);
+  if (xAbs > 20) {
+    console.log(listElems.length+index);
+    if (finalPoint.pageX < initialPoint.pageX){
+      position = Math.max(position - width * count, -width * ((listElems.length + index) - count*4));
+      list.style.marginLeft = position + 'px';
+    } else{
+      position = Math.min(position + width * count, 0)
+      list.style.marginLeft = position + 'px';}
+    }
+  }, false);
+  
+  
 }
 
 let errorPeopleCB = function(){
