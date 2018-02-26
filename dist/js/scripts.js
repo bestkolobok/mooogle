@@ -1414,8 +1414,8 @@ theMovieDb.tvEpisodes = {
     }
 };
 var trailer = document.querySelector(".trailer-video");
-var review = document.querySelector(".review");
-var userName = document.querySelector(".userName");
+/* const review = document.querySelector(".review");
+const userName = document.querySelector(".userName"); */
 var reviews = [];
 var reviewContainer = document.querySelector("#reviews-container");
 

@@ -1,6 +1,6 @@
 const trailer = document.querySelector(".trailer-video");
-const review = document.querySelector(".review");
-const userName = document.querySelector(".userName");
+/* const review = document.querySelector(".review");
+const userName = document.querySelector(".userName"); */
 const reviews = [];
 const reviewContainer = document.querySelector("#reviews-container");
 
