@@ -5,7 +5,7 @@ var title = document.querySelector('.title')
 var container = document.querySelector('.images');
 
 
-var width = 88; 
+var width = 80; 
 var count = 1; 
 var index = 0;
 
