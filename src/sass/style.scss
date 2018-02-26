@@ -3,6 +3,7 @@
   src: url("css/fonts/MyriadPro-Regular.otf") format("truetype");
   font-style: normal;
   font-weight: normal;
+}
 .container {
 	display: flex;
 	justify-content: center;
@@ -212,7 +213,7 @@
 
 .reviews-text {
 	height: 220px;
-	overflow: hidden;
+	overflow: scroll;
 	text-overflow: ellipsis;
 	display: -webkit-box;
     -webkit-line-clamp: 2;

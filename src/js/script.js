@@ -24,10 +24,6 @@ var position = 0;
 
 
 
-
-
-
-
 let successCB = function(res) {
   const result = JSON.parse(res);
   console.log(result);
@@ -139,13 +135,10 @@ let errorGetTrailer = function (res) {
 
 let successGetReview = function (res) {
     const result = JSON.parse(res);
-    console.log(result);
-    console.log(result.results);
     let reviewInfo = {};
     for (let i = 0; i < result.results.length; i++) {
         reviewInfo.author = result.results[i].author;
         reviewInfo.content = result.results[i].content;
-        console.log(reviewInfo);
         reviews.push(reviewInfo);
         reviewInfo = {};
     }
@@ -153,7 +146,6 @@ let successGetReview = function (res) {
     const html = document.querySelector('#reviews-main').textContent.trim();
     const compiled = _.template(html);
     const r = compiled(reviews);
-    console.log(r);
     reviewContainer.innerHTML = r;
 }
 
