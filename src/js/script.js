@@ -1,13 +1,16 @@
 const trailer = document.querySelector(".trailer-video");
-/* const review = document.querySelector(".review");
-const userName = document.querySelector(".userName"); */
 const reviews = [];
 const reviewContainer = document.querySelector("#reviews-container");
+const trailerHidden = document.querySelector(".trailer");
 
 let successGetTrailer = function (res) {
     const result = JSON.parse(res);
     console.log(result);
-    trailer.setAttribute("src", `https://www.youtube.com/embed/${result.youtube[0].source}`);
+    if (result.youtube.length === 0) {
+        trailerHidden.setAttribute("style", "display: none;");
+    } else {
+        trailer.setAttribute("src", `https://www.youtube.com/embed/${result.youtube[0].source}`);
+    }
 }
 
 let errorGetTrailer = function (res) {
@@ -17,12 +20,12 @@ let errorGetTrailer = function (res) {
 let successGetReview = function (res) {
     const result = JSON.parse(res);
     console.log(result);
-    console.log(result.results);
+    //console.log(result.results);
     let reviewInfo = {};
     for (let i = 0; i < result.results.length; i++) {
         reviewInfo.author = result.results[i].author;
         reviewInfo.content = result.results[i].content;
-        console.log(reviewInfo);
+        //console.log(reviewInfo);
         reviews.push(reviewInfo);
         reviewInfo = {};
     }
@@ -30,7 +33,7 @@ let successGetReview = function (res) {
     const html = document.querySelector('#reviews-main').textContent.trim();
     const compiled = _.template(html);
     const r = compiled(reviews);
-    console.log(r);
+    //console.log(r);
     reviewContainer.innerHTML = r;
 }
 

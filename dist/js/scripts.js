@@ -1414,15 +1414,18 @@ theMovieDb.tvEpisodes = {
     }
 };
 var trailer = document.querySelector(".trailer-video");
-/* const review = document.querySelector(".review");
-const userName = document.querySelector(".userName"); */
 var reviews = [];
 var reviewContainer = document.querySelector("#reviews-container");
+var trailerHidden = document.querySelector(".trailer");
 
 var successGetTrailer = function successGetTrailer(res) {
     var result = JSON.parse(res);
     console.log(result);
-    trailer.setAttribute("src", "https://www.youtube.com/embed/" + result.youtube[0].source);
+    if (result.youtube.length === 0) {
+        trailerHidden.setAttribute("style", "display: none;");
+    } else {
+        trailer.setAttribute("src", "https://www.youtube.com/embed/" + result.youtube[0].source);
+    }
 };
 
 var errorGetTrailer = function errorGetTrailer(res) {
@@ -1432,12 +1435,12 @@ var errorGetTrailer = function errorGetTrailer(res) {
 var successGetReview = function successGetReview(res) {
     var result = JSON.parse(res);
     console.log(result);
-    console.log(result.results);
+    //console.log(result.results);
     var reviewInfo = {};
     for (var i = 0; i < result.results.length; i++) {
         reviewInfo.author = result.results[i].author;
         reviewInfo.content = result.results[i].content;
-        console.log(reviewInfo);
+        //console.log(reviewInfo);
         reviews.push(reviewInfo);
         reviewInfo = {};
     }
@@ -1445,7 +1448,7 @@ var successGetReview = function successGetReview(res) {
     var html = document.querySelector('#reviews-main').textContent.trim();
     var compiled = _.template(html);
     var r = compiled(reviews);
-    console.log(r);
+    //console.log(r);
     reviewContainer.innerHTML = r;
 };
 
