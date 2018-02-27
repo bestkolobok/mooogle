@@ -41,6 +41,7 @@ let errorGetReview = function (res) {
     console.log(arguments);
 }
 
+
 theMovieDb.movies.getTrailers({ "id": 76203, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
 theMovieDb.movies.getReviews({ "id": 76203 }, successGetReview, errorGetReview);
 
