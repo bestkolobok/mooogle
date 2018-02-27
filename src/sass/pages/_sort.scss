@@ -1,0 +1,22 @@
+.sort {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap; 
+    //_________
+    font-size: 16px;
+    font-family: 'Roboto';
+    text-align: center;
+    //_________
+    margin: 10px 0;
+
+    .subcategory-holder {
+        flex: auto;
+    }
+
+    .link-button__sort {
+        flex: auto;
+        position: relative;
+        font-family: 'Roboto';
+        color: #000;
+    }
+}
