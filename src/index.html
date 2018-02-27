@@ -35,7 +35,7 @@
 	<script type="text/template" id="reviews-main">
 		<% for (i=0; i < reviews.length; i++) { %>
 			<div class="reviews-avatar">
-				<img src="patrik.jpg">
+				<span class="avatar"><%= reviews[i].author.charAt(0) %></span>
 			</div>
 			<div class="reviews-post">
 				<p class="username"><%= reviews[i].author %><!-- Patrick the Star --></p>

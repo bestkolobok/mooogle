@@ -45,11 +45,26 @@
 }
 
 .reviews-avatar {
+	box-sizing: border-box;
 	width: 15%;
+	height: 50px;
 	display: inline-block;
 	vertical-align: top;
+	color: #212121;
+	font-family: 'Roboto', sans-serif;
+	font-size: 2em;
 }
-
+.avatar {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #77c1bb;
+	border-radius: 50%;
+	width: 100%;
+	height: 100%;
+	text-transform: uppercase;
+	text-align: center;
+}
 .reviews-post {
 	/* padding: 5px; */
 	font-size: 16px;
@@ -71,7 +86,7 @@
 }
 
 .reviews-text {
-	max-height: 220px;
+	max-height: 150px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	margin-top: 5px;
