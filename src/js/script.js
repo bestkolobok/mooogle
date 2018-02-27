@@ -22,27 +22,27 @@ var successGetUpcomming = function successGetUpcomming(res) {
     console.log(data);
     console.log('////////////////////');
 
-    var sortByName = document.getElementById("byName");
+    // var sortByName = document.getElementById("byName");
+    // let compareName = function (a, b) {
+    //     if (a.title < b.title)
+    //         return -1;
+    //     if (a.title > b.title)
+    //         return 1;
+    //     return 0;
+    // }
+    // sortByName.addEventListener('click', compareName);
+    // data.results.sort(compareName);
 
-    let compare = function(a, b) {
-        if (a.title < b.title)
+    var sortByDate = document.getElementById("byDate");
+    let compareDate = function (a, b) {
+        if (a.release_date > b.release_date)
             return -1;
-        if (a.title > b.title)
+        if (a.release_date < b.release_date)
             return 1;
         return 0;
     }
-
-    data.results.sort(compare)
-
-    sortByName.onclick = compare;
-
-    
-
-    //  function compared() {
-    //     data.results.sort(compare)
-    // }
-        
-
+    sortByDate.addEventListener('click', compareDate);
+    data.results.sort(compareDate);
 
 
 
@@ -55,9 +55,10 @@ var successGetUpcomming = function successGetUpcomming(res) {
         }));
     });
 
-    
-    
+
+
 };
+
 
 // Метод, который будет вызван в случае ошибки при обращении к API MovieDB 
 
