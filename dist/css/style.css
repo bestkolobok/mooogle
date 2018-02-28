@@ -10,6 +10,10 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -51,7 +55,9 @@ a {
   color: white; }
 
 .movie-card {
-  width: 100%; }
+  width: 100%;
+  max-height: 220px;
+  border-radius: 3px; }
   .movie-card__wrapper {
     position: relative;
     background-position: 50%;
@@ -82,6 +88,8 @@ a {
     width: 20px;
     height: 20px;
     cursor: pointer; }
+    .movie-card__button:nth-child(2) {
+      margin-left: 5px; }
     .movie-card__button--favorite {
       background-image: url(../img/favorite.png); }
     .movie-card__button--reminde {
@@ -106,6 +114,9 @@ a {
         min-height: 220px; } }
 
 .gradient {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(56%, transparent), color-stop(67%, rgba(0, 0, 0, 0.5)), color-stop(78%, black), color-stop(89%, black));
-  background: linear-gradient(to bottom, transparent 56%, rgba(0, 0, 0, 0.5) 67%, black 78%, black 89%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 ); }
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(62%, rgba(22, 19, 20, 0)), color-stop(70%, rgba(25, 22, 23, 0.5)), color-stop(76%, rgba(27, 24, 25, 0.75)), color-stop(82%, rgba(29, 26, 27, 0.9)), color-stop(92%, #201d1e), to(#231f20));
+  background: linear-gradient(to bottom, transparent 0%, rgba(22, 19, 20, 0) 62%, rgba(25, 22, 23, 0.5) 70%, rgba(27, 24, 25, 0.75) 76%, rgba(29, 26, 27, 0.9) 82%, #201d1e 92%, #231f20 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#231f20',GradientType=0 ); }
