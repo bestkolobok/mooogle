@@ -122,18 +122,26 @@ a {
   flex-direction: row;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  font-size: 16px;
-  font-family: 'Roboto';
-  text-align: center;
-  margin: 10px 0; }
+  margin: 20px 0; }
+  .sort * {
+    font-size: 16px;
+    font-family: "Roboto", sanserif;
+    text-align: center;
+    color: #372c48; }
   .sort .subcategory-holder {
     -webkit-box-flex: 1;
     -ms-flex: auto;
     flex: auto; }
-  .sort .link-button__sort {
+  .sort .sortButton-holder {
     -webkit-box-flex: 1;
     -ms-flex: auto;
     flex: auto;
     position: relative;
-    font-family: 'Roboto';
-    color: #000; }
+    padding-right: 10px; }
+  .sort .sortButton-holder::after {
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(../img/sort-arrows.png) no-repeat;
+    margin-left: 10px; }
