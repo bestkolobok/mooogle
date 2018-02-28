@@ -147,8 +147,8 @@ a {
   .sort .sortButton-holder::after {
     content: ' ';
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 15px;
+    height: 15px;
     background: url(../img/sort-arrows.png) no-repeat; }
     @media all and (min-width: 319px) and (max-width: 360px) {
       .sort .sortButton-holder::after {
