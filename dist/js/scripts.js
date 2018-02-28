@@ -1440,6 +1440,7 @@ var successGetReview = function successGetReview(res) {
     for (var i = 0; i < result.results.length; i++) {
         reviewInfo.author = result.results[i].author;
         reviewInfo.content = result.results[i].content;
+        //console.log(result.results[i].content);
         //console.log(reviewInfo);
         reviews.push(reviewInfo);
         reviewInfo = {};
