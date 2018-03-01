@@ -13,10 +13,17 @@
 //= templates/movieCard.html
 
     <div id="latestMovie"></div>
+    
     <div id="searchMovie">
-        <img class="logo" src="img/logo_360.png" alt="mooogle_mooo">
         <div class="search">
-            <form action="#" class="search-form">
+            <!-- <div class="bg"></div> -->
+            <div class="logo_img">
+                <picture>
+                    <source media="(min-width: 479px)" srcset="img/logo_480.png">
+                    <img class="logo" src="img/logo_360.png" alt="mooogle_mooo">
+                </picture>
+            </div>
+            <form action="#" id="search-form">
                 <input type="search" name="searchMovie" placeholder="Search" id="search-form_input_search" onfocus="searchInput_onFocus()">
                 <input type="submit" value="" id="search-form_input_submit">
             </form>

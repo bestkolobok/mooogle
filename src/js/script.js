@@ -9,11 +9,6 @@ const compiledCard = _.template(card);
 
 //Находим место, куда мы будет вставлять карточки фильмов.
 const colectionWrapper = document.getElementById('searchMovie');
-
-//место, куда пользователь вводит запрос
-let searchInput_onFocus = function (){
-    document.getElementById('search-form_input_search').style.border = 'none';
-}
         
 
 // метод, который будет выполнен в случае удачного обращения к API MovieDB

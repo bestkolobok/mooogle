@@ -115,10 +115,10 @@ a {
 .search {
   vertical-align: top;
   border: none;
-  position: absolute;
+  position: relative;
   background-color: #77c1bb;
   height: 450px;
-  z-index: 2;
+  z-index: 10;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -127,29 +127,16 @@ a {
   -ms-flex-pack: center;
   justify-content: center; }
 
-#searchMovie {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  background-color: #000000;
-  opacity: 0.5; }
-
 img.logo {
-  position: absolute;
-  visibility: hidden;
-  z-index: 10;
-  margin: 16vh auto 0;
-  max-width: 122px;
-  height: auto; }
-
-.search-form {
   position: relative;
-  top: 390px; }
+  z-index: 10;
+  top: 60px; }
+
+#search-form {
+  position: absolute;
+  top: 272px;
+  width: 233px;
+  height: 28px; }
 
 #search-form_input_search {
   background: inherit;
@@ -159,7 +146,7 @@ img.logo {
   font-family: "Roboto";
   color: #fff;
   font-size: 1em;
-  width: calc(64vw - 1em); }
+  width: 100%; }
 
 #search-form_input_submit {
   position: absolute;
@@ -168,13 +155,19 @@ img.logo {
   background-repeat: no-repeat;
   width: 28px;
   height: 28px;
-  background-position-y: center;
-  background-position-x: center;
   z-index: 5;
   left: calc(98% - 1em);
-  border: 0; }
+  border: 0;
+  padding: 5px; }
 
 #search-form_input_search[placeholder] {
   background-image: url(../../img/search-glass_360.png);
   background-repeat: no-repeat;
-  padding-left: 30px; }
+  padding-left: 30px;
+  color: #fff; }
+
+#search-form_input_search::-moz-placeholder,
+#search-form_input_search::-webkit-input-placeholder,
+#search-form_input_search:-moz-placeholder,
+#search-form_input_search:-ms-input-placeholder {
+  color: #fff; }

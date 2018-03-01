@@ -1424,11 +1424,6 @@ var compiledCard = _.template(card);
 //Находим место, куда мы будет вставлять карточки фильмов.
 var colectionWrapper = document.getElementById('searchMovie');
 
-//место, куда пользователь вводит запрос
-var searchInput_onFocus = function searchInput_onFocus() {
-    document.getElementById('search-form_input_search').style.border = 'none';
-};
-
 // метод, который будет выполнен в случае удачного обращения к API MovieDB
 var successGetUpcomming = function successGetUpcomming(res) {
 
@@ -1458,3 +1453,8 @@ var errorGetUpcomming = function errorGetUpcomming() {
 //данный метод приведен в качестве примера использования шаблона карточки фильма.
 //За более детальной информацией обратитесь к документации библиотеки
 theMovieDb.movies.getUpcoming({ "language": "ru-RUS" }, successGetUpcomming, errorGetUpcomming);
+
+//место, куда пользователь вводит запрос
+var searchInput_onFocus = function searchInput_onFocus() {
+    document.getElementById('search-form_input_search').style.border = 'none';
+};
