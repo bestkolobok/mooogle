@@ -1,5 +1,3 @@
-"use strict";
-
 window.addEventListener("load", function () {
     var swipearea = document.getElementById("wrapper");
     var button = document.querySelector("#button");
