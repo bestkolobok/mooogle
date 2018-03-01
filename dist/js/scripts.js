@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 "use strict";
 
 /*
@@ -1454,7 +1453,7 @@ var errorGetUpcomming = function errorGetUpcomming() {
 //данный метод приведен в качестве примера использования шаблона карточки фильма.
 //За более детальной информацией обратитесь к документации библиотеки
 theMovieDb.movies.getUpcoming({ "language": "ru-RUS" }, successGetUpcomming, errorGetUpcomming);
-=======
+
 window.addEventListener("load", function () {
     var swipearea = document.getElementById("wrapper");
     var button = document.querySelector("#button");
@@ -1506,4 +1505,3 @@ window.addEventListener("load", function () {
         document.querySelector(".head-1").style.display = "flex";
     }, false);
 }, false);
->>>>>>> Nikita-Andrey
