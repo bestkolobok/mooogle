@@ -39,10 +39,10 @@
 			</div>
 			<div class="reviews-post">
 				<p class="username"><%= reviews[i].author %></p>
-				<% if (reviews[i].content.length <= 180) { %>
+				<% if (reviews[i].content.length <= 156) { %>
 					<p class="reviews-text"><%= reviews[i].content %></p>
 				<% } else { %>
-					<p class="reviews-text big-post"><%= `${reviews[i].content.slice(0, 176)}...` %><a class="more-info"><span>еще</span></a></p>
+					<p class="reviews-text big-post"><%= `${reviews[i].content.slice(0, 152)}...` %><a class="more-info"><span>еще</span></a></p>
 				<% } %>
 			</div>
 			<div class="reviews-date">

@@ -1456,7 +1456,7 @@ var successGetReview = function successGetReview(res) {
                 if (item.classList.contains("reviews-text-big")) {
                     item.classList.remove("reviews-text-big");
                     item.classList.add("reviews-text");
-                    item.innerHTML = reviews[0].content.slice(0, 176) + "...<a class=\"more-info\"><span>\u0435\u0449\u0435</span></a>";
+                    item.innerHTML = reviews[0].content.slice(0, 152) + "...<a class=\"more-info\"><span>\u0435\u0449\u0435</span></a>";
                 } else {
                     item.classList.add("reviews-text-big");
                     item.classList.remove("reviews-text");
