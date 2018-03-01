@@ -1435,13 +1435,10 @@ var errorGetTrailer = function errorGetTrailer(res) {
 var successGetReview = function successGetReview(res) {
     var result = JSON.parse(res);
     console.log(result);
-    //console.log(result.results);
     var reviewInfo = {};
     for (var i = 0; i < result.results.length; i++) {
         reviewInfo.author = result.results[i].author;
         reviewInfo.content = result.results[i].content;
-        //console.log(result.results[i].content);
-        //console.log(reviewInfo);
         reviews.push(reviewInfo);
         reviewInfo = {};
     }
@@ -1449,8 +1446,26 @@ var successGetReview = function successGetReview(res) {
     var html = document.querySelector('#reviews-main').textContent.trim();
     var compiled = _.template(html);
     var r = compiled(reviews);
-    //console.log(r);
     reviewContainer.innerHTML = r;
+
+    var posts = document.querySelectorAll(".big-post");
+    console.log(posts);
+    posts.forEach(function (item) {
+        var onClick = function onClick(event) {
+            if (event.target !== event.currentTarget) {
+                if (item.classList.contains("reviews-text-big")) {
+                    item.classList.remove("reviews-text-big");
+                    item.classList.add("reviews-text");
+                    item.innerHTML = reviews[0].content.slice(0, 176) + "...<a class=\"more-info\"><span>\u0435\u0449\u0435</span></a>";
+                } else {
+                    item.classList.add("reviews-text-big");
+                    item.classList.remove("reviews-text");
+                    item.innerHTML = reviews[0].content + "<a class=\"more-info\"><span>\u0441\u0432\u0435\u0440\u043D\u0443\u0442\u044C</span></a>";
+                }
+            }
+        };
+        item.addEventListener("click", onClick);
+    });
 };
 
 var errorGetReview = function errorGetReview(res) {

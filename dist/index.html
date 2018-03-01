@@ -39,7 +39,11 @@
 			</div>
 			<div class="reviews-post">
 				<p class="username"><%= reviews[i].author %></p>
-				<p class="reviews-text"><%= reviews[i].content %></p>
+				<% if (reviews[i].content.length <= 180) { %>
+					<p class="reviews-text"><%= reviews[i].content %></p>
+				<% } else { %>
+					<p class="reviews-text big-post"><%= `${reviews[i].content.slice(0, 176)}...` %><a class="more-info"><span>еще</span></a></p>
+				<% } %>
 			</div>
 			<div class="reviews-date">
 				<p class="reviews-date-item">23 дек</p>

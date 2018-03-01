@@ -6,7 +6,7 @@
 	align-items: center;
 	align-content: center;
 	margin: 15px;
-	max-width: 360px;
+	/* max-width: 360px; */
 }
 
 .trailer {
@@ -98,12 +98,17 @@
 	margin-top: 5px;
 	font-family: 'Roboto', sans-serif;
 	color: #5e576a;
-	display: -webkit-box;
+	/* display: -webkit-box;
     -webkit-line-clamp: 7;
-	-webkit-box-orient: vertical;
+	-webkit-box-orient: vertical; */
 
 }
 
+.reviews-text-big {
+	margin-top: 5px;
+	font-family: 'Roboto', sans-serif;
+	color: #5e576a;
+}
 
 .reviews-date {
 	font-family: 'Roboto', sans-serif;
