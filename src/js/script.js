@@ -118,15 +118,18 @@ theMovieDb.credits.getCredit({"id":284054, "language":"ru-RUS" }, successPeopleC
 
 
 const trailer = document.querySelector(".trailer-video");
-/* const review = document.querySelector(".review");
-const userName = document.querySelector(".userName"); */
 const reviews = [];
 const reviewContainer = document.querySelector("#reviews-container");
+const trailerHidden = document.querySelector(".trailer");
 
 let successGetTrailer = function (res) {
     const result = JSON.parse(res);
     console.log(result);
-    trailer.setAttribute("src", `https://www.youtube.com/embed/${result.youtube[0].source}`);
+    if (result.youtube.length === 0) {
+        trailerHidden.setAttribute("style", "display: none;");
+    } else {
+        trailer.setAttribute("src", `https://www.youtube.com/embed/${result.youtube[0].source}`);
+    }
 }
 
 let errorGetTrailer = function (res) {
@@ -147,6 +150,26 @@ let successGetReview = function (res) {
     const compiled = _.template(html);
     const r = compiled(reviews);
     reviewContainer.innerHTML = r;
+
+
+    let posts = document.querySelectorAll(".big-post");
+    console.log(posts);
+    posts.forEach(item => {
+        let onClick = event => {
+            if (event.target !== event.currentTarget) {
+                if (item.classList.contains("reviews-text-big")) {
+                    item.classList.remove("reviews-text-big");
+                    item.classList.add("reviews-text");
+                    item.innerHTML = `${reviews[0].content.slice(0, 152)}...<a class="more-info"><span>еще</span></a>`;
+                } else {
+                    item.classList.add("reviews-text-big");
+                    item.classList.remove("reviews-text");
+                    item.innerHTML = `${reviews[0].content}<a class="more-info"><span>свернуть</span></a>`;
+                }
+            }
+        };
+        item.addEventListener("click", onClick);
+    });
 }
 
 let errorGetReview = function (res) {

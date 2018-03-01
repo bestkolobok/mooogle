@@ -1517,15 +1517,18 @@ theMovieDb.movies.getById({ "id": 284054, "language": "ru-RUS" }, successCB, err
 theMovieDb.credits.getCredit({ "id": 284054, "language": "ru-RUS" }, successPeopleCB, errorPeopleCB);
 
 var trailer = document.querySelector(".trailer-video");
-/* const review = document.querySelector(".review");
-const userName = document.querySelector(".userName"); */
 var reviews = [];
 var reviewContainer = document.querySelector("#reviews-container");
+var trailerHidden = document.querySelector(".trailer");
 
 var successGetTrailer = function successGetTrailer(res) {
     var result = JSON.parse(res);
     console.log(result);
-    trailer.setAttribute("src", "https://www.youtube.com/embed/" + result.youtube[0].source);
+    if (result.youtube.length === 0) {
+        trailerHidden.setAttribute("style", "display: none;");
+    } else {
+        trailer.setAttribute("src", "https://www.youtube.com/embed/" + result.youtube[0].source);
+    }
 };
 
 var errorGetTrailer = function errorGetTrailer(res) {
@@ -1546,6 +1549,25 @@ var successGetReview = function successGetReview(res) {
     var compiled = _.template(html);
     var r = compiled(reviews);
     reviewContainer.innerHTML = r;
+
+    var posts = document.querySelectorAll(".big-post");
+    console.log(posts);
+    posts.forEach(function (item) {
+        var onClick = function onClick(event) {
+            if (event.target !== event.currentTarget) {
+                if (item.classList.contains("reviews-text-big")) {
+                    item.classList.remove("reviews-text-big");
+                    item.classList.add("reviews-text");
+                    item.innerHTML = reviews[0].content.slice(0, 152) + "...<a class=\"more-info\"><span>\u0435\u0449\u0435</span></a>";
+                } else {
+                    item.classList.add("reviews-text-big");
+                    item.classList.remove("reviews-text");
+                    item.innerHTML = reviews[0].content + "<a class=\"more-info\"><span>\u0441\u0432\u0435\u0440\u043D\u0443\u0442\u044C</span></a>";
+                }
+            }
+        };
+        item.addEventListener("click", onClick);
+    });
 };
 
 var errorGetReview = function errorGetReview(res) {

@@ -7,8 +7,12 @@
 .container {
 	display: flex;
 	justify-content: center;
-	flex-wrap: wrap;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: center;
+	align-content: center;
 	margin: 15px;
+	/* max-width: 360px; */
 }
 
 .carousel {
@@ -149,13 +153,12 @@
 }
 
 .trailer {
-	max-width: 360px;
-	width: 100%;
 	display: flex;
 	justify-content: center;
-	align-items: flex-start;
 	flex-direction: column;
+	flex-wrap: nowrap;
 	align-content: center;
+	width: 100%;
 }
 
 .trailer-title h2 {
@@ -173,35 +176,53 @@
 	height: 200px;
 }
 
+.reviews {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-content: center;
+	width: 100%;
+}
+
 .reviews-title h2 {
 	font-family: 'Roboto', sans-serif;
 	font-size: 20px;
 	color: #5e576a;
 }
 
-.review-container {
+#reviews-container {
 	display: flex;
-	justify-content: center;
 	flex-direction: row;
-	flex-wrap: nowrap;
+	flex-wrap: wrap;
+	justify-content: center;
 	align-items: flex-start;
+	align-content: flex-start;
 }
 
 .reviews-avatar {
 	width: 15%;
-	display: inline-block;
-	vertical-align: top;
+	height: 50px;
+	color: #212121;
+	font-family: 'Roboto', sans-serif;
+	font-size: 2em;
+}
+
+.avatar {
+	display: inline-flex;
+	width: 50px;
+	height: 100%;
+	padding: 0;
+	align-items: center;
+	justify-content: center;
+	background-color: #77c1bb;
+	text-transform: uppercase;
+	border-radius: 50%;
 }
 
 .reviews-post {
-	/* padding: 5px; */
-	font-size: 16px;
- 	font-family: sans-serif;
- 	color: #757575;
 	width: 60%;
-	/* margin: 5px; */
-	display: inline-block;
-	vertical-align: top;
+	margin-left: 10px;
 }
 
 .username {
@@ -209,28 +230,42 @@
 	font-size: 18px;
 	color: #212121;
 	font-weight: bold;
+	margin-top: 12px;
+	margin-bottom: 10px;
 }
 
 .reviews-text {
-	height: 220px;
-	overflow: scroll;
+	max-height: 160px;
+	overflow: hidden;
 	text-overflow: ellipsis;
-	display: -webkit-box;
-    -webkit-line-clamp: 2;
-	-webkit-box-orient: vertical;
+	margin-top: 5px;
+	font-family: 'Roboto', sans-serif;
+	color: #5e576a;
+	/* display: -webkit-box;
+    -webkit-line-clamp: 7;
+	-webkit-box-orient: vertical; */
 
 }
+
+.reviews-text-big {
+	margin-top: 5px;
+	font-family: 'Roboto', sans-serif;
+	color: #5e576a;
+}
+
 .reviews-date {
-	/* display: flex; */
 	font-family: 'Roboto', sans-serif;
 	color: #5e576a;
 	width: 15%;
 	display: inline-block;
 	vertical-align: top;
+	margin-left: 15px;
 }
+
+.more-info {
+	color: #77c1bb;
+	font-family: 'Roboto', sans-serif;
+	cursor: pointer;
+}
+
  
-img {
-	padding: 10px;
-	border-radius: 100px; //Радиус скругления
-	float: left;
-}
