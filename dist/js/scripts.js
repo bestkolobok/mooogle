@@ -1472,6 +1472,7 @@ window.addEventListener("load", function () {
         document.querySelector(".head-1").style.display = "flex";
     }, false);
 }, false);
+
 /*jshint esversion: 6 */
 
 //находтим и подготавливаем шаблон карточки фильма для дальнейшей работы
