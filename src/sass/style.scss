@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .container {
 	display: flex;
 	justify-content: center;
@@ -126,3 +127,12 @@
 }
 
  
+=======
+@import 'variables/variables';
+@import 'mixins/mixins';
+@import 'fonts/fonts';
+@import 'libs/reset';
+@import 'pages/moviecard';
+@import 'pages/header';
+@import 'pages/categoties';
+>>>>>>> 6caf97a9ace9ed0ebea0ff9b59add18aaa72f7ac

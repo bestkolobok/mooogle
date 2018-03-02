@@ -1413,6 +1413,7 @@ theMovieDb.tvEpisodes = {
         }, success, error);
     }
 };
+<<<<<<< HEAD
 var trailer = document.querySelector(".trailer-video");
 var reviews = [];
 var reviewContainer = document.querySelector("#reviews-container");
@@ -1474,3 +1475,115 @@ var errorGetReview = function errorGetReview(res) {
 
 theMovieDb.movies.getTrailers({ "id": 76203, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
 theMovieDb.movies.getReviews({ "id": 76203 }, successGetReview, errorGetReview);
+=======
+window.addEventListener("load", function () {
+
+    var swipearea = document.getElementById("wrapper");
+    var button = document.querySelector("#button");
+    var a = document.querySelector(".menu");
+    var search = document.querySelector(".head__search");
+    var lines = document.getElementsByClassName("button__line");
+    var startX = 0;
+    var startY = 0;
+    var endX = 0;
+    var endY = 0;
+
+    swipearea.addEventListener("touchstart", function (e) {
+        console.log(e.changedTouches[0].clientX);
+        startX = e.changedTouches[0].clientX;
+        startY = e.changedTouches[0].clientY;
+    }, false);
+
+    swipearea.addEventListener("touchend", function (e) {
+        endX = e.changedTouches[0].clientX;
+        endY = e.changedTouches[0].clientY;
+        if (endX - startX > 0) {
+            if (a.classList.contains("move-left")) {
+                a.classList.remove("move-left");
+            }
+            a.classList.add("move-right");
+            lines[1].style.display = "none";
+            lines[0].classList.add("transformed-1");
+            lines[2].classList.add("transformed-2");
+        } else if (endX - startX <= 0) {
+            if (a.classList.contains("move-right")) {
+                a.classList.remove("move-right");
+            }
+            a.classList.add("move-left");
+            lines[1].style.display = "block";
+            lines[0].classList.remove("transformed-1");
+            lines[2].classList.remove("transformed-2");
+        }
+    }, false);
+    button.addEventListener('click', function () {
+        if (a.classList.contains("move-right")) {
+            a.classList.remove("move-right");
+            a.classList.add("move-left");
+            lines[1].style.display = "block";
+            lines[0].classList.remove("transformed-1");
+            lines[2].classList.remove("transformed-2");
+        } else {
+            a.classList.add("move-right");
+            a.classList.remove("move-left");
+            lines[1].style.display = "none";
+            lines[0].classList.add("transformed-1");
+            lines[2].classList.add("transformed-2");
+        }
+    }, false);
+    search.addEventListener('click', function () {
+        document.querySelector(".head").style.display = "none";
+        document.querySelector(".head-1").style.display = "flex";
+    }, false);
+}, false);
+/*jshint esversion: 6 */
+
+//находтим и подготавливаем шаблон карточки фильма для дальнейшей работы
+var premieresFilm = document.getElementById('premieresFilm').textContent.trim();
+var screenFilm = document.getElementById('screenFilm').textContent.trim();
+var top100Film = document.getElementById('top100Film').textContent.trim();
+var premieresSeries = document.getElementById('premieresSeries').textContent.trim();
+var screenSeries = document.getElementById('screenSeries').textContent.trim();
+var top100Series = document.getElementById('top100Series').textContent.trim();
+var compiledPremieresFilm = _.template(premieresFilm);
+var compiledScreenFilm = _.template(screenFilm);
+var compiledTop100Film = _.template(top100Film);
+var compiledPremieresSeries = _.template(premieresSeries);
+var compiledScreenSeries = _.template(screenSeries);
+var compiledTop100Series = _.template(top100Series);
+var colectionWrapper = document.getElementById('searchMovie');
+var successGetUpcomming = function successGetUpcomming(res) {
+    var data = JSON.parse(res);
+    console.log(data);
+    colectionWrapper.innerHTML += compiledPremieresFilm({ data: data });
+};
+var successgetNowPlaying = function successgetNowPlaying(res) {
+    var data = JSON.parse(res);
+    colectionWrapper.innerHTML += compiledScreenFilm({ data: data });
+};
+var successgetTopRated = function successgetTopRated(res) {
+    var data = JSON.parse(res);
+    colectionWrapper.innerHTML += compiledTop100Film({ data: data });
+};
+var successgetOnTheAir = function successgetOnTheAir(res) {
+    var data = JSON.parse(res);
+    colectionWrapper.innerHTML += compiledPremieresSeries({ data: data });
+};
+var successgetAiringToday = function successgetAiringToday(res) {
+    var data = JSON.parse(res);
+    colectionWrapper.innerHTML += compiledScreenSeries({ data: data });
+};
+var successgetTopRated = function successgetTopRated(res) {
+    var data = JSON.parse(res);
+    colectionWrapper.innerHTML += compiledTop100Series({ data: data });
+};
+var error = function error() {
+    console.log(arguments);
+};
+
+theMovieDb.movies.getUpcoming({ "language": "ru-RUS" }, successGetUpcomming, error);
+theMovieDb.movies.getNowPlaying({ "language": "ru-RUS" }, successgetNowPlaying, error);
+theMovieDb.movies.getTopRated({ "language": "ru-RUS" }, successgetTopRated, error);
+theMovieDb.tv.getOnTheAir({ "language": "ru-RUS" }, successgetOnTheAir, error);
+theMovieDb.tv.getAiringToday({ "language": "ru-RUS" }, successgetAiringToday, error);
+theMovieDb.tv.getTopRated({ "language": "ru-RUS" }, successgetTopRated, error);
+>>>>>>> 6caf97a9ace9ed0ebea0ff9b59add18aaa72f7ac
