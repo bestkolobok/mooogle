@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 /*jshint esversion: 6 */
 
 
@@ -10,7 +8,7 @@ const card = document.getElementById('movie-card').textContent.trim();
 const compiledCard = _.template(card);
 
 //Находим место, куда мы будет вставлять карточки фильмов.
-const colectionWrapper = document.getElementById('searchMovie');
+
 
 // метод, который будет выполнен в случае удачного обращения к API MovieDB
 var successGetUpcomming = function successGetUpcomming(res) {
@@ -75,4 +73,3 @@ var errorGetUpcomming = function errorGetUpcomming() {
 theMovieDb.movies.getUpcoming({
     "language": "ru-RUS"
 }, successGetUpcomming, errorGetUpcomming);
->>>>>>> Yaroslav-Pavel

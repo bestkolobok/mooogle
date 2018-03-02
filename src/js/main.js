@@ -1,5 +1,8 @@
 /*jshint esversion: 6 */
 
+const colectionWrapper = document.getElementById('searchMovie');
+if(window.location.pathname == "/"){
+
 
 //находтим и подготавливаем шаблон карточки фильма для дальнейшей работы
 const premieresFilm = document.getElementById('premieresFilm').textContent.trim();
@@ -14,7 +17,7 @@ const compiledTop100Film = _.template(top100Film);
 const compiledPremieresSeries = _.template(premieresSeries);
 const compiledScreenSeries = _.template(screenSeries);
 const compiledTop100Series = _.template(top100Series);
-const colectionWrapper = document.getElementById('searchMovie');
+
 var successGetUpcomming = function (res) {
     var data = JSON.parse(res);
         console.log(data);
@@ -50,3 +53,5 @@ theMovieDb.movies.getTopRated({ "language": "ru-RUS"  }, successgetTopRated, err
 theMovieDb.tv.getOnTheAir({ "language": "ru-RUS"  }, successgetOnTheAir, error);
 theMovieDb.tv.getAiringToday({ "language": "ru-RUS"  }, successgetAiringToday, error);
 theMovieDb.tv.getTopRated({ "language": "ru-RUS"  }, successgetTopRated, error);
+
+}
