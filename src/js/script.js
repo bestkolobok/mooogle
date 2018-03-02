@@ -2,44 +2,51 @@
 
 
 //находтим и подготавливаем шаблон карточки фильма для дальнейшей работы
-const card = document.getElementById('movie-card').textContent.trim();
-
-//компилируем наш шаблон в метод с помощью Lodash для дальгейшего использования, где либо
-const compiledCard = _.template(card);
-
-//Находим место, куда мы будет вставлять карточки фильмов.
+const premieresFilm = document.getElementById('premieresFilm').textContent.trim();
+const screenFilm = document.getElementById('screenFilm').textContent.trim();
+const top100Film = document.getElementById('top100Film').textContent.trim();
+const premieresSeries = document.getElementById('premieresSeries').textContent.trim();
+const screenSeries = document.getElementById('screenSeries').textContent.trim();
+const top100Series = document.getElementById('top100Series').textContent.trim();
+const compiledPremieresFilm = _.template(premieresFilm);
+const compiledScreenFilm = _.template(screenFilm);
+const compiledTop100Film = _.template(top100Film);
+const compiledPremieresSeries = _.template(premieresSeries);
+const compiledScreenSeries = _.template(screenSeries);
+const compiledTop100Series = _.template(top100Series);
 const colectionWrapper = document.getElementById('searchMovie');
-
-// метод, который будет выполнен в случае удачного обращения к API MovieDB
-var successGetUpcomming = function successGetUpcomming(res) {
-    
-    // парсим JSON в объект
+var successGetUpcomming = function (res) {
     var data = JSON.parse(res);
-
-
-    // выводим его в консоль что бы было наглядно
-    console.log('get movie list on search');
-    console.log(data);
-    console.log('////////////////////');
-
-
-    //проходимся по коллекции фильмов из ответа и обьект каждого из фильмов 
-    //передаем в ранее "скомпилированный" метод
-    // data.results.forEach(item => {
-    //     console.log(item);
-    //     colectionWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
-    // });
+        console.log(data);
+    colectionWrapper.innerHTML += compiledPremieresFilm({data})
 };
-
-// Метод, который будет вызван в случае ошибки при обращении к API MovieDB 
-
-var errorGetUpcomming = function errorGetUpcomming() {
+var successgetNowPlaying = function (res) {
+    var data = JSON.parse(res);
+    colectionWrapper.innerHTML += compiledScreenFilm({data})
+};
+var successgetTopRated = function (res) {
+    var data = JSON.parse(res);
+    colectionWrapper.innerHTML += compiledTop100Film({data})
+};
+var successgetOnTheAir = function (res) {
+    var data = JSON.parse(res);
+    colectionWrapper.innerHTML += compiledPremieresSeries({data})
+};
+var successgetAiringToday = function (res) {
+    var data = JSON.parse(res);
+    colectionWrapper.innerHTML += compiledScreenSeries({data})
+};
+var successgetTopRated = function (res) {
+    var data = JSON.parse(res);
+    colectionWrapper.innerHTML += compiledTop100Series({data})
+};
+var error = function () {
     console.log(arguments);
 };
 
-
-//обращение к методу библиотеки для получения списка предстоящих премьер
-//данный метод приведен в качестве примера использования шаблона карточки фильма.
-//За более детальной информацией обратитесь к документации библиотеки
-theMovieDb.movies.getUpcoming({ "language": "ru-RUS" }, successGetUpcomming, errorGetUpcomming);
-
+theMovieDb.movies.getUpcoming({ "language": "ru-RUS"  }, successGetUpcomming, error);
+theMovieDb.movies.getNowPlaying({ "language": "ru-RUS"  }, successgetNowPlaying, error);
+theMovieDb.movies.getTopRated({ "language": "ru-RUS"  }, successgetTopRated, error);
+theMovieDb.tv.getOnTheAir({ "language": "ru-RUS"  }, successgetOnTheAir, error);
+theMovieDb.tv.getAiringToday({ "language": "ru-RUS"  }, successgetAiringToday, error);
+theMovieDb.tv.getTopRated({ "language": "ru-RUS"  }, successgetTopRated, error);

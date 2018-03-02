@@ -258,7 +258,8 @@ head-1__search {
   left: -70%;
   height: 100vh;
   width: 63.3%;
-  background: #fff; }
+  background: #fff;
+  z-index: 99; }
 
 .move-right {
   left: 0;
@@ -356,3 +357,26 @@ head-1__search {
   #block {
     height: 18px;
     width: 22px; } }
+
+.category {
+  font-family: "Roboto";
+  font-size: 20px;
+  color: #372c48;
+  padding-bottom: 10px; }
+
+.subcategory {
+  font-family: "Roboto";
+  font-size: 20px;
+  color: #372c48;
+  padding-bottom: 10px; }
+
+.containerCard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column; }
+  .containerCard .movie-card {
+    margin-bottom: 10px; }
