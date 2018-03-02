@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 const trailer = document.querySelector(".trailer-video");
 const reviews = [];
 const reviewContainer = document.querySelector("#reviews-container");
@@ -118,3 +119,12 @@ theMovieDb.tv.getOnTheAir({ "language": "ru-RUS"  }, successgetOnTheAir, error);
 theMovieDb.tv.getAiringToday({ "language": "ru-RUS"  }, successgetAiringToday, error);
 theMovieDb.tv.getTopRated({ "language": "ru-RUS"  }, successgetTopRated, error);
 >>>>>>> 6caf97a9ace9ed0ebea0ff9b59add18aaa72f7ac
+=======
+
+window.addEventListener("click", function(e){
+
+    if(e.target.classList.contains('movie-card__title')){
+        this.location.replace('/movie.html');
+    }
+})
+>>>>>>> 86a8a41ec13f69529102dbd99602be2d321578ce
