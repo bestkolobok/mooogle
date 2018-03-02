@@ -1,0 +1,85 @@
+// templates/header.html
+<body>
+    <div class="main_card">
+        <div class="main_img">
+            <h1 class="title">Темные времена(2017)</h1>
+        </div>
+        <div class="main_links">
+            <div class="links">
+                <a href="#" class="star"></a>
+                <a href="#" class="ring"></a>
+            </div>
+            <div class="time">
+                <p class="time_item">12.12.12</p>
+            </div>
+        </div>
+        <div class="description">
+            <p class="text_description">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus reprehenderit temporibus itaque. Veniam quia harum esse necessitatibus dolorum vel fuga eius id quisquam illum doloremque magnam molestias modi, tempora officia?Voluptas illo soluta inventore esse sapiente ab accusantium quam eveniet! Eos assumenda harum nostrum cum natus! Obcaecati temporibus quaerat eius necessitatibus laudantium ipsa, voluptates fuga reiciendis voluptatum, ullam, quidem unde!
+            </p>
+        </div>
+        <div class="actors">
+            <h2>Актеры</h2>
+        </div>
+        <div id="carousel" class="carousel">
+            <div class="gallery">
+                <ul class="images">
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script type="text/template" id="gallery-item">
+        <% for(let i = 0; i < 10; i++) { %>
+            <li class="images_item">
+                <div class="gallery-img" style="background-image: url(<%- galleryItems.img[i] %>)"></div>
+                <span class="gallery-text">
+                    <%- galleryItems.text[i] %>
+                </span>
+            </li>
+                <% }; %>
+    </script>
+	<div class="container">
+
+		<div class="trailer">
+			<div class="trailer-title">
+				<h2>Трейлер</h2>
+			</div>
+			<div class="trailer-main">
+				<iframe class="trailer-video" frameborder="0" allowfullscreen></iframe>
+			</div>
+		</div>
+
+		<div class="reviews">
+
+			<div class="reviews-title">
+				<h2>Отзывы</h2>
+			</div>
+			
+			<div id="reviews-container">
+			</div>
+			
+		</div>
+	</div>
+
+	<script type="text/template" id="reviews-main">
+		<% for (i=0; i < reviews.length; i++) { %>
+			<div class="reviews-avatar">
+				<span class="avatar"><%= reviews[i].author.charAt(0) %></span>
+			</div>
+			<div class="reviews-post">
+				<p class="username"><%= reviews[i].author %></p>
+				<% if (reviews[i].content.length <= 156) { %>
+					<p class="reviews-text"><%= reviews[i].content %></p>
+				<% } else { %>
+					<p class="reviews-text big-post"><%= `${reviews[i].content.slice(0, 152)}...` %><a class="more-info"><span>еще</span></a></p>
+				<% } %>
+			</div>
+			<div class="reviews-date">
+				<p class="reviews-date-item">23 дек</p>
+			</div>
+		<% } %>
+	</script>
+	<script src="js/scripts.js"></script>
+</body>
+</html>
