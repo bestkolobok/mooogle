@@ -1413,57 +1413,24 @@ theMovieDb.tvEpisodes = {
         }, success, error);
     }
 };
-/*jshint esversion: 6 */
-
-//находтим и подготавливаем шаблон карточки фильма для дальнейшей работы
-var card = document.getElementById('movie-card').textContent.trim();
-
-//компилируем наш шаблон в метод с помощью Lodash для дальгейшего использования, где либо
-var compiledCard = _.template(card);
-
-//Находим место, куда мы будет вставлять карточки фильмов.
-var colectionWrapper = document.getElementById('searchMovie');
-
-// метод, который будет выполнен в случае удачного обращения к API MovieDB
-var successGetUpcomming = function successGetUpcomming(res) {
-
-    // парсим JSON в объект
-    var data = JSON.parse(res);
-
-    // выводим его в консоль что бы было наглядно
-    console.log('get movie list on search');
-    console.log(data);
-    console.log('////////////////////');
-
-    //проходимся по коллекции фильмов из ответа и обьект каждого из фильмов 
-    //передаем в ранее "скомпилированный" метод
-    data.results.forEach(function (item) {
-        console.log(item);
-        colectionWrapper.insertAdjacentHTML('beforeend', compiledCard({ item: item }));
-    });
-};
-
-// Метод, который будет вызван в случае ошибки при обращении к API MovieDB 
-
-var errorGetUpcomming = function errorGetUpcomming() {
-    console.log(arguments);
-};
-
-//обращение к методу библиотеки для получения списка предстоящих премьер
-//данный метод приведен в качестве примера использования шаблона карточки фильма.
-//За более детальной информацией обратитесь к документации библиотеки
-theMovieDb.movies.getUpcoming({ "language": "ru-RUS" }, successGetUpcomming, errorGetUpcomming);
-
 window.addEventListener("load", function () {
+
     var swipearea = document.getElementById("wrapper");
     var button = document.querySelector("#button");
     var a = document.querySelector(".menu");
     var search = document.querySelector(".head__search");
     var lines = document.getElementsByClassName("button__line");
+    var startX = 0;
+    var startY = 0;
+    var endX = 0;
+    var endY = 0;
+
     swipearea.addEventListener("touchstart", function (e) {
+        console.log(e.changedTouches[0].clientX);
         startX = e.changedTouches[0].clientX;
         startY = e.changedTouches[0].clientY;
     }, false);
+
     swipearea.addEventListener("touchend", function (e) {
         endX = e.changedTouches[0].clientX;
         endY = e.changedTouches[0].clientY;
@@ -1505,3 +1472,43 @@ window.addEventListener("load", function () {
         document.querySelector(".head-1").style.display = "flex";
     }, false);
 }, false);
+/*jshint esversion: 6 */
+
+//находтим и подготавливаем шаблон карточки фильма для дальнейшей работы
+var card = document.getElementById('movie-card').textContent.trim();
+
+//компилируем наш шаблон в метод с помощью Lodash для дальгейшего использования, где либо
+var compiledCard = _.template(card);
+
+//Находим место, куда мы будет вставлять карточки фильмов.
+var colectionWrapper = document.getElementById('searchMovie');
+
+// метод, который будет выполнен в случае удачного обращения к API MovieDB
+var successGetUpcomming = function successGetUpcomming(res) {
+
+    // парсим JSON в объект
+    var data = JSON.parse(res);
+
+    // выводим его в консоль что бы было наглядно
+    console.log('get movie list on search');
+    console.log(data);
+    console.log('////////////////////');
+
+    //проходимся по коллекции фильмов из ответа и обьект каждого из фильмов 
+    //передаем в ранее "скомпилированный" метод
+    // data.results.forEach(item => {
+    //     console.log(item);
+    //     colectionWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
+    // });
+};
+
+// Метод, который будет вызван в случае ошибки при обращении к API MovieDB 
+
+var errorGetUpcomming = function errorGetUpcomming() {
+    console.log(arguments);
+};
+
+//обращение к методу библиотеки для получения списка предстоящих премьер
+//данный метод приведен в качестве примера использования шаблона карточки фильма.
+//За более детальной информацией обратитесь к документации библиотеки
+theMovieDb.movies.getUpcoming({ "language": "ru-RUS" }, successGetUpcomming, errorGetUpcomming);

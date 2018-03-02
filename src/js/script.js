@@ -25,10 +25,10 @@ var successGetUpcomming = function successGetUpcomming(res) {
 
     //проходимся по коллекции фильмов из ответа и обьект каждого из фильмов 
     //передаем в ранее "скомпилированный" метод
-    data.results.forEach(item => {
-        console.log(item);
-        colectionWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
-    });
+    // data.results.forEach(item => {
+    //     console.log(item);
+    //     colectionWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
+    // });
 };
 
 // Метод, который будет вызван в случае ошибки при обращении к API MovieDB 
