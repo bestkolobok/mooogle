@@ -1,7 +1,7 @@
 .search {
     vertical-align: top;
     border: none;
-    position: relative;
+    position: absolute;
     // visibility: hidden;
     background-color: $main-background;
     height: 450px;
@@ -10,18 +10,29 @@
     display: flex;
     justify-content: center;
 }
-// .bg{
-//     position: absolute;
-//     z-index: -5;
-//     top: 0;
-//     bottom: 0;
-//     left: 0;
-//     right: 0;
-//     background: #000000 center center;
-//     opacity: .4;
-//     width: 100%;
-//     height: 100vh;
-// }
+
+.search_hidden {
+    visibility: hidden;
+}
+
+::-webkit-input-placeholder {color:#ffffff;}
+::-moz-placeholder          {color:#ffffff;}/* Firefox 19+ */
+:-moz-placeholder           {color:#ffffff;}/* Firefox 18- */
+:-ms-input-placeholder      {color:#ffffff;}
+
+ .black_background{
+     position: absolute;
+     z-index: -5;
+     top: 0;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     background: #000000 center center;
+     opacity: .4;
+     width: 100%;
+     height: 100vh;
+ }
+
 img.logo{
     position: relative;
     // visibility: hidden;
@@ -53,6 +64,7 @@ img.logo{
     height: 28px;
     z-index: 5;
     left: calc(98% - 1em);
+    bottom: 0em;
     border: 0;
     padding: 5px;
 }
