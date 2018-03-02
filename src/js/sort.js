@@ -70,6 +70,8 @@ var errorGetUpcomming = function errorGetUpcomming() {
 //обращение к методу библиотеки для получения списка предстоящих премьер
 //данный метод приведен в качестве примера использования шаблона карточки фильма.
 //За более детальной информацией обратитесь к документации библиотеки
+
+if(window.location.pathname == '/sort.html')
 theMovieDb.movies.getUpcoming({
     "language": "ru-RUS"
 }, successGetUpcomming, errorGetUpcomming);
