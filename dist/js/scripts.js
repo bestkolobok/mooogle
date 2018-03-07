@@ -1700,6 +1700,25 @@ window.addEventListener("click", function (e) {
         this.location.replace('/movie.html');
     }
 });
+
+var movie_collection = document.getElementById('searchMovie');
+var search_blcok = document.getElementsByClassName('search');
+//место, куда пользователь вводит запрос
+var searchInput_onFocus = function searchInput_onFocus() {
+    document.getElementById('search-form_input_search').style.border = 'none';
+};
+
+var onClick = function onClick(event) {
+    if (event.target.className === "Some Future Class") {
+        search_blcok.classList.remove('search_hidden');
+        movie_collection.classList.add('bg');
+    }
+    if (event.target.className !== "search") {
+        search_blcok.classList.add('search_hidden');
+    }
+};
+
+document.addEventListener("click", onClick);
 /*jshint esversion: 6 */
 
 //находтим и подготавливаем шаблон карточки фильма для дальнейшей работы
@@ -1764,16 +1783,7 @@ var errorGetUpcomming = function errorGetUpcomming() {
 //обращение к методу библиотеки для получения списка предстоящих премьер
 //данный метод приведен в качестве примера использования шаблона карточки фильма.
 //За более детальной информацией обратитесь к документации библиотеки
-<<<<<<< HEAD
 
 if (window.location.pathname == '/sort.html') theMovieDb.movies.getUpcoming({
     "language": "ru-RUS"
 }, successGetUpcomming, errorGetUpcomming);
-=======
-theMovieDb.movies.getUpcoming({ "language": "ru-RUS" }, successGetUpcomming, errorGetUpcomming);
-
-//место, куда пользователь вводит запрос
-var searchInput_onFocus = function searchInput_onFocus() {
-    document.getElementById('search-form_input_search').style.border = 'none';
-};
->>>>>>> firstcommand
