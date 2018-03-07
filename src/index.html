@@ -1,69 +1,9 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="css/style.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-</head>
-<body>
-
-	<div class="container">
-
-		<div class="trailer">
-			<div class="trailer-title">
-				<h2>Трейлер</h2>
-			</div>
-			<div class="trailer-main">
-				<iframe class="trailer-video" frameborder="0" allowfullscreen></iframe>
-			</div>
-		</div>
-
-		<div class="reviews">
-
-			<div class="reviews-title">
-				<h2>Отзывы</h2>
-			</div>
-			
-			<div id="reviews-container">
-			</div>
-			
-		</div>
-	</div>
-
-	<script type="text/template" id="reviews-main">
-		<% for (i=0; i < reviews.length; i++) { %>
-			<div class="reviews-avatar">
-				<span class="avatar"><%= reviews[i].author.charAt(0) %></span>
-			</div>
-			<div class="reviews-post">
-				<p class="username"><%= reviews[i].author %></p>
-				<% if (reviews[i].content.length <= 156) { %>
-					<p class="reviews-text"><%= reviews[i].content %></p>
-				<% } else { %>
-					<p class="reviews-text big-post"><%= `${reviews[i].content.slice(0, 152)}...` %><a class="more-info"><span>еще</span></a></p>
-				<% } %>
-			</div>
-			<div class="reviews-date">
-				<p class="reviews-date-item">23 дек</p>
-			</div>
-		<% } %>
-	</script>
-	<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js"></script>
-	<script src="js/scripts.js"></script>
-
-</body>
-=======
-=======
->>>>>>> 86a8a41ec13f69529102dbd99602be2d321578ce
 //= templates/header.html
-<body>
-<!-- Ниже подключается темплейт карточки фильма -->
 
-<script type="tpl/lodash" id="premieresFilm">
+<body>
+    <!-- Ниже подключается темплейт карточки фильма -->
+
+    <script type="tpl/lodash" id="premieresFilm">
 <p class="category">Фильмы</p>
 <p class="subcategory">Премьеры</p>
 <div class="containerCard">
@@ -85,7 +25,7 @@
     <% } %>
      </div>
 </script>
-<script type="tpl/lodash" id="screenFilm">
+    <script type="tpl/lodash" id="screenFilm">
 <p class="subcategory">Сейчас на экране</p>
 <div class="containerCard">
     <%
@@ -106,7 +46,7 @@
     <% } %>
      </div>
 </script>
-<script type="tpl/lodash" id="top100Film">
+    <script type="tpl/lodash" id="top100Film">
 <p class="subcategory">Топ-100</p>
 <div class="containerCard">
     <%
@@ -129,13 +69,12 @@
 </script>
 
 
-<script type="tpl/lodash" id="premieresSeries">
+    <script type="tpl/lodash" id="premieresSeries">
 <p class="category">Сериалы</p>
 <p class="subcategory">Премьеры</p>
 <div class="containerCard">
     <%
     for (var i = 0; i < 3; i++) {
-
     %>
     <div class="movie-card">
         <div class="movie-card__wrapper" style="background-image: url(https://image.tmdb.org/t/p/w600_and_h900_bestv2<%- data.results[i].poster_path %>)">
@@ -151,7 +90,7 @@
     <% } %>
      </div>
 </script>
-<script type="tpl/lodash" id="screenSeries">
+    <script type="tpl/lodash" id="screenSeries">
 <p class="subcategory">Сейчас на экране</p>
 <div class="containerCard">
     <%
@@ -171,7 +110,7 @@
     <% } %>
      </div>
 </script>
-<script type="tpl/lodash" id="top100Series">
+    <script type="tpl/lodash" id="top100Series">
 <p class="subcategory">Топ-100</p>
 <div class="containerCard">
     <%
@@ -192,19 +131,16 @@
      </div>
 </script>
 
-<div id="wrapper">
-    <div id="latestMovie"></div>
-    <div id="searchMovie"></div>
+    <div id="wrapper">
+        <div id="latestMovie"></div>
+        <div id="searchMovie"></div>
 
 
 
-</div>
-//= templates/movieCard.html
-<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
-<script src="js/scripts.js"></script>
+    </div>
+    //= templates/movieCard.html
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
+    <script src="js/scripts.js"></script>
 </body>
-<<<<<<< HEAD
->>>>>>> 6caf97a9ace9ed0ebea0ff9b59add18aaa72f7ac
-=======
->>>>>>> 86a8a41ec13f69529102dbd99602be2d321578ce
+
 </html>
