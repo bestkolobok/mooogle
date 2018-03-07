@@ -1515,6 +1515,7 @@ var errorPeopleCB = function errorPeopleCB() {
 theMovieDb.movies.getById({ "id": 284054, "language": "ru-RUS" }, successCB, errorCB);
 
 theMovieDb.credits.getCredit({ "id": 284054, "language": "ru-RUS" }, successPeopleCB, errorPeopleCB);
+theMovieDb.credits.getCredit({ "id": 284054, "language": "ru-RUS" }, successPeopleCB, errorPeopleCB);
 
 var trailer = document.querySelector(".trailer-video");
 var reviews = [];
