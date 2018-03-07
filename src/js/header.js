@@ -1,13 +1,22 @@
 window.addEventListener("load", function(){
+
+
     let swipearea = document.getElementById("wrapper");
     let button = document.querySelector("#button");
     let a = document.querySelector(".menu");
     let search = document.querySelector(".head__search");
     let lines = document.getElementsByClassName("button__line");
+    let startX = 0;
+    let startY = 0;
+    let endX = 0;
+    let endY = 0;
+
     swipearea.addEventListener("touchstart", function(e){
+        console.log(e.changedTouches[0].clientX);
         startX = e.changedTouches[0].clientX;
         startY = e.changedTouches[0].clientY;
     }, false)
+
     swipearea.addEventListener("touchend", function(e){
         endX = e.changedTouches[0].clientX;
         endY = e.changedTouches[0].clientY;
