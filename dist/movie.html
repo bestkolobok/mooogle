@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Title</title>
+</head>
+<header>
+		<div id="button">
+			<div class="button__line"></div>
+			<div class="button__line"></div>
+			<div class="button__line"></div>
+		</div>
+		<div class="menu">
+			<div id="block" class="menu__img1"><label class="category">Фильмы</label></div>
+			<ul class="menu__films">
+				<li><a class="link" href="/sort.html">Премьеры</a></li>
+    		<li><a class="link" href="/sort.html">Сейчас на экранах</a></li>
+    		<li><a class="link" href="/sort.html">Топ 100</a></li>
+			</ul>
+			<div id="block" class="menu__img2"><label class="category">Сериалы</label></div>
+			<div id="block" class="menu__img3"><label class="category">Избранное</label></div>
+		</div>
+		
+		
+		<div class="head">
+		<div><img src="../img/logo480.png" class="head__logo" alt="logo">
+			<h1 class="main-title">Mooogle</h1></div>
+			
+			<img src="../img/serch480.png" class="head__search" alt="search">
+		</div>
+		
+		
+		<div class="head-1">
+		<div>
+		 <img src="../img/serch480.png" class="head-1__search" alt="search">
+		 <input class="head-1__input-search" type="text" placeholder="Search">
+		</div>
+
+		<img src="../img/mic480.png" class="head-1__mic" alt="search">
+		</div>
+
+	</header>
+<body>
+<div class="wrapper" id="wrapper">
+    <div class="main_card">
+        <div class="main_img">
+            <h1 class="title">Темные времена(2017)</h1>
+        </div>
+        <div class="main_links">
+            <div class="links">
+                <a href="#" class="star"></a>
+                <a href="#" class="ring"></a>
+            </div>
+            <div class="time">
+                <p class="time_item">12.12.12</p>
+            </div>
+        </div>
+        <div class="description">
+            <p class="text_description">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus reprehenderit temporibus itaque. Veniam quia harum esse necessitatibus dolorum vel fuga eius id quisquam illum doloremque magnam molestias modi, tempora officia?Voluptas illo soluta inventore esse sapiente ab accusantium quam eveniet! Eos assumenda harum nostrum cum natus! Obcaecati temporibus quaerat eius necessitatibus laudantium ipsa, voluptates fuga reiciendis voluptatum, ullam, quidem unde!
+            </p>
+        </div>
+        <div class="actors">
+            <h2>Актеры</h2>
+        </div>
+        <div id="carousel" class="carousel">
+            <div class="gallery">
+                <ul class="images">
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script type="text/template" id="gallery-item">
+        <% for(let i = 0; i < 10; i++) { %>
+            <li class="images_item">
+                <div class="gallery-img" style="background-image: url(<%- galleryItems.img[i] %>)"></div>
+                <span class="gallery-text">
+                    <%- galleryItems.text[i] %>
+                </span>
+            </li>
+                <% }; %>
+    </script>
+	<div class="container">
+
+		<div class="trailer">
+			<div class="trailer-title">
+				<h2>Трейлер</h2>
+			</div>
+			<div class="trailer-main">
+				<iframe class="trailer-video" frameborder="0" allowfullscreen></iframe>
+			</div>
+		</div>
+
+		<div class="reviews">
+
+			<div class="reviews-title">
+				<h2>Отзывы</h2>
+			</div>
+			
+			<div id="reviews-container">
+			</div>
+			
+		</div>
+	</div>
+
+	<script type="text/template" id="reviews-main">
+		<% for (i=0; i < reviews.length; i++) { %>
+			<div class="reviews-avatar">
+				<span class="avatar"><%= reviews[i].author.charAt(0) %></span>
+			</div>
+			<div class="reviews-post">
+				<p class="username"><%= reviews[i].author %></p>
+				<% if (reviews[i].content.length <= 156) { %>
+					<p class="reviews-text"><%= reviews[i].content %></p>
+				<% } else { %>
+					<p class="reviews-text big-post"><%= `${reviews[i].content.slice(0, 152)}...` %><a class="more-info"><span>еще</span></a></p>
+				<% } %>
+			</div>
+			<div class="reviews-date">
+				<p class="reviews-date-item">23 дек</p>
+			</div>
+		<% } %>
+    </script>
+
+<!-- В темплейт передается только один обект -->
+
+<script type="tpl/lodash" id="movie-card">
+    <%
+
+    const dates = item.release_date.split("-");
+
+    %>
+
+    <div class="movie-card">
+        <div class="movie-card__wrapper" style="background-image: url(https://image.tmdb.org/t/p/w600_and_h900_bestv2<%- item.poster_path %>)">
+            <div class="gradient">
+                <div class="movie-card__controls">
+                    <button class="movie-card__button movie-card__button--favorite">
+                    <button class="movie-card__button movie-card__button--reminde">
+                </div>
+                <div class="movie-card__title"><%- item.title%> (<%- dates[0]%>)</div>
+            </div>
+        </div>
+    </div>
+</script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
+    <script src="js/scripts.js"></script>
+</div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Title</title>
+</head>
+<header>
+		<div id="button">
+			<div class="button__line"></div>
+			<div class="button__line"></div>
+			<div class="button__line"></div>
+		</div>
+		<div class="menu">
+			<div id="block" class="menu__img1"><label class="category">Фильмы</label></div>
+			<ul class="menu__films">
+				<li><a class="link" href="/sort.html">Премьеры</a></li>
+    		<li><a class="link" href="/sort.html">Сейчас на экранах</a></li>
+    		<li><a class="link" href="/sort.html">Топ 100</a></li>
+			</ul>
+			<div id="block" class="menu__img2"><label class="category">Сериалы</label></div>
+			<div id="block" class="menu__img3"><label class="category">Избранное</label></div>
+		</div>
+		
+		
+		<div class="head">
+		<div><img src="../img/logo480.png" class="head__logo" alt="logo">
+			<h1 class="main-title">Mooogle</h1></div>
+			
+			<img src="../img/serch480.png" class="head__search" alt="search">
+		</div>
+		
+		
+		<div class="head-1">
+		<div>
+		 <img src="../img/serch480.png" class="head-1__search" alt="search">
+		 <input class="head-1__input-search" type="text" placeholder="Search">
+		</div>
+
+		<img src="../img/mic480.png" class="head-1__mic" alt="search">
+		</div>
+
+	</header>
+
+<!-- Ниже подключается темплейт карточки фильма -->
+<div class="sort">
+    <p id="subCategory" class="subcategory-holder">Подкатегория</p>
+    <a href="#" id="sortByName" class="sortButton-holder">По названию</a>
+    <a href="#" id="sortByDate" class="sortButton-holder">По дате</a>
+</div>
+
+<!-- В темплейт передается только один обект -->
+
+<script type="tpl/lodash" id="movie-card">
+    <%
+
+    const dates = item.release_date.split("-");
+
+    %>
+
+    <div class="movie-card">
+        <div class="movie-card__wrapper" style="background-image: url(https://image.tmdb.org/t/p/w600_and_h900_bestv2<%- item.poster_path %>)">
+            <div class="gradient">
+                <div class="movie-card__controls">
+                    <button class="movie-card__button movie-card__button--favorite">
+                    <button class="movie-card__button movie-card__button--reminde">
+                </div>
+                <div class="movie-card__title"><%- item.title%> (<%- dates[0]%>)</div>
+            </div>
+        </div>
+    </div>
+</script>
+
+    <div id="latestMovie"></div>
+    <div id="searchMovie"></div>
+    
+    <div id="wrapper"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>
