@@ -470,31 +470,7 @@ head-1__search {
 .gallery li {
   display: inline-block; }
 
-.main_img {
-  max-width: 320px;
-  width: 100%;
-  height: 180px;
-  background-color: #000000;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  margin-bottom: 20px; }
-
-.main_img h1 {
-  padding: 22px;
-  font-size: 20px;
-  font-family: 'Roboto', sans-serif;
-  color: #ffffff;
-  padding-top: 120px; }
-
-.text_description {
-  font-size: 16px;
-  font-family: 'MyriadPro', sans-serif;
-  color: #757575;
-  margin-top: 20px;
-  margin-bottom: 30px; }
-
-.main_card {
+.card {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -504,6 +480,64 @@ head-1__search {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   padding: 15px; }
+  .card__img {
+    max-width: 320px;
+    width: 100%;
+    height: 180px;
+    background-color: #000000;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    margin-bottom: 20px;
+    position: relative; }
+  .card__about--title {
+    position: absolute;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff;
+    top: 212px;
+    left: 50px; }
+
+.links {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0 5px; }
+  .links__block--star {
+    display: inline-block;
+    background: url("../img/star.png") no-repeat;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    margin-right: 3px; }
+  .links__block--ring {
+    display: inline-block;
+    background: url("../img/ring.png") no-repeat;
+    background-size: contain;
+    width: 15px;
+    height: 15px; }
+  .links__time--item {
+    margin: 0;
+    color: #77c1bb;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif; }
+
+table {
+  display: none; }
+
+.description__title {
+  display: none; }
+
+.description__text {
+  font-size: 16px;
+  font-family: 'MyriadPro', sans-serif;
+  color: #757575;
+  margin-top: 20px;
+  margin-bottom: 30px; }
 
 .images li img {
   margin-bottom: 5px;
@@ -525,37 +559,6 @@ head-1__search {
   font-size: 20px;
   font-family: 'Roboto', sans-serif;
   margin-bottom: 15px; }
-
-.links .star {
-  display: inline-block;
-  background: url("../img/star.png") no-repeat;
-  background-size: contain;
-  width: 20px;
-  height: 20px;
-  margin-right: 3px; }
-
-.links .ring {
-  display: inline-block;
-  background: url("../img/ring.png") no-repeat;
-  background-size: contain;
-  width: 15px;
-  height: 15px; }
-
-.main_links {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin: 0 5px; }
-
-.time_item {
-  margin: 0;
-  color: #77c1bb;
-  font-size: 14px;
-  font-family: 'Roboto', sans-serif; }
 
 .gallery-text {
   font-size: 14px;
@@ -692,8 +695,8 @@ head-1__search {
   font-family: 'Roboto', sans-serif;
   color: #5e576a;
   /* display: -webkit-box;
-    -webkit-line-clamp: 7;
-	-webkit-box-orient: vertical; */ }
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical; */ }
 
 .reviews-text-big {
   margin-top: 5px;
@@ -712,3 +715,49 @@ head-1__search {
   color: #77c1bb;
   font-family: 'Roboto', sans-serif;
   cursor: pointer; }
+
+@media all and (min-width: 482px) and (max-width: 1023px) {
+  .card {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 68px 22px; }
+    .card__img {
+      height: 436px; }
+    .card__about {
+      width: 550px; }
+      .card__about--title {
+        position: static;
+        color: #000;
+        top: none;
+        left: none; }
+  table {
+    display: block;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    font-family: 'MyriadPro', sans-serif;
+    font-size: 16px;
+    width: 550px;
+    border: none; }
+    table td {
+      padding: 10px 15px;
+      width: 20%; }
+    table tr:nth-of-type(odd) {
+      background-color: #addad6; }
+  .description__title {
+    display: inline;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    color: #000; }
+  .links {
+    padding-top: 18px; }
+    .links__block--star {
+      background: url("../img/blue_star.png") no-repeat;
+      padding-right: 22px; }
+    .links__block--ring {
+      background: url("../img/blue_ring.png") no-repeat; }
+    .links__time {
+      display: none; } }

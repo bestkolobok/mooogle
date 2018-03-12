@@ -5,3 +5,5 @@ window.addEventListener("click", function(e){
         this.location.replace('/movie.html');
     }
 })
+
+

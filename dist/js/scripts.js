@@ -1700,6 +1700,7 @@ window.addEventListener("click", function (e) {
         this.location.replace('/movie.html');
     }
 });
+
 /*jshint esversion: 6 */
 
 //находтим и подготавливаем шаблон карточки фильма для дальнейшей работы
