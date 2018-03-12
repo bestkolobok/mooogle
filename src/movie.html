@@ -1,45 +1,78 @@
 //= templates/header.html
 <body>
 <div class="wrapper" id="wrapper">
-    <div class="main_card">
-        <div class="main_img">
-            <h1 class="title">Темные времена(2017)</h1>
+    <div class="card">
+        <div class="card__img">
         </div>
-        <div class="main_links">
+        <div class="card__about">
+            <h1 class="card__about--title">Темные времена(2017)</h1>
             <div class="links">
-                <a href="#" class="star"></a>
-                <a href="#" class="ring"></a>
+                <div class="links__block">
+                    <a href="#" class="links__block--star"></a>
+                    <a href="#" class="links__block--ring"></a>
+                </div>
+                <div class="links__time">
+                    <p class="links__time--item">12.12.12</p>
+                </div>
             </div>
-            <div class="time">
-                <p class="time_item">12.12.12</p>
+            <table>
+                <tr>
+                    <td>страна</td>
+                    <td>США, Великобритания</td>
+                </tr>
+                <tr>
+                    <td>слоган</td>
+                    <td>Никогда не сдавайся</td>
+                </tr>
+                <tr>
+                    <td>режиссер</td>
+                    <td>Джо Райт</td>
+                </tr>
+                <tr>
+                    <td>сценарий</td>
+                    <td>Энтони МакКартен</td>
+                </tr>
+                <tr>
+                    <td>жанр</td>
+                    <td>Драма,военный,биография,история</td>
+                </tr>
+                <tr>
+                    <td>время</td>
+                    <td>125 мин</td>
+                </tr>
+            </table>
+            <div class="description">
+                <h1 class="description__title">Про фильм</h1>
+                <p class="description__text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus reprehenderit temporibus itaque. Veniam quia harum esse necessitatibus dolorum vel fuga eius id quisquam illum doloremque magnam molestias modi, tempora officia?Voluptas illo soluta inventore esse sapiente ab accusantium quam eveniet! Eos assumenda harum nostrum cum natus! Obcaecati temporibus quaerat eius necessitatibus laudantium ipsa, voluptates fuga reiciendis voluptatum, ullam, quidem unde!
+                </p>
             </div>
         </div>
-        <div class="description">
-            <p class="text_description">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus reprehenderit temporibus itaque. Veniam quia harum esse necessitatibus dolorum vel fuga eius id quisquam illum doloremque magnam molestias modi, tempora officia?Voluptas illo soluta inventore esse sapiente ab accusantium quam eveniet! Eos assumenda harum nostrum cum natus! Obcaecati temporibus quaerat eius necessitatibus laudantium ipsa, voluptates fuga reiciendis voluptatum, ullam, quidem unde!
-            </p>
-        </div>
+
         <div class="actors">
             <h2>Актеры</h2>
         </div>
         <div id="carousel" class="carousel">
             <div class="gallery">
                 <ul class="images">
-                    
+
                 </ul>
             </div>
         </div>
     </div>
     <script type="text/template" id="gallery-item">
         <% for(let i = 0; i < 10; i++) { %>
-            <li class="images_item">
-                <div class="gallery-img" style="background-image: url(<%- galleryItems.img[i] %>)"></div>
-                <span class="gallery-text">
+        <li class="images_item">
+            <div class="gallery-img" style="background-image: url(<%- galleryItems.img[i] %>)"></div>
+            <span class="gallery-text">
                     <%- galleryItems.text[i] %>
                 </span>
-            </li>
-                <% }; %>
+        </li>
+        <% }; %>
     </script>
+
+</body>
+</html>
 	<div class="container">
 
 		<div class="trailer">
