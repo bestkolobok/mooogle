@@ -1413,6 +1413,312 @@ theMovieDb.tvEpisodes = {
         }, success, error);
     }
 };
+window.addEventListener("load", function () {
+
+    var swipearea = document.getElementById("wrapper");
+    var button = document.querySelector("#button");
+    var a = document.querySelector(".menu");
+    var search = document.querySelector(".head__search");
+    var lines = document.getElementsByClassName("button__line");
+    var startX = 0;
+    var startY = 0;
+    var endX = 0;
+    var endY = 0;
+
+    swipearea.addEventListener("touchstart", function (e) {
+        console.log(e.changedTouches[0].clientX);
+        startX = e.changedTouches[0].clientX;
+        startY = e.changedTouches[0].clientY;
+    }, false);
+
+    swipearea.addEventListener("touchend", function (e) {
+        endX = e.changedTouches[0].clientX;
+        endY = e.changedTouches[0].clientY;
+        if (endX - startX > 0) {
+            if (a.classList.contains("move-left")) {
+                a.classList.remove("move-left");
+            }
+            a.classList.add("move-right");
+            lines[1].style.display = "none";
+            lines[0].classList.add("transformed-1");
+            lines[2].classList.add("transformed-2");
+        } else if (endX - startX <= 0) {
+            if (a.classList.contains("move-right")) {
+                a.classList.remove("move-right");
+            }
+            a.classList.add("move-left");
+            lines[1].style.display = "block";
+            lines[0].classList.remove("transformed-1");
+            lines[2].classList.remove("transformed-2");
+        }
+    }, false);
+    button.addEventListener('click', function () {
+        if (a.classList.contains("move-right")) {
+            a.classList.remove("move-right");
+            a.classList.add("move-left");
+            lines[1].style.display = "block";
+            lines[0].classList.remove("transformed-1");
+            lines[2].classList.remove("transformed-2");
+        } else {
+            a.classList.add("move-right");
+            a.classList.remove("move-left");
+            lines[1].style.display = "none";
+            lines[0].classList.add("transformed-1");
+            lines[2].classList.add("transformed-2");
+        }
+    }, false);
+    search.addEventListener('click', function () {
+        document.querySelector(".head").style.display = "none";
+        document.querySelector(".head-1").style.display = "flex";
+    }, false);
+}, false);
+/*jshint esversion: 6 */
+
+var colectionWrapper = document.getElementById('searchMovie');
+if (window.location.pathname == "/") {
+
+    //находтим и подготавливаем шаблон карточки фильма для дальнейшей работы
+    var premieresFilm = document.getElementById('premieresFilm').textContent.trim();
+    var screenFilm = document.getElementById('screenFilm').textContent.trim();
+    var top100Film = document.getElementById('top100Film').textContent.trim();
+    var premieresSeries = document.getElementById('premieresSeries').textContent.trim();
+    var screenSeries = document.getElementById('screenSeries').textContent.trim();
+    var top100Series = document.getElementById('top100Series').textContent.trim();
+    var compiledPremieresFilm = _.template(premieresFilm);
+    var compiledScreenFilm = _.template(screenFilm);
+    var compiledTop100Film = _.template(top100Film);
+    var compiledPremieresSeries = _.template(premieresSeries);
+    var compiledScreenSeries = _.template(screenSeries);
+    var compiledTop100Series = _.template(top100Series);
+
+    var successGetUpcomming = function successGetUpcomming(res) {
+        var data = JSON.parse(res);
+        console.log(data);
+        colectionWrapper.innerHTML += compiledPremieresFilm({ data: data });
+    };
+    var successgetNowPlaying = function successgetNowPlaying(res) {
+        var data = JSON.parse(res);
+        colectionWrapper.innerHTML += compiledScreenFilm({ data: data });
+    };
+    var successgetTopRated = function successgetTopRated(res) {
+        var data = JSON.parse(res);
+        colectionWrapper.innerHTML += compiledTop100Film({ data: data });
+    };
+    var successgetOnTheAir = function successgetOnTheAir(res) {
+        var data = JSON.parse(res);
+        colectionWrapper.innerHTML += compiledPremieresSeries({ data: data });
+    };
+    var successgetAiringToday = function successgetAiringToday(res) {
+        var data = JSON.parse(res);
+        colectionWrapper.innerHTML += compiledScreenSeries({ data: data });
+    };
+    var successgetTopRated = function successgetTopRated(res) {
+        var data = JSON.parse(res);
+        colectionWrapper.innerHTML += compiledTop100Series({ data: data });
+    };
+    var error = function error() {
+        console.log(arguments);
+    };
+
+    theMovieDb.movies.getUpcoming({ "language": "ru-RUS" }, successGetUpcomming, error);
+    theMovieDb.movies.getNowPlaying({ "language": "ru-RUS" }, successgetNowPlaying, error);
+    theMovieDb.movies.getTopRated({ "language": "ru-RUS" }, successgetTopRated, error);
+    theMovieDb.tv.getOnTheAir({ "language": "ru-RUS" }, successgetOnTheAir, error);
+    theMovieDb.tv.getAiringToday({ "language": "ru-RUS" }, successgetAiringToday, error);
+    theMovieDb.tv.getTopRated({ "language": "ru-RUS" }, successgetTopRated, error);
+}
+if (window.location.pathname == '/movie.html') {
+
+    var img = document.querySelector('.main_img');
+    var description = document.querySelector('.text_description');
+    var date = document.querySelector('.time_item');
+    var title = document.querySelector('.title');
+    var container = document.querySelector('.images');
+
+    var width = 80;
+    var count = 1;
+    var index = 0;
+
+    var carousel = document.getElementById('carousel');
+    var list = carousel.querySelector('.images');
+
+    // var infinitecarousel = new InfiniteCarousel('.images', 'horizontal', 3, {
+    //     timerDuration: 2000,
+    //     transitionDuration: '1s'
+    //   });
+
+
+    var position = 0;
+
+    var successCB = function successCB(res) {
+        var result = JSON.parse(res);
+        console.log(result);
+        img.style.backgroundImage = "url('https://image.tmdb.org/t/p/w600_and_h900_bestv2/" + result.poster_path + "')";
+        description.textContent = result.overview;
+        date.textContent = result.release_date;
+        title.textContent = result.title;
+    };
+
+    var errorCB = function errorCB() {
+        console.log(arguments);
+    };
+
+    var galleryItems = {
+        text: [],
+        img: []
+    };
+
+    var successPeopleCB = function successPeopleCB(res) {
+        var result = JSON.parse(res);
+        console.log(result);
+        for (var i = 0; i < 10; i++) {
+            galleryItems.text.push(result.cast[i].name);
+            galleryItems.img.push("https://image.tmdb.org/t/p/w600_and_h900_bestv2" + result.cast[i].profile_path);
+        }
+        var html = document.querySelector('#gallery-item').textContent.trim();
+        var compiled = _.template(html);
+
+        var resultCompiled = compiled(galleryItems);
+
+        container.innerHTML = resultCompiled;
+
+        var listElems = carousel.querySelectorAll('.images_item');
+
+        var initialPoint;
+        var finalPoint;
+
+        list.addEventListener('touchstart', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            initialPoint = event.changedTouches[0];
+            for (var _i = 0; _i < listElems.length; _i++) {
+                var clone = listElems[_i].cloneNode(true);
+                list.appendChild(clone);
+            }
+        }, false);
+
+        list.addEventListener('touchend', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            finalPoint = event.changedTouches[0];
+
+            // for(let i = 0; i < listElems.length; i++){
+            //   var clone = listElems[i].cloneNode(true);
+            //   list.insertBefore(clone, listElems[i]);
+
+            // }
+
+            index++;
+
+            var xAbs = Math.abs(initialPoint.pageX - finalPoint.pageX);
+            if (xAbs > 20) {
+                console.log(listElems.length + index);
+                if (finalPoint.pageX < initialPoint.pageX) {
+                    position = Math.max(position - width * count, -width * (listElems.length + index - count * 4));
+                    list.style.marginLeft = position + 'px';
+                } else {
+                    position = Math.min(position + width * count, 0);
+                    list.style.marginLeft = position + 'px';
+                }
+            }
+        }, false);
+    };
+
+    var errorPeopleCB = function errorPeopleCB() {
+        console.log(arguments);
+    };
+
+    theMovieDb.movies.getById({ "id": 284054, "language": "ru-RUS" }, successCB, errorCB);
+
+    theMovieDb.credits.getCredit({ "id": 284054, "language": "ru-RUS" }, successPeopleCB, errorPeopleCB);
+
+    var trailer = document.querySelector(".trailer-video");
+    var reviews = [];
+    var reviewContainer = document.querySelector("#reviews-container");
+    var trailerHidden = document.querySelector(".trailer");
+
+    var successGetTrailer = function successGetTrailer(res) {
+        var result = JSON.parse(res);
+        console.log(result);
+        if (result.youtube.length === 0) {
+            trailerHidden.setAttribute("style", "display: none;");
+        } else {
+            trailer.setAttribute("src", "https://www.youtube.com/embed/" + result.youtube[0].source);
+        }
+    };
+
+    var errorGetTrailer = function errorGetTrailer(res) {
+        console.log(arguments);
+    };
+
+    var successGetReview = function successGetReview(res) {
+        var result = JSON.parse(res);
+        var reviewInfo = {};
+        for (var i = 0; i < result.results.length; i++) {
+            reviewInfo.author = result.results[i].author;
+            reviewInfo.content = result.results[i].content;
+            reviews.push(reviewInfo);
+            reviewInfo = {};
+        }
+        console.log(reviews);
+        var html = document.querySelector('#reviews-main').textContent.trim();
+        var compiled = _.template(html);
+        var r = compiled(reviews);
+        reviewContainer.innerHTML = r;
+
+        var posts = document.querySelectorAll(".big-post");
+        console.log(posts);
+        posts.forEach(function (item) {
+            var onClick = function onClick(event) {
+                if (event.target !== event.currentTarget) {
+                    if (item.classList.contains("reviews-text-big")) {
+                        item.classList.remove("reviews-text-big");
+                        item.classList.add("reviews-text");
+                        item.innerHTML = reviews[0].content.slice(0, 152) + "...<a class=\"more-info\"><span>\u0435\u0449\u0435</span></a>";
+                    } else {
+                        item.classList.add("reviews-text-big");
+                        item.classList.remove("reviews-text");
+                        item.innerHTML = reviews[0].content + "<a class=\"more-info\"><span>\u0441\u0432\u0435\u0440\u043D\u0443\u0442\u044C</span></a>";
+                    }
+                }
+            };
+            item.addEventListener("click", onClick);
+        });
+    };
+
+    var errorGetReview = function errorGetReview(res) {
+        console.log(arguments);
+    };
+
+    theMovieDb.movies.getTrailers({ "id": 284054, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
+    theMovieDb.movies.getReviews({ "id": 284054 }, successGetReview, errorGetReview);
+}
+
+window.addEventListener("click", function (e) {
+
+    if (e.target.classList.contains('movie-card__title')) {
+        this.location.replace('/movie.html');
+    }
+});
+
+var movie_collection = document.getElementById('searchMovie');
+var search_blcok = document.getElementsByClassName('search');
+//место, куда пользователь вводит запрос
+var searchInput_onFocus = function searchInput_onFocus() {
+    document.getElementById('search-form_input_search').style.border = 'none';
+};
+
+var onClick = function onClick(event) {
+    if (event.target.className === "Some Future Class") {
+        search_blcok.classList.remove('search_hidden');
+        movie_collection.classList.add('bg');
+    }
+    if (event.target.className !== "search") {
+        search_blcok.classList.add('search_hidden');
+    }
+};
+
+document.addEventListener("click", onClick);
 /*jshint esversion: 6 */
 
 //находтим и подготавливаем шаблон карточки фильма для дальнейшей работы
@@ -1422,7 +1728,7 @@ var card = document.getElementById('movie-card').textContent.trim();
 var compiledCard = _.template(card);
 
 //Находим место, куда мы будет вставлять карточки фильмов.
-var colectionWrapper = document.getElementById('searchMovie');
+
 
 // метод, который будет выполнен в случае удачного обращения к API MovieDB
 var successGetUpcomming = function successGetUpcomming(res) {
@@ -1435,11 +1741,36 @@ var successGetUpcomming = function successGetUpcomming(res) {
     console.log(data);
     console.log('////////////////////');
 
+    // // var sortByName = document.getElementById("byName");
+    // // let compareName = function (a, b) {
+    // //     if (a.title < b.title)
+    // //         return -1;
+    // //     if (a.title > b.title)
+    // //         return 1;
+    // //     return 0;
+    // // }
+    // // sortByName.addEventListener('click', compareName);
+    // // data.results.sort(compareName);
+
+    // var sortByDate = document.getElementById("byDate");
+    // let compareDate = function (a, b) {
+    //     if (a.release_date > b.release_date)
+    //         return -1;
+    //     if (a.release_date < b.release_date)
+    //         return 1;
+    //     return 0;
+    // }
+    // sortByDate.addEventListener('click', compareDate);
+    // data.results.sort(compareDate);
+
+
     //проходимся по коллекции фильмов из ответа и обьект каждого из фильмов 
     //передаем в ранее "скомпилированный" метод
     data.results.forEach(function (item) {
         console.log(item);
-        colectionWrapper.insertAdjacentHTML('beforeend', compiledCard({ item: item }));
+        colectionWrapper.insertAdjacentHTML('beforeend', compiledCard({
+            item: item
+        }));
     });
 };
 
@@ -1452,8 +1783,8 @@ var errorGetUpcomming = function errorGetUpcomming() {
 //обращение к методу библиотеки для получения списка предстоящих премьер
 //данный метод приведен в качестве примера использования шаблона карточки фильма.
 //За более детальной информацией обратитесь к документации библиотеки
-theMovieDb.movies.getUpcoming({ "language": "ru-RUS" }, successGetUpcomming, errorGetUpcomming);
 
+<<<<<<< HEAD
 var movie_collection = document.getElementById('black_background_wrapper');
 var search_blcok = document.getElementsByClassName('search');
 
@@ -1477,3 +1808,8 @@ var onClick = function onClick(event) {
 };
 
 document.addEventListener("click", onClick);
+=======
+if (window.location.pathname == '/sort.html') theMovieDb.movies.getUpcoming({
+    "language": "ru-RUS"
+}, successGetUpcomming, errorGetUpcomming);
+>>>>>>> 5d1bc9773d4cf789f808b72318b0b1e1cd51f80a
