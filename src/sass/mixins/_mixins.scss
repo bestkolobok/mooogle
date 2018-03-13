@@ -1,8 +1,27 @@
 @mixin respond-to($media) {
-    @if $media == mobile-extra-small {
-      @media all and (min-width: 319px) and (max-width: $break-extra-small) { @content; }
-    }
-    @else if $media == mobile-small {
-      @media all and (min-width: $break-extra-small + 1) and (max-width: $break-small - 1) { @content; }
+  @if $media == mobile-extra-small {
+    @media all and (min-width: 319px) and (max-width: $break-extra-small) {
+      @content;
     }
   }
+  @else if $media == mobile-small {
+    @media all and (min-width: $break-extra-small + 1) and (max-width: $break-small - 1) {
+      @content;
+    }
+  }
+  @else if $media == tablet {
+    @media all and (min-width: $break-small) and (max-width: $break-medium - 1) {
+      @content;
+    }
+  }
+  @else if $media == desktop {
+    @media all and (min-width: $break-medium) and (max-width: $break-large - 1) {
+      @content;
+    }
+  }
+  @else if $media == large-desktop {
+    @media all and (min-width: $break-large - 1) {
+      @content;
+    }
+  }
+}

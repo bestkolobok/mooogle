@@ -1,8 +1,12 @@
 .sort {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap; //_________
+    flex-wrap: nowrap; 
     margin: 20px 10px;
+    @include respond-to(large-desktop){
+        width: 85%;
+        margin: 20px auto;
+    }
     * {
         @include respond-to(mobile-extra-small){
             font-size: 14px;
@@ -10,14 +14,26 @@
         @include respond-to(mobile-small){
             font-size: 16px;
         }
+        @include respond-to(desktop){
+            font-size: 18px;
+        }
         font-family: $title;
-        text-align: center;
         color: rgba(55, 44, 72, 255);
     }
     .subcategory-holder {
-        flex: auto;
+        text-align: left;
+        @include respond-to(mobile-extra-small){
+            flex: 0 0 35%;
+        }
+        @include respond-to(mobile-small){
+            flex: 0 0 35%;
+        }
+        @include respond-to(desktop){
+            flex: 0 0 55%;
+        }
     }
     .sortButton-holder {
+        text-align: center;
         flex: auto;
         position: relative;
         padding-right: 10px;
@@ -32,6 +48,12 @@
         }
         @include respond-to(mobile-small){
             margin-left: 10px;
+        }
+        @include respond-to(desktop){
+            margin-left: 15px;
+        }
+        @include respond-to(large-desktop){
+            margin-left: 20px;
         }
         background: url(../img/sort-arrows.png) no-repeat;
     }
