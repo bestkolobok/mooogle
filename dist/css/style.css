@@ -794,3 +794,25 @@ img.logo {
   background-repeat: no-repeat;
   padding-left: 30px;
   color: #fff; }
+
+@media (min-width: 767px) {
+  .search {
+    height: 368px; }
+  #search-form {
+    top: 310px; }
+  #search-form_input_submit {
+    display: none; } }
+
+@media (min-width: 959px) {
+  .search {
+    height: 456px; } }
+
+@media (min-width: 1023px) {
+  .search {
+    height: 616px; }
+  #search-form {
+    top: 380px; } }
+
+@media (min-width: 1439px) {
+  #search-form {
+    top: 480px; } }
