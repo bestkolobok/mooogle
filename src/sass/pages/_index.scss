@@ -1,0 +1,57 @@
+
+@media (max-width: 1023px) {
+
+
+.movies-wrapper {
+  margin: 10px;
+
+  .movie-card:nth-child(4), .movie-card:nth-child(5), .movie-card:nth-child(6) {
+    display: none;
+  }
+  .movies-block {
+display: flex;
+    flex-direction: column;
+  }
+.movie-card {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+  h2 {
+    margin: 10px;
+  }
+}
+}
+
+@media (min-width: 1024px) {
+
+
+  .movies-wrapper {
+    margin: 10px;
+
+    .movie-card:nth-child(4), .movie-card:nth-child(5), .movie-card:nth-child(6) {
+      display: block;
+    }
+    .movies-block {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    .movie-card {
+     width: 32%;
+      margin: 5px auto;
+      margin-bottom: 45px;
+    }
+    h2 {
+      margin: 10px;
+    }
+    .movie-card__title {
+      margin-top: 172px;
+      font-family: "Roboto", sanserif;
+      color: #fff;
+    }
+  }
+
+  .movie-card__wrapper {
+    height: 230px;
+  }
+}

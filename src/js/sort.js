@@ -7,7 +7,7 @@ const card = document.getElementById('movie-card').textContent.trim();
 //компилируем наш шаблон в метод с помощью Lodash для дальгейшего использования, где либо
 const compiledCard = _.template(card);
 
-//Находим место, куда мы будет вставлять карточки фильмов.
+
 
 
 // метод, который будет выполнен в случае удачного обращения к API MovieDB
