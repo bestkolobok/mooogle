@@ -1701,20 +1701,25 @@ window.addEventListener("click", function (e) {
     }
 });
 
-var movie_collection = document.getElementById('searchMovie');
+var movie_collection = document.getElementById('black_background_wrapper');
 var search_blcok = document.getElementsByClassName('search');
+
 //место, куда пользователь вводит запрос
 var searchInput_onFocus = function searchInput_onFocus() {
     document.getElementById('search-form_input_search').style.border = 'none';
 };
 
 var onClick = function onClick(event) {
+    //TODO put future button className in first if
     if (event.target.className === "Some Future Class") {
+        debugger;
         search_blcok.classList.remove('search_hidden');
-        movie_collection.classList.add('bg');
+        movie_collection.classList.add('black-background');
     }
     if (event.target.className !== "search") {
+        debugger;
         search_blcok.classList.add('search_hidden');
+        movie_collection.classList.remove('black-background');
     }
 };
 
@@ -1784,32 +1789,6 @@ var errorGetUpcomming = function errorGetUpcomming() {
 //данный метод приведен в качестве примера использования шаблона карточки фильма.
 //За более детальной информацией обратитесь к документации библиотеки
 
-<<<<<<< HEAD
-var movie_collection = document.getElementById('black_background_wrapper');
-var search_blcok = document.getElementsByClassName('search');
-
-//место, куда пользователь вводит запрос
-var searchInput_onFocus = function searchInput_onFocus() {
-    document.getElementById('search-form_input_search').style.border = 'none';
-};
-
-var onClick = function onClick(event) {
-    //TODO put future button className in first if
-    if (event.target.className === "Some Future Class") {
-        debugger;
-        search_blcok.classList.remove('search_hidden');
-        movie_collection.classList.add('black-background');
-    }
-    if (event.target.className !== "search") {
-        debugger;
-        search_blcok.classList.add('search_hidden');
-        movie_collection.classList.remove('black-background');
-    }
-};
-
-document.addEventListener("click", onClick);
-=======
 if (window.location.pathname == '/sort.html') theMovieDb.movies.getUpcoming({
     "language": "ru-RUS"
 }, successGetUpcomming, errorGetUpcomming);
->>>>>>> 5d1bc9773d4cf789f808b72318b0b1e1cd51f80a
