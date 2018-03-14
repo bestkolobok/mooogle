@@ -9,10 +9,11 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    top: 0;
 }
 
 .search_hidden {
-    visibility: hidden;
+    // visibility: hidden;
 }
 
 ::-webkit-input-placeholder {color:#ffffff;}
