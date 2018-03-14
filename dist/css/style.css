@@ -800,3 +800,30 @@ img.logo {
 #search-form_input_search:-moz-placeholder,
 #search-form_input_search:-ms-input-placeholder {
   color: #fff; }
+
+.footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 90px;
+  background-color: #77c1bb;
+  font-family: "Roboto", sanserif;
+  font-size: 16px;
+  color: #212121;
+  font-weight: bold; }
+
+.footer-icons {
+  margin-bottom: 15px; }
+
+.footer-bottom-line-item {
+  padding: 15px; }
