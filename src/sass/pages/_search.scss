@@ -13,7 +13,13 @@
 }
 
 .search_hidden {
-    // visibility: hidden;
+    top: -100%;
+    transition: 0.5s;
+}
+
+.search_show {
+    top: 0;
+    transition: 0.5s;
 }
 
 ::-webkit-input-placeholder {color:#ffffff;}
@@ -117,4 +123,5 @@ img.logo{
     #search-form{
         top: 480px;
     }
+}
 }

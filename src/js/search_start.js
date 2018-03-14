@@ -1,5 +1,5 @@
 let movie_collection = document.getElementById('black_background_wrapper');
-let search_blcok = document.getElementsByClassName('search');
+let search_blcok = document.getElementById('search');
 
 //место, куда пользователь вводит запрос
 let searchInput_onFocus = function (){
@@ -7,15 +7,13 @@ let searchInput_onFocus = function (){
 };
 
 const onClick = (event) => {
-    //TODO put future button className in first if
-    if (event.target.className === "Some Future Class") {
-        debugger
+    if (event.target.className === "head-1__search" || event.target.className === "head-1__input-search" || event.target.className === "head__search" ) {
         search_blcok.classList.remove('search_hidden');
+        search_blcok.classList.add('search_show');
         movie_collection.classList.add('black-background');
-    }
-    if (event.target.className !== "search") {
-        debugger
+    } else {
         search_blcok.classList.add('search_hidden');
+        search_blcok.classList.remove('search_show');
         movie_collection.classList.remove('black-background');
     }
 };
