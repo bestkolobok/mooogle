@@ -1701,15 +1701,8 @@ window.addEventListener("click", function (e) {
     }
 });
 
-var movie_collection = document.getElementById('black_background_wrapper');
-var search_blcok = document.getElementsByClassName('search');
-var search_slide_up = document.getElementsByClassName('containerCard');
-
-var click_to_slide = function click_to_slide(e) {
-    if (e.target !== search_blcok) {
-        console.log('HI');
-    }
-};
+var movie_collection = document.getElementById('black_background');
+var search_blcok = document.getElementById('search');
 
 //место, куда пользователь вводит запрос
 var searchInput_onFocus = function searchInput_onFocus() {
@@ -1717,21 +1710,21 @@ var searchInput_onFocus = function searchInput_onFocus() {
 };
 
 var onClick = function onClick(event) {
-    //TODO put future button className in first if
-    if (event.target.className === "Some Future Class") {
+    debugger;
+    if (event.target.className === "head-1__search" || event.target.className === "head-1__input-search" || event.target.className === "head__search" || event.target.classList.contains('search-form_input_search')) {
         debugger;
         search_blcok.classList.remove('search_hidden');
-        movie_collection.classList.add('black-background');
-    }
-    if (event.target.className !== "search") {
+        search_blcok.classList.add('search_show');
+        movie_collection.classList.add('black_background');
+    } else if (search_blcok.classList.contains('search_show') && !event.target.classList.contains('search') && !event.target.classList.contains('logo') && event.target.nodeName !== 'INPUT') {
         debugger;
         search_blcok.classList.add('search_hidden');
-        movie_collection.classList.remove('black-background');
+        search_blcok.classList.remove('search_show');
+        movie_collection.classList.remove('black_background');
     }
 };
 
 document.addEventListener("click", onClick);
-window.addEventListener('click', click_to_slide);
 /*jshint esversion: 6 */
 
 //находтим и подготавливаем шаблон карточки фильма для дальнейшей работы
