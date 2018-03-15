@@ -88,10 +88,10 @@ function openCaption(evt, caption) {
     }
 
     tabLinks = document.getElementsByClassName("tab_links");
-    
+
     for (i = 0; i < tabLinks.length; i++) {
         tabLinks[i].className = tabLinks[i].className.replace("active", "");
-   
+
     }
 
     document.getElementById(caption).style.display = "block";

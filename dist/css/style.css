@@ -842,13 +842,23 @@ img.logo {
       border: 0;
       padding: 16px 26px;
       text-transform: uppercase;
-      color: #736b7f; }
+      color: #736b7f;
+      border-bottom: 1px #fff solid; }
       .tab button:hover {
         color: #372c48;
         font-weight: bold;
         border-bottom: 1px #372c48 solid;
         -webkit-box-shadow: 0px 1px 0px 0px #9f9ba6, inset 0px -1px 0px 0px #766e81;
         box-shadow: 0px 1px 0px 0px #9f9ba6, inset 0px -1px 0px 0px #766e81; }
+      .tab button:focus {
+        border: none;
+        outline: none; }
+    .tab .active {
+      color: #372c48;
+      font-weight: bold;
+      border-bottom: 1px #372c48 solid;
+      -webkit-box-shadow: 0px 1px 0px 0px #9f9ba6, inset 0px -1px 0px 0px #766e81;
+      box-shadow: 0px 1px 0px 0px #9f9ba6, inset 0px -1px 0px 0px #766e81; }
   #series {
     display: none; }
   .movies-wrapper {
