@@ -1529,11 +1529,23 @@ if (window.location.pathname == "/") {
 }
 if (window.location.pathname == '/movie.html') {
 
-    var img = document.querySelector('.main_img');
-    var description = document.querySelector('.text_description');
-    var date = document.querySelector('.time_item');
-    var title = document.querySelector('.title');
+    var img = document.querySelector('.card__img');
+    var description = document.querySelector('.description__text');
+    var date = document.querySelector('.links__time--item');
+    var title = document.querySelector('.card__about--title');
     var container = document.querySelector('.images');
+    var tableCountry = document.querySelector(".table-country");
+    var tableTagline = document.querySelector(".table-tagline");
+    var tableFilmtype = document.querySelector(".table-filmtype");
+    var tableRuntime = document.querySelector(".table-runtime");
+    var tableProducer = document.querySelector(".table-producer");
+    var tableFilmContent = document.querySelector(".table-filmcontent");
+    var partSlide = document.querySelectorAll(".part-slide");
+    var arrowLeft = document.querySelector(".arrow-left");
+    var arrowRight = document.querySelector(".arrow-right");
+    var ulSlider = document.querySelector(".part-slider");
+    var arrowLeftActors = document.querySelector(".arrow-left__actors");
+    var arrowRightActors = document.querySelector(".arrow-right__actors");
 
     var width = 80;
     var count = 1;
@@ -1552,11 +1564,17 @@ if (window.location.pathname == '/movie.html') {
 
     var successCB = function successCB(res) {
         var result = JSON.parse(res);
-        console.log(result);
+        // console.log(result);
         img.style.backgroundImage = "url('https://image.tmdb.org/t/p/w600_and_h900_bestv2/" + result.poster_path + "')";
         description.textContent = result.overview;
         date.textContent = result.release_date;
-        title.textContent = result.title;
+        title.innerHTML = result.title;
+        tableCountry.textContent = result.production_countries[0].iso_3166_1 + ", " + result.production_countries[0].name;
+        tableTagline.textContent = result.tagline;
+        for (var i = 0; i < result.genres.length; i++) {
+            tableFilmtype.textContent += result.genres[i].name + ", ";
+        }
+        tableRuntime.textContent = result.runtime + " \u043C\u0438\u043D";
     };
 
     var errorCB = function errorCB() {
@@ -1570,7 +1588,9 @@ if (window.location.pathname == '/movie.html') {
 
     var successPeopleCB = function successPeopleCB(res) {
         var result = JSON.parse(res);
-        console.log(result);
+        // console.log(result);
+        tableProducer.textContent = result.crew[1].name;
+        tableFilmContent.textContent = result.crew[0].name;
         for (var i = 0; i < 10; i++) {
             galleryItems.text.push(result.cast[i].name);
             galleryItems.img.push("https://image.tmdb.org/t/p/w600_and_h900_bestv2" + result.cast[i].profile_path);
@@ -1622,15 +1642,50 @@ if (window.location.pathname == '/movie.html') {
                 }
             }
         }, false);
+
+        arrowLeftActors.addEventListener("click", function () {
+            position = Math.min(position + width * count, 0);
+            list.style.marginLeft = position + 'px';
+        });
+        arrowRightActors.addEventListener("click", function () {
+            position = Math.max(position - width * count, -width * (8 - count * 4));
+            list.style.marginLeft = position + 'px';
+        });
     };
 
     var errorPeopleCB = function errorPeopleCB() {
         console.log(arguments);
     };
 
-    theMovieDb.movies.getById({ "id": 284054, "language": "ru-RUS" }, successCB, errorCB);
+    var countPart = 1;
+    var positionPart = 0;
 
-    theMovieDb.credits.getCredit({ "id": 284054, "language": "ru-RUS" }, successPeopleCB, errorPeopleCB);
+    var successPeopleImagesCB = function successPeopleImagesCB(res) {
+        var result = JSON.parse(res);
+        console.log(result);
+        var widthPart = 130;
+        for (var i = 0; i < partSlide.length; i++) {
+            partSlide[i].style.backgroundImage = "url(\"https://image.tmdb.org/t/p/w600_and_h900_bestv2" + result.backdrops[i].file_path + "\")";
+        };
+        arrowLeft.addEventListener("click", function () {
+            positionPart = Math.min(positionPart + widthPart * countPart, 0);
+            ulSlider.style.marginLeft = positionPart + 'px';
+        });
+        arrowRight.addEventListener("click", function () {
+            positionPart = Math.max(positionPart - widthPart * countPart, -widthPart * (8 - countPart * 4));
+            ulSlider.style.marginLeft = positionPart + 'px';
+        });
+    };
+
+    var errorPeopleImagesCB = function errorPeopleImagesCB() {
+        console.log(arguments);
+    };
+
+    theMovieDb.movies.getById({ "id": 269149, "language": "ru-RUS" }, successCB, errorCB);
+
+    theMovieDb.credits.getCredit({ "id": 269149, "language": "ru-RUS" }, successPeopleCB, errorPeopleCB);
+
+    theMovieDb.movies.getImages({ "id": 269149 }, successPeopleImagesCB, errorPeopleImagesCB);
 
     var trailer = document.querySelector(".trailer-video");
     var reviews = [];
