@@ -1942,8 +1942,6 @@ window.addEventListener("load", function(){
     }, false)
 }, false)
 
-const cardSeries = document.getElementById('movie-card-series').textContent.trim();
-const compiledCardSeries = _.template(cardSeries);
 
 var error = function () {
     console.log(arguments);
@@ -2000,7 +1998,7 @@ function upcommingSeries (res){
     const toShow = prepareResult(res, 4);
 
     toShow.forEach((item, i) => {
-        upcommingSeriesWrapper.insertAdjacentHTML('beforeend', compiledCardSeries({item}));
+        upcommingSeriesWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
     });
 }
 
@@ -2009,7 +2007,7 @@ function TopSeries (res){
     const toShow = prepareResult(res, 4);
 
     toShow.forEach((item, i) => {
-        TopSeriesWrapper.insertAdjacentHTML('beforeend', compiledCardSeries({item}));
+        TopSeriesWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
     });
 }
 
@@ -2018,7 +2016,7 @@ function PlayingSeries (res){
     const toShow = prepareResult(res, 4);
 
     toShow.forEach((item, i) => {
-        PlayingSeriesWrapper.insertAdjacentHTML('beforeend', compiledCardSeries({item}));
+        PlayingSeriesWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
     });
 }
 
