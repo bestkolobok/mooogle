@@ -1703,6 +1703,13 @@ window.addEventListener("click", function (e) {
 
 var movie_collection = document.getElementById('black_background_wrapper');
 var search_blcok = document.getElementsByClassName('search');
+var search_slide_up = document.getElementsByClassName('containerCard');
+
+var click_to_slide = function click_to_slide(e) {
+    if (e.target !== search_blcok) {
+        console.log('HI');
+    }
+};
 
 //место, куда пользователь вводит запрос
 var searchInput_onFocus = function searchInput_onFocus() {
@@ -1724,6 +1731,7 @@ var onClick = function onClick(event) {
 };
 
 document.addEventListener("click", onClick);
+window.addEventListener('click', click_to_slide);
 /*jshint esversion: 6 */
 
 //находтим и подготавливаем шаблон карточки фильма для дальнейшей работы

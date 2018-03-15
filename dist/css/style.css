@@ -771,6 +771,7 @@ img.logo {
   border-top: none;
   border-left: none;
   border-right: none;
+  border-bottom: 2px solid #ffffff;
   font-family: "Roboto";
   color: #fff;
   font-size: 1em;
@@ -795,11 +796,17 @@ img.logo {
   padding-left: 30px;
   color: #fff; }
 
+@media (min-width: 479px) {
+  #search-form {
+    width: 311px;
+    height: 28px; } }
+
 @media (min-width: 767px) {
   .search {
     height: 368px; }
   #search-form {
-    top: 310px; }
+    top: 310px;
+    width: 226px; }
   #search-form_input_submit {
     display: none; } }
 
@@ -811,7 +818,8 @@ img.logo {
   .search {
     height: 616px; }
   #search-form {
-    top: 380px; } }
+    top: 380px;
+    width: 401px; } }
 
 @media (min-width: 1439px) {
   #search-form {
