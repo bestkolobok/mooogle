@@ -7,7 +7,11 @@
     <div class="controls">
 
     </div>
-    <section class="movies-wrapper">
+    <div class="tab">
+        <button class="tab_links" onclick="openCaption(event, 'films')">Фильмы</button>
+        <button class="tab_links" onclick="openCaption(event, 'series')">Сериалы</button>
+    </div>
+    <section class="movies-wrapper" id="films">
         <h1>Фильмы</h1>
         <h2>Премьеры</h2>
         <div class="movies-block" id="upcoming_film"> </div>
@@ -16,8 +20,8 @@
         <h2>Сейчас на экране</h2>
         <div class="movies-block" id="now_playing_film"></div>
     </section>
-    <section class="movies-wrapper">
-            <h1>Сериалы</h1>
+    <section class="movies-wrapper" id="series">
+        <h1>Сериалы</h1>
         <h2>Премьеры</h2>
             <div class="movies-block" id="upcoming_series"></div>
         <h2>Самые рейтинговые</h2>

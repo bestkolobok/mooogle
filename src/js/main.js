@@ -27,7 +27,7 @@ function prepareResult (res, count) {
 
 function upcommingFilm (res){
 
-    const toShow = prepareResult(res, 6);
+    const toShow = prepareResult(res, 4);
   
     toShow.forEach((item, i) => {
         upcommingFilmWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
@@ -36,7 +36,7 @@ function upcommingFilm (res){
 
 function TopFilm (res){
 
-    const toShow = prepareResult(res, 6);
+    const toShow = prepareResult(res, 4);
 
     toShow.forEach((item, i) => {
         TopFilmWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
@@ -45,7 +45,7 @@ function TopFilm (res){
 
 function PlayingFilm (res){
 
-    const toShow = prepareResult(res, 6);
+    const toShow = prepareResult(res, 4);
 
     toShow.forEach((item, i) => {
         PlayingFilmWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
@@ -54,7 +54,7 @@ function PlayingFilm (res){
 
 function upcommingSeries (res){
 
-    const toShow = prepareResult(res, 6);
+    const toShow = prepareResult(res, 4);
 
     toShow.forEach((item, i) => {
         upcommingSeriesWrapper.insertAdjacentHTML('beforeend', compiledCardSeries({item}));
@@ -63,7 +63,7 @@ function upcommingSeries (res){
 
 function TopSeries (res){
 
-    const toShow = prepareResult(res, 6);
+    const toShow = prepareResult(res, 4);
 
     toShow.forEach((item, i) => {
         TopSeriesWrapper.insertAdjacentHTML('beforeend', compiledCardSeries({item}));
@@ -72,10 +72,29 @@ function TopSeries (res){
 
 function PlayingSeries (res){
 
-    const toShow = prepareResult(res, 6);
+    const toShow = prepareResult(res, 4);
 
     toShow.forEach((item, i) => {
         PlayingSeriesWrapper.insertAdjacentHTML('beforeend', compiledCardSeries({item}));
     });
+}
+
+function openCaption(evt, caption) {
+    var i, moviesWrapper, tabLinks;
+
+    moviesWrapper = document.getElementsByClassName("movies-wrapper");
+    for (i = 0; i < moviesWrapper.length; i++) {
+        moviesWrapper[i].style.display = "none";
+    }
+
+    tabLinks = document.getElementsByClassName("tab_links");
+    
+    for (i = 0; i < tabLinks.length; i++) {
+        tabLinks[i].className = tabLinks[i].className.replace("active", "");
+   
+    }
+
+    document.getElementById(caption).style.display = "block";
+    evt.currentTarget.className += " active";
 }
 
