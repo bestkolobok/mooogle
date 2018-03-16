@@ -1,4 +1,10 @@
+
 .footer {
+    display: none;
+}
+
+@include respond-to(desktop) {
+  .footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,10 +21,30 @@
     margin-bottom: 15px;
 }
 
-.footer-bottom-line {
-    //margin: 0 auto;
+.footer-bottom-line-item {
+    padding: 15px;
+}
+}
+
+@include respond-to(desktop-extra) {
+  .footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90px; 
+    background-color: $main-background;
+    font-family: $title;
+    font-size: 16px;
+	color: #212121;
+	font-weight: bold;
+}
+
+.footer-icons {
+    margin-bottom: 15px;
 }
 
 .footer-bottom-line-item {
     padding: 15px;
+}
 }

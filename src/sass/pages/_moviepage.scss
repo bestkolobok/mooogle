@@ -6,7 +6,6 @@
 	align-items: center;
 	align-content: center;
 	margin: 15px;
-	/* max-width: 360px; */
 }
 
 .carousel {
@@ -240,10 +239,6 @@
 	margin-top: 5px;
 	font-family: 'Roboto', sans-serif;
 	color: #5e576a;
-	/* display: -webkit-box;
-    -webkit-line-clamp: 7;
-	-webkit-box-orient: vertical; */
-
 }
 
 .reviews-text-big {
@@ -258,7 +253,8 @@
 	width: 15%;
 	display: inline-block;
 	vertical-align: top;
-	margin-left: 15px;
+  margin-left: 15px;
+  margin-top: 12px;
 }
 
 .more-info {
@@ -270,14 +266,64 @@
 @include respond-to(desktop) {
   
   .trailer-main {
-	  width: 70%;
+    justify-content: center;
+    width: 70%;
+    margin: auto;
+  }
+
+  .trailer-video {
+    height: 300px;
+  }
+
+  .reviews-avatar {
+    width: 10%;
+    margin-top: 5px;
   }
 
   .reviews-date {
-    width: 5%;
+    width: 10%;
+    margin-left: 0;
+    margin-top: 10px;
   }
 
   .reviews-post {
     width: 80%;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+}
+
+@include respond-to(desktop-extra) {
+  
+  .container {
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+
+  .trailer-main {
+    justify-content: center;
+    width: 70%;
+    margin: auto;
+  }
+
+  .trailer-video {
+    height: 435px;
+  }
+
+  .reviews-avatar {
+    width: 10%;
+    margin-top: 5px;
+  }
+
+  .reviews-date {
+    width: 10%;
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .reviews-post {
+    width: 80%;
+    margin-left: 0;
+    margin-bottom: 10px;
   }
 }
