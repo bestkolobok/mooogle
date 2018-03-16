@@ -36,6 +36,13 @@
   
 }
 
+.main_card {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 15px;
+}
+
 .main_img {
   max-width: 320px;
   width: 100%;
@@ -61,13 +68,6 @@
   color: #757575;
   margin-top: 20px;
   margin-bottom: 30px;
-}
-
-.main_card {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 15px;
 }
 
 .images li img {
@@ -265,4 +265,19 @@
 	color: #77c1bb;
 	font-family: 'Roboto', sans-serif;
 	cursor: pointer;
+}
+
+@include respond-to(desktop) {
+  
+  .trailer-main {
+	  width: 70%;
+  }
+
+  .reviews-date {
+    width: 5%;
+  }
+
+  .reviews-post {
+    width: 80%;
+  }
 }
