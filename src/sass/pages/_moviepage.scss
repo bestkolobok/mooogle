@@ -294,6 +294,7 @@ table{
       width: 16px;
       height: 16px;
       color: #77c1bb;
+      cursor: pointer;
     }
     .arrow-right {
       position: absolute;
@@ -302,6 +303,7 @@ table{
       width: 16px;
       height: 16px;
       color: #77c1bb;
+      cursor: pointer;
     }    
   }
 }
@@ -313,7 +315,8 @@ table{
   width: 16px;
   height: 16px;
   color: #77c1bb;
-  display: none;   
+  display: none;
+  cursor: pointer; 
 }
 
 .arrow-right__actors {
@@ -323,7 +326,8 @@ table{
   width: 16px;
   height: 16px;
   color: #77c1bb;
-  display: none;   
+  display: none;
+  cursor: pointer;
 }
 
 .part {
@@ -437,6 +441,13 @@ table{
 }
 
 @include respond-to(desktop-extra) {
+
+  .arrow-left__actors {
+    display: block
+  }
+  .arrow-right__actors {
+    display: block
+  }
 
   .slider-cadrs {
     display: block;

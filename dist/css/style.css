@@ -730,14 +730,16 @@ table {
       left: -30px;
       width: 16px;
       height: 16px;
-      color: #77c1bb; }
+      color: #77c1bb;
+      cursor: pointer; }
     .slider-cadrs .arrow-right {
       position: absolute;
       top: 70px;
       right: -30px;
       width: 16px;
       height: 16px;
-      color: #77c1bb; }
+      color: #77c1bb;
+      cursor: pointer; }
 
 .arrow-left__actors {
   position: absolute;
@@ -746,7 +748,8 @@ table {
   width: 16px;
   height: 16px;
   color: #77c1bb;
-  display: none; }
+  display: none;
+  cursor: pointer; }
 
 .arrow-right__actors {
   position: absolute;
@@ -755,7 +758,8 @@ table {
   width: 16px;
   height: 16px;
   color: #77c1bb;
-  display: none; }
+  display: none;
+  cursor: pointer; }
 
 .part {
   position: relative;
@@ -837,6 +841,10 @@ table {
       display: none; } }
 
 @media all and (min-width: 1025px) and (max-width: 1440px) {
+  .arrow-left__actors {
+    display: block; }
+  .arrow-right__actors {
+    display: block; }
   .slider-cadrs {
     display: block; }
   .card {
