@@ -1,13 +1,13 @@
-.container {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: center;
-  align-content: center;
-  margin: 15px;
-  /* max-width: 360px; */
-}
+//.container {
+//  display: flex;
+//  justify-content: center;
+//  flex-direction: column;
+//  flex-wrap: nowrap;
+//  align-items: center;
+//  align-content: center;
+//  margin: 15px;
+//  /* max-width: 360px; */
+//}
 
 .carousel {
   position: relative;
@@ -467,6 +467,17 @@ table{
 }
 
 @include respond-to(desktop-extra) {
+  .wrapper_box{
+    display: flex;
+    flex-flow: column wrap;
+    .slider{
+      order: 2;
+      margin-top: 72px;
+    }
+    .trailer{
+      order: 1;
+    }
+  }
 
   .arrow-left__actors {
     display: block
