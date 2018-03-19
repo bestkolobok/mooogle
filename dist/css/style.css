@@ -442,8 +442,7 @@ head-1__search {
   align-items: center;
   -ms-flex-line-pack: center;
   align-content: center;
-  margin: 15px;
-  /* max-width: 360px; */ }
+  margin: 15px; }
 
 .carousel {
   position: relative;
@@ -533,6 +532,41 @@ table {
   display: none; }
 
 .description__text {
+  font-size: 16px;
+  font-family: 'MyriadPro', sans-serif;
+  color: #757575;
+  margin-top: 20px;
+  margin-bottom: 30px; }
+
+.main_card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: 15px; }
+
+.main_img {
+  max-width: 320px;
+  width: 100%;
+  height: 180px;
+  background-color: #000000;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 20px; }
+
+.main_img h1 {
+  padding: 22px;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  color: #ffffff;
+  padding-top: 120px; }
+
+.text_description {
   font-size: 16px;
   font-family: 'MyriadPro', sans-serif;
   color: #757575;
@@ -697,6 +731,7 @@ table {
   /* display: -webkit-box;
   -webkit-line-clamp: 7;
   -webkit-box-orient: vertical; */ }
+  color: #5e576a; }
 
 .reviews-text-big {
   margin-top: 5px;
@@ -709,7 +744,8 @@ table {
   width: 15%;
   display: inline-block;
   vertical-align: top;
-  margin-left: 15px; }
+  margin-left: 15px;
+  margin-top: 12px; }
 
 .more-info {
   color: #77c1bb;
@@ -717,6 +753,59 @@ table {
   cursor: pointer; }
 
 .slider {
+@media all and (min-width: 482px) and (max-width: 1024px) {
+  .trailer-main {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 70%;
+    margin: auto; }
+  .trailer-video {
+    height: 300px; }
+  .reviews-avatar {
+    width: 10%;
+    margin-top: 5px; }
+  .reviews-date {
+    width: 10%;
+    margin-left: 0;
+    margin-top: 10px; }
+  .reviews-post {
+    width: 80%;
+    margin-left: 0;
+    margin-bottom: 10px; } }
+
+@media all and (min-width: 1025px) {
+  .container {
+    margin-left: 200px;
+    margin-right: 200px; }
+  .trailer-main {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 70%;
+    margin: auto; }
+  .trailer-video {
+    height: 435px; }
+  .reviews-avatar {
+    width: 10%;
+    margin-top: 5px; }
+  .reviews-date {
+    width: 10%;
+    margin-left: 0;
+    margin-top: 10px; }
+  .reviews-post {
+    width: 80%;
+    margin-left: 0;
+    margin-bottom: 10px; } }
+
+.search {
+  vertical-align: top;
+  border: none;
+  position: absolute;
+  background-color: #77c1bb;
+  height: 450px;
+  z-index: 10;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -892,3 +981,64 @@ table {
   #wrapper {
     width: 1045px;
     margin: 0 auto; } }
+
+#search-form_input_search::-moz-placeholder,
+#search-form_input_search::-webkit-input-placeholder,
+#search-form_input_search:-moz-placeholder,
+#search-form_input_search:-ms-input-placeholder {
+  color: #fff; }
+
+.footer {
+  display: none; }
+
+@media all and (min-width: 482px) and (max-width: 1024px) {
+  .footer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 90px;
+    background-color: #77c1bb;
+    font-family: "Roboto", sanserif;
+    font-size: 16px;
+    color: #212121;
+    font-weight: bold; }
+  .footer-icons {
+    margin-bottom: 15px; }
+  .footer-bottom-line-item {
+    padding: 15px; } }
+
+@media all and (min-width: 1025px) {
+  .footer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 90px;
+    background-color: #77c1bb;
+    font-family: "Roboto", sanserif;
+    font-size: 16px;
+    color: #212121;
+    font-weight: bold; }
+  .footer-icons {
+    margin-bottom: 15px; }
+  .footer-bottom-line-item {
+    padding: 15px; } }

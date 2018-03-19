@@ -1,8 +1,9 @@
 //= templates/header.html
-<body>
-<!-- Ниже подключается темплейт карточки фильма -->
 
-<script type="tpl/lodash" id="premieresFilm">
+<body>
+    <!-- Ниже подключается темплейт карточки фильма -->
+
+    <script type="tpl/lodash" id="premieresFilm">
 <p class="category">Фильмы</p>
 <p class="subcategory">Премьеры</p>
 <div class="containerCard">
@@ -24,7 +25,7 @@
     <% } %>
      </div>
 </script>
-<script type="tpl/lodash" id="screenFilm">
+    <script type="tpl/lodash" id="screenFilm">
 <p class="subcategory">Сейчас на экране</p>
 <div class="containerCard">
     <%
@@ -45,7 +46,7 @@
     <% } %>
      </div>
 </script>
-<script type="tpl/lodash" id="top100Film">
+    <script type="tpl/lodash" id="top100Film">
 <p class="subcategory">Топ-100</p>
 <div class="containerCard">
     <%
@@ -68,13 +69,12 @@
 </script>
 
 
-<script type="tpl/lodash" id="premieresSeries">
+    <script type="tpl/lodash" id="premieresSeries">
 <p class="category">Сериалы</p>
 <p class="subcategory">Премьеры</p>
 <div class="containerCard">
     <%
     for (var i = 0; i < 3; i++) {
-
     %>
     <div class="movie-card">
         <div class="movie-card__wrapper" style="background-image: url(https://image.tmdb.org/t/p/w600_and_h900_bestv2<%- data.results[i].poster_path %>)">
@@ -90,7 +90,7 @@
     <% } %>
      </div>
 </script>
-<script type="tpl/lodash" id="screenSeries">
+    <script type="tpl/lodash" id="screenSeries">
 <p class="subcategory">Сейчас на экране</p>
 <div class="containerCard">
     <%
@@ -110,7 +110,7 @@
     <% } %>
      </div>
 </script>
-<script type="tpl/lodash" id="top100Series">
+    <script type="tpl/lodash" id="top100Series">
 <p class="subcategory">Топ-100</p>
 <div class="containerCard">
     <%
@@ -137,9 +137,10 @@
 
 
 
-</div>
-//= templates/movieCard.html
-<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
-<script src="js/scripts.js"></script>
+    </div>
+    //= templates/movieCard.html
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
+    <script src="js/scripts.js"></script>
 </body>
+
 </html>
