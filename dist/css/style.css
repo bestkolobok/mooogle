@@ -771,6 +771,23 @@ table {
   position: relative; }
 
 @media all and (min-width: 482px) and (max-width: 1024px) {
+  .wrapper_box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: column wrap;
+    flex-flow: column wrap; }
+    .wrapper_box .slider {
+      -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+      order: 2;
+      margin-top: 72px; }
+    .wrapper_box .trailer {
+      -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+      order: 1; }
   .arrow-left__actors {
     display: block; }
   .arrow-right__actors {

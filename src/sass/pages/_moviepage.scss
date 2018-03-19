@@ -364,6 +364,17 @@ table{
 }
 
 @include respond-to(desktop) {
+  .wrapper_box{
+    display: flex;
+    flex-flow: column wrap;
+    .slider{
+      order: 2;
+      margin-top: 72px;
+    }
+    .trailer{
+      order: 1;
+    }
+  }
   
   .arrow-left__actors {
     display: block
