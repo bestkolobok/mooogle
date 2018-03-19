@@ -213,7 +213,7 @@
 	padding: 0;
 	align-items: center;
 	justify-content: center;
-	background-color: #77c1bb;
+	background-color: $main-background;
 	text-transform: uppercase;
 	border-radius: 50%;
 }
@@ -258,7 +258,7 @@
 }
 
 .more-info {
-	color: #77c1bb;
+	color: $main-background;
 	font-family: 'Roboto', sans-serif;
 	cursor: pointer;
 }
