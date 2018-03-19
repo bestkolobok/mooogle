@@ -1745,8 +1745,8 @@ if (window.location.pathname == '/movie.html') {
         console.log(arguments);
     };
 
-    theMovieDb.movies.getTrailers({ "id": 284054, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
-    theMovieDb.movies.getReviews({ "id": 284054 }, successGetReview, errorGetReview);
+    theMovieDb.movies.getTrailers({ "id": 269149, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
+    theMovieDb.movies.getReviews({ "id": 269149 }, successGetReview, errorGetReview);
 }
 
 window.addEventListener("click", function (e) {
