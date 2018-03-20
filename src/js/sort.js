@@ -1,3 +1,5 @@
+if(window.location.pathname == '/sort.html'){
+
 /*jshint esversion: 6 */
 
 
@@ -75,3 +77,5 @@ if(window.location.pathname == '/sort.html')
 theMovieDb.movies.getUpcoming({
     "language": "ru-RUS"
 }, successGetUpcomming, errorGetUpcomming);
+
+}

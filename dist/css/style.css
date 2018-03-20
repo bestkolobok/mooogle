@@ -157,7 +157,6 @@ li {
   list-style-type: none; }
 
 #wrapper {
-  height: 100vh;
   width: 100%; }
 
 header {
@@ -170,8 +169,7 @@ header {
   -ms-flex-direction: row;
   flex-direction: row;
   padding: 18px 25px 21px 24px;
-  background: #77c1bb;
-  height: 33px; }
+  background: #77c1bb; }
 
 .head {
   display: -webkit-box;

@@ -1941,6 +1941,7 @@ window.addEventListener("load", function(){
 				document.querySelector(".head-1").style.display = "flex";
     }, false)
 }, false)
+// if(window.location.pathname == '/index.html'){
 
 
 var error = function () {
@@ -1960,6 +1961,7 @@ const PlayingFilmWrapper = document.getElementById('now_playing_film');
 const upcommingSeriesWrapper = document.getElementById('upcoming_series');
 const TopSeriesWrapper = document.getElementById('top_rated_series');
 const PlayingSeriesWrapper = document.getElementById('now_playing_series');
+
 function prepareResult (res, count) {
 
     const data = JSON.parse(res);
@@ -2038,6 +2040,8 @@ function openCaption(evt, caption) {
     document.getElementById(caption).style.display = "block";
     evt.currentTarget.className += " active";
 }
+
+// }
 
 
 if(window.location.pathname == '/movie.html'){
@@ -2215,9 +2219,8 @@ theMovieDb.credits.getCredit({"id":269149, "language":"ru-RUS" }, successPeopleC
 
 theMovieDb.movies.getImages({"id":269149}, successPeopleImagesCB, errorPeopleImagesCB)
 
-
 const trailer = document.querySelector(".trailer-video");
-const reviews = [];
+var reviews = [];
 const reviewContainer = document.querySelector("#reviews-container");
 const trailerHidden = document.querySelector(".trailer");
 
@@ -2279,6 +2282,7 @@ theMovieDb.movies.getTrailers({ "id": 269149, "language": "ru-RUS" }, successGet
 theMovieDb.movies.getReviews({ "id": 269149 }, successGetReview, errorGetReview);
 
 
+
 }
 
 
@@ -2291,32 +2295,29 @@ window.addEventListener("click", function(e){
 
 
 
-let movie_collection = document.getElementById('black_background');
-let search_blcok = document.getElementById('search');
+// let movie_collection = document.getElementById('black_background');
+// let search_blcok = document.getElementById('search');
 
-//место, куда пользователь вводит запрос
-let searchInput_onFocus = function () {
-    document.getElementById('search-form_input_search').style.border = 'none';
-};
+// //место, куда пользователь вводит запрос
+// let searchInput_onFocus = function () {
+//     document.getElementById('search-form_input_search').style.border = 'none';
+// };
 
-const onClick = (event) => {
-    debugger
-    if (event.target.className === "head-1__search" || event.target.className === "head-1__input-search"
-        || event.target.className === "head__search" || event.target.classList.contains('search-form_input_search')) {
-        debugger
-        search_blcok.classList.remove('search_hidden');
-        search_blcok.classList.add('search_show');
-        movie_collection.classList.add('black_background');
-    } else if (search_blcok.classList.contains('search_show') && !event.target.classList.contains('search')
-        && !event.target.classList.contains('logo') && event.target.nodeName !== 'INPUT') {
-        debugger
-        search_blcok.classList.add('search_hidden');
-        search_blcok.classList.remove('search_show');
-        movie_collection.classList.remove('black_background');
-    }
-};
+// const onClick = (event) => {
+//     if (event.target.className === "head-1__search" || event.target.className === "head-1__input-search" || event.target.className === "head__search" || event.target.classList.contains('search-form_input_search')) {
+//         search_blcok.classList.remove('search_hidden');
+//         search_blcok.classList.add('search_show');
+//         movie_collection.classList.add('black_background');
+//     } else if (search_blcok.classList.contains('search_show') && !event.target.classList.contains('search') && !event.target.classList.contains('logo') && event.target.nodeName !== 'INPUT') {
+//         search_blcok.classList.add('search_hidden');
+//         search_blcok.classList.remove('search_show');
+//         movie_collection.classList.remove('black_background');
+//     }
+// };
 
-document.addEventListener("click", onClick);
+// document.addEventListener("click", onClick);
+if(window.location.pathname == '/sort.html'){
+
 /*jshint esversion: 6 */
 
 
@@ -2394,3 +2395,5 @@ if(window.location.pathname == '/sort.html')
 theMovieDb.movies.getUpcoming({
     "language": "ru-RUS"
 }, successGetUpcomming, errorGetUpcomming);
+
+}

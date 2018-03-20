@@ -173,9 +173,8 @@ theMovieDb.credits.getCredit({"id":269149, "language":"ru-RUS" }, successPeopleC
 
 theMovieDb.movies.getImages({"id":269149}, successPeopleImagesCB, errorPeopleImagesCB)
 
-
 const trailer = document.querySelector(".trailer-video");
-const reviews = [];
+var reviews = [];
 const reviewContainer = document.querySelector("#reviews-container");
 const trailerHidden = document.querySelector(".trailer");
 
@@ -235,6 +234,7 @@ let errorGetReview = function (res) {
 
 theMovieDb.movies.getTrailers({ "id": 269149, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
 theMovieDb.movies.getReviews({ "id": 269149 }, successGetReview, errorGetReview);
+
 
 
 }
