@@ -7,7 +7,7 @@ const card = document.getElementById('movie-card').textContent.trim();
 //компилируем наш шаблон в метод с помощью Lodash для дальгейшего использования, где либо
 const compiledCard = _.template(card);
 
-//Находим место, куда мы будет вставлять карточки фильмов.
+
 
 
 // метод, который будет выполнен в случае удачного обращения к API MovieDB
@@ -49,7 +49,7 @@ var successGetUpcomming = function successGetUpcomming(res) {
     //проходимся по коллекции фильмов из ответа и обьект каждого из фильмов 
     //передаем в ранее "скомпилированный" метод
     data.results.forEach(item => {
-        console.log(item);
+        // console.log(item);
         colectionWrapper.insertAdjacentHTML('beforeend', compiledCard({
             item
         }));
