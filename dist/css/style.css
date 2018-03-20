@@ -424,6 +424,9 @@ head-1__search {
       .sort .sortButton-holder::after {
         margin-left: 10px; } }
 
+.wrapper {
+  padding: 15px; }
+
 .carousel {
   position: relative;
   width: 320px; }
@@ -457,8 +460,7 @@ head-1__search {
   -ms-flex-pack: center;
   justify-content: center;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  padding: 15px; }
+  flex-wrap: wrap; }
   .card__img {
     max-width: 320px;
     width: 100%;
