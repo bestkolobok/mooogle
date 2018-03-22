@@ -1,16 +1,8 @@
-// if(window.location.pathname == '/index.html'){
 
 
 var error = function () {
     console.log(arguments);
 };
-
-theMovieDb.movies.getUpcoming({ "language": "ru-RUS"  },  upcommingFilm, error);
-theMovieDb.movies.getNowPlaying({ "language": "ru-RUS"  }, PlayingFilm, error);
-theMovieDb.movies.getTopRated({ "language": "ru-RUS"  }, TopFilm, error);
-theMovieDb.tv.getOnTheAir({ "language": "ru-RUS"  }, upcommingSeries, error);
- theMovieDb.tv.getAiringToday({ "language": "ru-RUS"  }, PlayingSeries, error);
- theMovieDb.tv.getTopRated({ "language": "ru-RUS"  }, TopSeries, error);
 
 const upcommingFilmWrapper = document.getElementById('upcoming_film');
 const TopFilmWrapper = document.getElementById('top_rated_film');
@@ -18,6 +10,29 @@ const PlayingFilmWrapper = document.getElementById('now_playing_film');
 const upcommingSeriesWrapper = document.getElementById('upcoming_series');
 const TopSeriesWrapper = document.getElementById('top_rated_series');
 const PlayingSeriesWrapper = document.getElementById('now_playing_series');
+
+
+//проверки на нулл не убирать, они нужны если страница отличная от стартовой,
+//что бы не выпадали при отсутсвии блоков
+
+
+if(upcommingFilmWrapper !== null)
+    theMovieDb.movies.getUpcoming({ "language": "ru-RUS"  },  upcommingFilm, error);
+    
+if(PlayingFilmWrapper !== null)
+    theMovieDb.movies.getNowPlaying({ "language": "ru-RUS"  }, PlayingFilm, error);
+    
+if(TopFilmWrapper !== null)
+    theMovieDb.movies.getTopRated({ "language": "ru-RUS"  }, TopFilm, error);
+
+if(upcommingSeriesWrapper !== null)
+    theMovieDb.tv.getOnTheAir({ "language": "ru-RUS"  }, upcommingSeries, error);
+
+if(PlayingSeriesWrapper !== null)
+    theMovieDb.tv.getAiringToday({ "language": "ru-RUS"  }, PlayingSeries, error);
+
+if(TopSeriesWrapper !== null)
+    theMovieDb.tv.getTopRated({ "language": "ru-RUS"  }, TopSeries, error);
 
 function prepareResult (res, count) {
 
@@ -98,5 +113,4 @@ function openCaption(evt, caption) {
     evt.currentTarget.className += " active";
 }
 
-// }
 
