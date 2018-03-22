@@ -2,13 +2,53 @@
 /*jshint esversion: 6 */
 
 
-//находтим и подготавливаем шаблон карточки фильма для дальнейшей работы
-const card = document.getElementById('movie-card').textContent.trim();
 
-//компилируем наш шаблон в метод с помощью Lodash для дальгейшего использования, где либо
-const compiledCard = _.template(card);
+//кнопка сортировки по ИД
+const sortButtonId = document.getElementById('sortId');
+
+//кнопка сортировки по имени
+const sortButtonName = document.getElementById('sortName');
+
+//блок в который вставляем результат
+const colectionWrapper = document.getElementById('sortedMovie');
+
+var sortResult
 
 
+// метод для сортировки от меньшего к большему
+function sortASC (data, param) {
+    return data.sort((a, b) => a[param] > b[param])
+}
+
+// метод для сортировки от большего к меньшему
+function sortDESC (data, param) {
+    return data.sort((a, b) => b[param] > a[param])
+}
+
+
+// метод, который будет повешен на событие onclick всех кнопок сортировки
+function sort (event) {
+
+    // определяем по чему был клик
+    const button = event.target;
+
+    //определяем из поля data-param описанного на кнопке, по какому параметру будем сортировать
+    const param = button.dataset.param;
+
+    //определяем из поля data-order описанного на кнопке, какой порядок сортировки будем использовать
+    const order = button.dataset.order;
+
+    //Определяем "направление" сортировки в текущий момент, и записываем в параметр кнопки data-order противоположное значение,
+    //что бы при следующем нажатии сортировка сработала в другом "направлении".
+    const changedOrder = order === 'ASC' ? 'DESC' : 'ASC';
+    button.dataset.order = changedOrder;
+
+    //в зависимости от текущего типа сортировки применяем тот или инной метод
+    const ordered = order === 'ASC' ? sortASC(sortResult, param) : sortDESC(sortResult, param);
+
+    //выводим отсортированый массив.
+ //   renderResult(ordered);
+}
 
 
 // метод, который будет выполнен в случае удачного обращения к API MovieDB
@@ -17,48 +57,23 @@ var successGetUpcomming = function successGetUpcomming(res) {
     // парсим JSON в объект
     var data = JSON.parse(res);
 
+    sortResult = data;
 
-    // выводим его в консоль что бы было наглядно
-    console.log('get movie list on search');
-    console.log(data);
-    console.log('////////////////////');
+    renderResult(data);
+};
 
-    // // var sortByName = document.getElementById("byName");
-    // // let compareName = function (a, b) {
-    // //     if (a.title < b.title)
-    // //         return -1;
-    // //     if (a.title > b.title)
-    // //         return 1;
-    // //     return 0;
-    // // }
-    // // sortByName.addEventListener('click', compareName);
-    // // data.results.sort(compareName);
-
-    // var sortByDate = document.getElementById("byDate");
-    // let compareDate = function (a, b) {
-    //     if (a.release_date > b.release_date)
-    //         return -1;
-    //     if (a.release_date < b.release_date)
-    //         return 1;
-    //     return 0;
-    // }
-    // sortByDate.addEventListener('click', compareDate);
-    // data.results.sort(compareDate);
-
-
+function renderResult(data){
 
     //проходимся по коллекции фильмов из ответа и обьект каждого из фильмов 
     //передаем в ранее "скомпилированный" метод
+    colectionWrapper.innerHTML = '';
     data.results.forEach(item => {
-        // console.log(item);
+        
         colectionWrapper.insertAdjacentHTML('beforeend', compiledCard({
             item
         }));
     });
-
-
-
-};
+}
 
 
 // Метод, который будет вызван в случае ошибки при обращении к API MovieDB 
@@ -72,7 +87,12 @@ var errorGetUpcomming = function errorGetUpcomming() {
 //данный метод приведен в качестве примера использования шаблона карточки фильма.
 //За более детальной информацией обратитесь к документации библиотеки
 
-if(window.location.pathname == '/sort.html')
-theMovieDb.movies.getUpcoming({
-    "language": "ru-RUS"
-}, successGetUpcomming, errorGetUpcomming);
+if(window.location.pathname == '/sort.html'){
+
+    theMovieDb.movies.getUpcoming({
+        "language": "ru-RUS"
+    }, successGetUpcomming, errorGetUpcomming);
+
+    sortButtonName.onclick = sort;
+
+}

@@ -7,16 +7,18 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 </head>
 <body>
-
-<!-- Ниже подключается темплейт карточки фильма -->
-//= templates/sort.html
+//= templates/header.html
+//= templates/sortControls.html
 //= templates/movieCard.html
+<div class="main">
 
-    <div id="latestMovie"></div>
-    <div id="searchMovie"></div>
-    
-    <div id="wrapper"></div>
-
+    <section class="movies-wrapper">
+        <h1>Сериалы</h1>
+        <h2>Премьеры</h2>
+            <div class="movies-block" id="sortedMovie"></div>
+    </section>
+</div>
+//= templates/footer.html
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
 <script src="js/scripts.js"></script>
 </body>
