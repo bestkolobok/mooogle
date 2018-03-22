@@ -1,3 +1,4 @@
+// if(window.location.pathname == '/index.html'){
 
 
 var error = function () {
@@ -17,6 +18,7 @@ const PlayingFilmWrapper = document.getElementById('now_playing_film');
 const upcommingSeriesWrapper = document.getElementById('upcoming_series');
 const TopSeriesWrapper = document.getElementById('top_rated_series');
 const PlayingSeriesWrapper = document.getElementById('now_playing_series');
+
 function prepareResult (res, count) {
 
     const data = JSON.parse(res);
@@ -95,4 +97,6 @@ function openCaption(evt, caption) {
     document.getElementById(caption).style.display = "block";
     evt.currentTarget.className += " active";
 }
+
+// }
 
