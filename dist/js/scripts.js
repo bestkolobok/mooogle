@@ -2346,7 +2346,7 @@ window.addEventListener("click", function(e){
 
 
 //кнопка сортировки по ИД
-const sortButtonId = document.getElementById('sortId');
+const sortButtonDate = document.getElementById('sortByDate');
 
 //кнопка сортировки по имени
 const sortButtonName = document.getElementById('sortName');
@@ -2445,5 +2445,6 @@ if(window.location.pathname == '/sort.html'){
     }, successGetUpcomming, errorGetUpcomming);
 
     sortButtonName.onclick = sort;
+    sortButtonDate.onclick = sort;
 
 }
