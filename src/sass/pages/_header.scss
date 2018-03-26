@@ -6,11 +6,13 @@ li{
 }
 
 header{
+  width: 100%;
   display: flex;
-  position: relative;
+  position: fixed;
   flex-direction: row;
   padding: 18px 25px 21px 24px;
   background: #77c1bb;
+  z-index: 99;
 }
  
 .head{
