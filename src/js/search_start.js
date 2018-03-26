@@ -18,4 +18,5 @@ const onClick = (event) => {
     }
 };
 
-document.addEventListener("click", onClick);
+if(search_blcok !== null)
+    document.addEventListener("click", onClick);
