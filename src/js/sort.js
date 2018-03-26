@@ -12,17 +12,19 @@ const sortButtonName = document.getElementById('sortName');
 //блок в который вставляем результат
 const colectionWrapper = document.getElementById('sortedMovie');
 
-var sortResult
+var sortResult;
 
 
 // метод для сортировки от меньшего к большему
 function sortASC (data, param) {
-    return data.sort((a, b) => a[param] > b[param])
+    //return data.sort((a, b) => a[param] > b[param])
+    return data.sort((a, b) => a[param].localeCompare(b[param]));
 }
 
 // метод для сортировки от большего к меньшему
 function sortDESC (data, param) {
-    return data.sort((a, b) => b[param] > a[param])
+    //return data.sort((a, b) => b[param] > a[param])
+    return data.sort((a, b) =>b[param].localeCompare(a[param]));
 }
 
 
@@ -44,18 +46,25 @@ function sort (event) {
     button.dataset.order = changedOrder;
 
     //в зависимости от текущего типа сортировки применяем тот или инной метод
-    const ordered = order === 'ASC' ? sortASC(sortResult, param) : sortDESC(sortResult, param);
+    const ordered = order === 'ASC' ? sortASC(sortResult.results, param) : sortDESC(sortResult.results, param);
+
+    console.log('{results: ordered}', order);
+    console.log({results: ordered});
 
     //выводим отсортированый массив.
- //   renderResult(ordered);
+    renderResult({results: ordered});
 }
 
 
 // метод, который будет выполнен в случае удачного обращения к API MovieDB
 var successGetUpcomming = function successGetUpcomming(res) {
 
+    console.log('//////', 'get_movies from db')
+
     // парсим JSON в объект
     var data = JSON.parse(res);
+
+    console.log(data);
 
     sortResult = data;
 

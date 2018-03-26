@@ -4,7 +4,7 @@
 <script type="tpl/lodash" id="movie-card">
     <%
 
-    console.log(item)
+ //   console.log(item)
 
     var dates = typeof item.release_date !== 'undefined' ? item.release_date.split("-") : item.first_air_date !== 'undefined' ? item.first_air_date.split("-") : '';
     dates = dates !== '' ? '('+dates[0]+')' : dates;
