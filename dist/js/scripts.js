@@ -2227,11 +2227,11 @@ let errorPeopleImagesCB = function(){
 }
 
 
-theMovieDb.movies.getById({"id":269149, "language":"ru-RUS" }, successCB, errorCB);
+theMovieDb.movies.getById({"id":284053, "language":"ru-RUS" }, successCB, errorCB);
 
-theMovieDb.credits.getCredit({"id":269149, "language":"ru-RUS" }, successPeopleCB, errorPeopleCB);
+theMovieDb.credits.getCredit({"id":284053, "language":"ru-RUS" }, successPeopleCB, errorPeopleCB);
 
-theMovieDb.movies.getImages({"id":269149}, successPeopleImagesCB, errorPeopleImagesCB)
+theMovieDb.movies.getImages({"id":284053}, successPeopleImagesCB, errorPeopleImagesCB)
 
 const trailer = document.querySelector(".trailer-video");
 var reviews = [];
@@ -2292,8 +2292,8 @@ let errorGetReview = function (res) {
     console.log(arguments);
 }
 
-theMovieDb.movies.getTrailers({ "id": 269149, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
-theMovieDb.movies.getReviews({ "id": 269149 }, successGetReview, errorGetReview);
+theMovieDb.movies.getTrailers({ "id": 284053, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
+theMovieDb.movies.getReviews({ "id": 284053 }, successGetReview, errorGetReview);
 
 
 
