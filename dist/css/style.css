@@ -1014,8 +1014,11 @@ table {
     .movies-wrapper .movie-card {
       margin-top: 10px;
       margin-bottom: 10px; }
-    .movies-wrapper h2 {
-      margin: 10px; } }
+    .movies-wrapper h1, .movies-wrapper h2 {
+      margin: 10px;
+      color: #4c4e50;
+      font-family: "Roboto", sanserif;
+      padding-left: 0%; } }
 
 @media (min-width: 1024px) {
   .tab {
@@ -1079,8 +1082,11 @@ table {
       margin: 5px auto;
       margin-bottom: 45px; }
     .movies-wrapper h2 {
-      margin: 10px;
-      padding-left: 20%; }
+      margin: 34px 0;
+      padding-left: 19%;
+      color: #4c4e50;
+      font-family: "Roboto", sanserif;
+      font-size: 16px; }
     .movies-wrapper .movie-card__title {
       margin-top: 172px;
       font-family: "Roboto", sanserif;
