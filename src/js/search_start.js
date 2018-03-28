@@ -1,18 +1,22 @@
-let movie_collection = document.getElementById('searchMovie');
-let search_blcok = document.getElementsByClassName('search');
+let movie_collection = document.getElementById('black_background');
+let search_blcok = document.getElementById('search');
+
 //место, куда пользователь вводит запрос
-let searchInput_onFocus = function (){
+let searchInput_onFocus = function () {
     document.getElementById('search-form_input_search').style.border = 'none';
-}
+};
 
 const onClick = (event) => {
-    if (event.target.className === "Some Future Class") {
+    if (event.target.className === "head-1__search" || event.target.className === "head-1__input-search" || event.target.className === "head__search" || event.target.classList.contains('search-form_input_search')) {
         search_blcok.classList.remove('search_hidden');
-        movie_collection.classList.add('bg');
-    }
-    if (event.target.className !== "search") {
+        search_blcok.classList.add('search_show');
+        movie_collection.classList.add('black_background');
+    } else if (search_blcok.classList.contains('search_show') && !event.target.classList.contains('search') && !event.target.classList.contains('logo') && event.target.nodeName !== 'INPUT') {
         search_blcok.classList.add('search_hidden');
+        search_blcok.classList.remove('search_show');
+        movie_collection.classList.remove('black_background');
     }
-}
+};
 
-document.addEventListener("click", onClick);
+if(search_blcok !== null)
+    document.addEventListener("click", onClick);
