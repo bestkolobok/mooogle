@@ -996,7 +996,10 @@ table {
 .main {
   padding-top: 75px; }
 
-@media (max-width: 1023px) {
+h2 a {
+  color: #000000; }
+
+@media all and (min-width: 319px) and (max-width: 360px) {
   .tab {
     display: none; }
   .movies-wrapper {
@@ -1017,7 +1020,7 @@ table {
     .movies-wrapper h2 {
       margin: 10px; } }
 
-@media (min-width: 1024px) {
+@media all and (min-width: 1025px) {
   .tab {
     display: -webkit-box;
     display: -ms-flexbox;
