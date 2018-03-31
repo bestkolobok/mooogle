@@ -77,9 +77,13 @@ gulp.task('bundleCss', function() {
 gulp.task('bundleJs', function() {
   return gulp.src(paths.src.js)
     .pipe(concat('scripts.js'))
-    .pipe(babel({
-      presets: ['env']
-    }))
+    // .pipe(babel({
+    //   presets: [['env', {
+    //     "targets": {
+    //       "browsers": ["last 2 versions", "safari >= 7"]
+    //     }
+    //   }]]
+    // }))
     // .pipe(uglify())
     .pipe(gulp.dest(paths.dist.js))
     .pipe(browserSync.reload({

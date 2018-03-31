@@ -1,10 +1,25 @@
 if(window.location.pathname == '/movie.html'){
 
-var img = document.querySelector('.main_img');
-var description = document.querySelector('.text_description')
-var date = document.querySelector('.time_item')
-var title = document.querySelector('.title')
+var img = document.querySelector('.card__img');
+var description = document.querySelector('.description__text');
+var date = document.querySelector('.links__time--item');
+var title = document.querySelector('.card__about--title');
 var container = document.querySelector('.images');
+var tableCountry = document.querySelector(".table-country");
+var tableTagline = document.querySelector(".table-tagline");
+var tableFilmtype = document.querySelector(".table-filmtype");
+var tableRuntime = document.querySelector(".table-runtime");
+var tableProducer = document.querySelector(".table-producer");
+var tableFilmContent = document.querySelector(".table-filmcontent");
+var partSlide = document.querySelectorAll(".part-slide");
+var arrowLeft = document.querySelector(".arrow-left");
+var arrowRight = document.querySelector(".arrow-right");
+var ulSlider = document.querySelector(".part-slider");
+var arrowLeftActors = document.querySelector(".arrow-left__actors");
+var arrowRightActors = document.querySelector(".arrow-right__actors");
+
+
+
 
 
 var width = 80; 
@@ -17,22 +32,28 @@ var list = carousel.querySelector('.images');
 
 
 // var infinitecarousel = new InfiniteCarousel('.images', 'horizontal', 3, {
-//     timerDuration: 2000,
-//     transitionDuration: '1s'
-//   });
+  //     timerDuration: 2000,
+  //     transitionDuration: '1s'
+  //   });
   
-
-var position = 0; 
-
-
-
-let successCB = function(res) {
-  const result = JSON.parse(res);
-  console.log(result);
+  
+  var position = 0; 
+  
+  
+  
+  let successCB = function(res) {
+    const result = JSON.parse(res);
+    // console.log(result);
   img.style.backgroundImage = `url('https://image.tmdb.org/t/p/w600_and_h900_bestv2/${result.poster_path}')`;
   description.textContent = result.overview;
   date.textContent = result.release_date;
-  title.textContent = result.title;
+  title.innerHTML = result.title;
+  tableCountry.textContent = `${result.production_countries[0].iso_3166_1}, ${result.production_countries[0].name}`;
+  tableTagline.textContent = result.tagline;
+  for(let i = 0; i < result.genres.length; i++){
+    tableFilmtype.textContent += `${result.genres[i].name}, `;
+  }
+  tableRuntime.textContent = `${result.runtime} мин`;
 }
 
 let errorCB = function() {
@@ -48,7 +69,9 @@ var galleryItems = {
 
 let successPeopleCB = function(res) {
   const result = JSON.parse(res);
-  console.log(result);
+  // console.log(result);
+  tableProducer.textContent = result.crew[1].name;
+  tableFilmContent.textContent = result.crew[0].name;
   for (let i = 0; i < 10; i++){
     galleryItems.text.push(result.cast[i].name);
     galleryItems.img.push(`https://image.tmdb.org/t/p/w600_and_h900_bestv2${result.cast[i].profile_path}`);
@@ -103,6 +126,14 @@ let successPeopleCB = function(res) {
     }
   }, false);
   
+  arrowLeftActors.addEventListener("click", function(){
+    position = Math.min(position + width * count, 0)
+    list.style.marginLeft = position + 'px';
+  });
+  arrowRightActors.addEventListener("click", function(){
+    position = Math.max(position - width * count, -width * (8 - count*4));
+    list.style.marginLeft = position + 'px';
+  });
   
 }
 
@@ -110,17 +141,40 @@ let errorPeopleCB = function(){
   console.log(arguments);
 }
 
+var countPart = 1;
+var positionPart = 0; 
+ 
 
-theMovieDb.movies.getById({"id":284054, "language":"ru-RUS" }, successCB, errorCB)
+let successPeopleImagesCB = function(res){
+  const result = JSON.parse(res);
+  console.log(result);
+  let widthPart = 130;
+  for(let i = 0; i < partSlide.length; i++){
+    partSlide[i].style.backgroundImage = `url("https://image.tmdb.org/t/p/w600_and_h900_bestv2${result.backdrops[i].file_path}")`
+  };
+  arrowLeft.addEventListener("click", function(){
+    positionPart = Math.min(positionPart + widthPart * countPart, 0)
+    ulSlider.style.marginLeft = positionPart + 'px';
+  });
+  arrowRight.addEventListener("click", function(){
+    positionPart = Math.max(positionPart - widthPart * countPart, -widthPart * (8 - countPart*4));
+    ulSlider.style.marginLeft = positionPart + 'px';
+  });
+}
 
-theMovieDb.credits.getCredit({"id":284054, "language":"ru-RUS" }, successPeopleCB, errorPeopleCB)
+let errorPeopleImagesCB = function(){
+  console.log(arguments);
+}
 
 
+theMovieDb.movies.getById({"id":269149, "language":"ru-RUS" }, successCB, errorCB);
 
+theMovieDb.credits.getCredit({"id":269149, "language":"ru-RUS" }, successPeopleCB, errorPeopleCB);
 
+theMovieDb.movies.getImages({"id":269149}, successPeopleImagesCB, errorPeopleImagesCB)
 
 const trailer = document.querySelector(".trailer-video");
-const reviews = [];
+var reviews = [];
 const reviewContainer = document.querySelector("#reviews-container");
 const trailerHidden = document.querySelector(".trailer");
 
@@ -178,8 +232,9 @@ let errorGetReview = function (res) {
     console.log(arguments);
 }
 
-theMovieDb.movies.getTrailers({ "id": 284054, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
-theMovieDb.movies.getReviews({ "id": 284054 }, successGetReview, errorGetReview);
+theMovieDb.movies.getTrailers({ "id": 269149, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
+theMovieDb.movies.getReviews({ "id": 269149 }, successGetReview, errorGetReview);
+
 
 
 }
