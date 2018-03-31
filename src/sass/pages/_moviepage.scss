@@ -167,6 +167,7 @@ table{
   position: relative;
 }
 
+
 .trailer {
   display: flex;
   justify-content: center;
@@ -218,7 +219,8 @@ table{
 }
 
 .reviews-avatar {
-  width: 15%;
+  width: 10%;
+  min-width: 50px;
   height: 50px;
   color: #212121;
   font-family: 'Roboto', sans-serif;
@@ -240,6 +242,7 @@ table{
 .reviews-post {
   width: 60%;
   margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 .username {
@@ -247,7 +250,7 @@ table{
   font-size: 18px;
   color: #212121;
   font-weight: bold;
-  margin-top: 12px;
+  margin-top: 0;
   margin-bottom: 10px;
 }
 
@@ -276,7 +279,8 @@ table{
   width: 15%;
   display: inline-block;
   vertical-align: top;
-  margin-left: 15px;
+  margin-left: 5px;
+  font-size: 0.8em;
 }
 
 .more-info {
@@ -464,17 +468,19 @@ table{
  
   .reviews-avatar {
     width: 10%;
-    margin-top: 5px;
+    min-width: 55px;
+    margin-top: 0;
   }
  
   .reviews-date {
     width: 10%;
-    margin-left: 0;
-    margin-top: 10px;
+    min-width: 55px;
+    margin-left: 10px;
+    margin-top: 0;
   }
  
   .reviews-post {
-    width: 80%;
+    width: 70%;
     margin-left: 0;
     margin-bottom: 10px;
   }
@@ -587,14 +593,14 @@ table{
   }
  
   .reviews-avatar {
-    width: 10%;
-    margin-top: 5px;
+    width: 7%;
+    margin-top: 0;
   }
  
   .reviews-date {
     width: 10%;
-    margin-left: 0;
-    margin-top: 10px;
+    margin-left: 10px;
+    margin-top: 0;
   }
  
   .reviews-post {

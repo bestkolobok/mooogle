@@ -680,7 +680,8 @@ table {
   align-content: flex-start; }
 
 .reviews-avatar {
-  width: 15%;
+  width: 10%;
+  min-width: 50px;
   height: 50px;
   color: #212121;
   font-family: 'Roboto', sans-serif;
@@ -705,14 +706,15 @@ table {
 
 .reviews-post {
   width: 60%;
-  margin-left: 10px; }
+  margin-left: 10px;
+  margin-bottom: 10px; }
 
 .username {
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
   color: #212121;
   font-weight: bold;
-  margin-top: 12px;
+  margin-top: 0;
   margin-bottom: 10px; }
 
 .reviews-text {
@@ -737,7 +739,8 @@ table {
   width: 15%;
   display: inline-block;
   vertical-align: top;
-  margin-left: 15px; }
+  margin-left: 5px;
+  font-size: 0.8em; }
 
 .more-info {
   color: #77c1bb;
@@ -894,13 +897,15 @@ table {
     height: 300px; }
   .reviews-avatar {
     width: 10%;
-    margin-top: 5px; }
+    min-width: 55px;
+    margin-top: 0; }
   .reviews-date {
     width: 10%;
-    margin-left: 0;
-    margin-top: 10px; }
+    min-width: 55px;
+    margin-left: 10px;
+    margin-top: 0; }
   .reviews-post {
-    width: 80%;
+    width: 70%;
     margin-left: 0;
     margin-bottom: 10px; } }
 
@@ -982,12 +987,12 @@ table {
   .trailer-video {
     height: 435px; }
   .reviews-avatar {
-    width: 10%;
-    margin-top: 5px; }
+    width: 7%;
+    margin-top: 0; }
   .reviews-date {
     width: 10%;
-    margin-left: 0;
-    margin-top: 10px; }
+    margin-left: 10px;
+    margin-top: 0; }
   .reviews-post {
     width: 80%;
     margin-left: 0;
@@ -1239,8 +1244,12 @@ img.logo {
     font-weight: bold; }
   .footer-icons {
     margin-bottom: 15px; }
+  .footer-img {
+    cursor: pointer; }
   .footer-bottom-line-item {
-    padding: 15px; } }
+    padding: 15px;
+    cursor: pointer;
+    color: #212121; } }
 
 @media all and (min-width: 1025px) {
   .footer {
@@ -1265,5 +1274,9 @@ img.logo {
     font-weight: bold; }
   .footer-icons {
     margin-bottom: 15px; }
+  .footer-img {
+    cursor: pointer; }
   .footer-bottom-line-item {
-    padding: 15px; } }
+    padding: 15px;
+    cursor: pointer;
+    color: #212121; } }
