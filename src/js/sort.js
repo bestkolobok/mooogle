@@ -103,6 +103,8 @@ if(window.location.pathname == '/sort.html'){
 
     var params = getUrlParams();
 
+    console.log(params);
+
     var page = Object.getOwnPropertyNames(params).includes('page') ? params.page : 2;
 
     if(Object.getOwnPropertyNames(params).includes('p')){
