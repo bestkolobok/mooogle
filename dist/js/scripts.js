@@ -2078,6 +2078,7 @@ var ulSlider = document.querySelector(".part-slider");
 var arrowLeftActors = document.querySelector(".arrow-left__actors");
 var arrowRightActors = document.querySelector(".arrow-right__actors");
 
+var params = getUrlParams();
 
 
 
@@ -2207,7 +2208,6 @@ var positionPart = 0;
 
 let successPeopleImagesCB = function(res){
   const result = JSON.parse(res);
-  console.log(result);
   let widthPart = 130;
   for(let i = 0; i < partSlide.length; i++){
     partSlide[i].style.backgroundImage = `url("https://image.tmdb.org/t/p/w600_and_h900_bestv2${result.backdrops[i].file_path}")`
@@ -2227,11 +2227,11 @@ let errorPeopleImagesCB = function(){
 }
 
 
-theMovieDb.movies.getById({"id":284053, "language":"ru-RUS" }, successCB, errorCB);
+theMovieDb.movies.getById({"id":params.id, "language":"ru-RUS" }, successCB, errorCB);
 
-theMovieDb.credits.getCredit({"id":284053, "language":"ru-RUS" }, successPeopleCB, errorPeopleCB);
+theMovieDb.credits.getCredit({"id":params.id, "language":"ru-RUS" }, successPeopleCB, errorPeopleCB);
 
-theMovieDb.movies.getImages({"id":284053}, successPeopleImagesCB, errorPeopleImagesCB)
+theMovieDb.movies.getImages({"id":params.id}, successPeopleImagesCB, errorPeopleImagesCB)
 
 const trailer = document.querySelector(".trailer-video");
 var reviews = [];
@@ -2240,7 +2240,6 @@ const trailerHidden = document.querySelector(".trailer");
 
 let successGetTrailer = function (res) {
     const result = JSON.parse(res);
-    console.log(result);
     if (result.youtube.length === 0) {
         trailerHidden.setAttribute("style", "display: none;");
     } else {
@@ -2261,7 +2260,6 @@ let successGetReview = function (res) {
         reviews.push(reviewInfo);
         reviewInfo = {};
     }
-    console.log(reviews);
     const html = document.querySelector('#reviews-main').textContent.trim();
     const compiled = _.template(html);
     const r = compiled(reviews);
@@ -2269,7 +2267,6 @@ let successGetReview = function (res) {
 
 
     let posts = document.querySelectorAll(".big-post");
-    console.log(posts);
     posts.forEach(item => {
         let onClick = event => {
             if (event.target !== event.currentTarget) {
@@ -2292,8 +2289,9 @@ let errorGetReview = function (res) {
     console.log(arguments);
 }
 
-theMovieDb.movies.getTrailers({ "id": 284053, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
-theMovieDb.movies.getReviews({ "id": 284053 }, successGetReview, errorGetReview);
+theMovieDb.movies.getTrailers({ "id": params.id, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
+theMovieDb.movies.getReviews({ "id": params.id }, successGetReview, errorGetReview);
+
 
 
 
