@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Title</title>
+    <title>Mooogle</title>
 </head>
 <body>
 <header>
@@ -15,14 +15,18 @@
 	</div>
 	<div id="wrapper">
 		<div class="menu">
-			<div id="block" class="menu__img1"><label class="category">Фильмы</label></div>
+			<div class="menu_head">
+				<div></div>
+				<p class="menu__title">Mooogle</p>
+			</div>
+			<div id="block" class="menu__img1"><label class="menu__category">Фильмы</label></div>
 			<ul class="menu__films">
 				<li><a class="link" href="/sort.html">Премьеры</a></li>
     		<li><a class="link" href="/sort.html">Сейчас на экранах</a></li>
     		<li><a class="link" href="/sort.html">Топ 100</a></li>
 			</ul>
-			<div id="block" class="menu__img2"><label class="category">Сериалы</label></div>
-			<div id="block" class="menu__img3"><label class="category">Избранное</label></div>
+			<div id="block" class="menu__img2"><label class="menu__category">Сериалы</label></div>
+			<div id="block" class="menu__img3"><label class="menu__category">Избранное</label></div>
 		</div>
 		
 		
@@ -46,22 +50,22 @@
 	</div>
 
 	</header>
-<!-- Ниже подключается темплейт карточки фильма -->
+<!-- Ниже подключается темплейт карточки фильма 1 -->
 
 
 <div class="main">
 <div class="search_hidden search" id="search">
     <div class="logo_img">
         <picture>
-            <source media="(min-width: 1023px)" srcset="img/1024-Composed-layer@1X.png 1x, img/1024-Composed-layer@1X.png 2x">
-            <source media="(min-width: 767px)" srcset="img/768-Composed-layer@1X.png 1x, img/768-Composed-layer@1X.png 2x">
-            <source media="(min-width: 479px)" srcset="img/logo_480.png">
-            <img class="logo" src="img/logo_360.png" alt="mooogle_mooo">
+            <source media="(min-width: 1024px)" srcset="img/1024-Composed-layer@1X.png 1x, img/1024-Composed-layer@1X.png 2x">
+            <source media="(min-width: 768px)" srcset="img/768-Composed-layer@1X.png 1x, img/768-Composed-layer@1X.png 2x">
+            <source media="(min-width: 480px)" srcset="img/logo480.png">
+            <img class="logo" src="img/logo360.png" alt="mooogle_mooo">
         </picture>
     </div>
     <form action="#" id="search-form">
-        <input type="search" name="searchMovie" placeholder="Search" id="search-form_input_search" onfocus="searchInput_onFocus()">
-        <input type="submit" value="" id="search-form_input_submit">
+        <input type="search" name="searchMovie" placeholder="Search" id="search-form__input_search" onfocus="searchInput_onFocus()">
+        <input type="submit" value="" id="search-form__input_submit">
     </form>
 </div>
 <div id="black_background">
@@ -76,20 +80,20 @@
     </div>
     <section class="movies-wrapper" id="films">
         <h1>Фильмы</h1>
-        <h2>Премьеры</h2>
+        <h2><a href="sort.html?p=getUpcoming">Премьеры</a></h2>
         <div class="movies-block" id="upcoming_film"> </div>
-        <h2>Самые рейтинговые</h2>
+        <h2><a href="sort.html?p=getTopRated">Самые рейтинговые</a></h2>
         <div class="movies-block" id="top_rated_film"></div>
-        <h2>Сейчас на экране</h2>
+        <h2><a href="sort.html?p=getNowPlaying">Сейчас на экране</a></h2>
         <div class="movies-block" id="now_playing_film"></div>
     </section>
     <section class="movies-wrapper" id="series">
         <h1>Сериалы</h1>
-        <h2>Премьеры</h2>
+        <h2><a href="sort.html?p=getOnTheAirTV">Премьеры</a></h2>
             <div class="movies-block" id="upcoming_series"></div>
-        <h2>Самые рейтинговые</h2>
+        <h2><a href="sort.html?p=getTopRatedTV">Самые рейтинговые</a></h2>
             <div class="movies-block" id="top_rated_series"></div>
-        <h2>Сейчас на экране</h2>
+        <h2><a href="sort.html?p=getAiringTodayTV">Сейчас на экране</a></h2>
             <div class="movies-block" id="now_playing_series"></div>
         </section>
 </div>

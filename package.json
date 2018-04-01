@@ -22,5 +22,9 @@
     "start": "gulp start"
   },
   "author": "mooogle",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/datastore": "^1.4.0",
+    "@google-cloud/storage": "^1.6.0"
+  }
 }
