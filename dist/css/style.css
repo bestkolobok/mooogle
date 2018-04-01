@@ -170,12 +170,8 @@ header {
   -ms-flex-direction: row;
   flex-direction: row;
   padding: 18px 25px 21px 24px;
-<<<<<<< HEAD
-  background: #77c1bb; }
-=======
   background: #77c1bb;
   z-index: 99; }
->>>>>>> short_card
 
 .head {
   display: -webkit-box;
