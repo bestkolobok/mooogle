@@ -2324,11 +2324,11 @@ let search_blcok = document.getElementById('search');
 
 //место, куда пользователь вводит запрос
 let searchInput_onFocus = function () {
-    document.getElementById('search-form_input_search').style.border = 'none';
+    document.getElementById('search-form__input_search').style.border = 'none';
 };
 
 const onClick = (event) => {
-    if (event.target.className === "head-1__search" || event.target.className === "head-1__input-search" || event.target.className === "head__search" || event.target.classList.contains('search-form_input_search')) {
+    if (event.target.className === "head-1__search" || event.target.className === "head-1__input-search" || event.target.className === "head__search" || event.target.classList.contains('search-form__input_search')) {
         search_blcok.classList.remove('search_hidden');
         search_blcok.classList.add('search_show');
         movie_collection.classList.add('black_background');
@@ -2391,24 +2391,19 @@ function sort (event) {
     //в зависимости от текущего типа сортировки применяем тот или инной метод
     const ordered = order === 'ASC' ? sortASC(sortResult.results, param) : sortDESC(sortResult.results, param);
 
-    console.log('{results: ordered}', order);
-    console.log({results: ordered});
-
     //выводим отсортированый массив.
     renderResult({results: ordered});
 }
 
 
 // метод, который будет выполнен в случае удачного обращения к API MovieDB
-var successGetUpcomming = function successGetUpcomming(res) {
+var successGet = function successGet(res) {
 
-    console.log('//////', 'get_movies from db')
-
+    
     // парсим JSON в объект
     var data = JSON.parse(res);
-
+    
     console.log(data);
-
     sortResult = data;
 
     renderResult(data);
@@ -2420,7 +2415,15 @@ function renderResult(data){
     //передаем в ранее "скомпилированный" метод
     colectionWrapper.innerHTML = '';
     data.results.forEach(item => {
-        
+
+        if(Object.getOwnPropertyNames(item).includes('name')){
+            item.title = item.name;
+        }
+
+        if(Object.getOwnPropertyNames(item).includes('first_air_date')){
+            item.release_date = item.first_air_date
+        }
+      
         colectionWrapper.insertAdjacentHTML('beforeend', compiledCard({
             item
         }));
@@ -2430,7 +2433,7 @@ function renderResult(data){
 
 // Метод, который будет вызван в случае ошибки при обращении к API MovieDB 
 
-var errorGetUpcomming = function errorGetUpcomming() {
+var errorGet = function errorGet() {
     console.log(arguments);
 };
 
@@ -2441,11 +2444,62 @@ var errorGetUpcomming = function errorGetUpcomming() {
 
 if(window.location.pathname == '/sort.html'){
 
-    theMovieDb.movies.getUpcoming({
-        "language": "ru-RUS"
-    }, successGetUpcomming, errorGetUpcomming);
+    var params = getUrlParams();
+
+    var page = Object.getOwnPropertyNames(params).includes('page') ? params.page : 2;
+
+    if(Object.getOwnPropertyNames(params).includes('p')){
+
+        if(params.p === 'getUpcoming'){
+            theMovieDb.movies.getUpcoming({
+                "language": "ru-RUS",
+                "page" : page,
+            }, successGet, errorGet);
+        }
+
+        if(params.p === 'getTopRated'){
+            theMovieDb.movies.getTopRated({ 
+                "language": "ru-RUS",
+                "page" : page,
+            }, successGet, errorGet);
+        }
+
+        if(params.p === 'getNowPlaying'){
+            theMovieDb.movies.getNowPlaying({ 
+                "language": "ru-RUS",
+                "page" : page,
+            }, successGet, errorGet);
+        }
+
+        if(params.p === 'getOnTheAirTV'){
+            theMovieDb.tv.getOnTheAir({ 
+                "language": "ru-RUS",
+                "page" : page,
+            }, successGet, errorGet);
+        }
+
+        if(params.p === 'getTopRatedTV'){
+            theMovieDb.tv.getTopRated({ 
+                "language": "ru-RUS",
+                "page" : page,
+            }, successGet, errorGet);
+        }
+        
+    }
+
+
 
     sortButtonName.onclick = sort;
     sortButtonDate.onclick = sort;
 
+}
+
+function getUrlParams () {
+    var params = {};
+    var locationParams = window.location.search.replace('?', '').split('&');
+    locationParams.forEach((item)=>{
+        var a = item.split('=');
+        params[a[0]] = a[1];
+    })
+    return params;
 }
