@@ -1983,6 +1983,7 @@ function prepareResult (res, count) {
     return data.results.splice(0, count);
 }
 
+
 function upcommingFilm (res){
 
     const toShow = prepareResult(res, 4);
@@ -2445,6 +2446,8 @@ var errorGet = function errorGet() {
 if(window.location.pathname == '/sort.html'){
 
     var params = getUrlParams();
+
+    console.log(params);
 
     var page = Object.getOwnPropertyNames(params).includes('page') ? params.page : 2;
 
