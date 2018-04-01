@@ -3,7 +3,7 @@
     vertical-align: top;
     border: none;
     position: absolute;
-    //  visibility: hidden;
+    //visibility: hidden;
     background-color: $main-background;
     height: 383px;
     z-index: 10;
@@ -79,7 +79,7 @@
         &__input_submit{
             position: absolute;
             background: none;
-            background-image: url(../../img/search-arrow_360.png);
+            background-image: url(../../img/serch360.png);
             background-repeat: no-repeat;
             width: 28px;
             height: 28px;
@@ -97,10 +97,10 @@
     }
 }
 
-// .search_hidden {
-//     top: -100%;
-//     transition: 0.5s;
-// }
+ .search_hidden {
+     top: -100%;
+     transition: 0.5s;
+ }
 
 .search_show {
     top: 0;
