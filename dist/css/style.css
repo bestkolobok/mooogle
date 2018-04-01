@@ -1104,6 +1104,9 @@ h2 a {
       flex-wrap: wrap;
       max-width: 717px;
       margin: 0 auto; }
+    .movies-wrapper .container {
+      max-width: 717px;
+      margin: auto; }
     .movies-wrapper .movie-card {
       width: 48%;
       margin: 5px auto;
@@ -1122,6 +1125,9 @@ h2 a {
     max-width: 350px; } }
 
 @media all and (min-width: 1025px) {
+  .container {
+    max-width: 1000px;
+    margin: auto; }
   .tab {
     display: -webkit-box;
     display: -ms-flexbox;

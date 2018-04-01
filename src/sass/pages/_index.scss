@@ -116,6 +116,11 @@ h2 a {
       max-width: 717px;
       margin: 0 auto;
     }
+
+    .container {
+      max-width: 717px;
+      margin: auto;
+    }
     .movie-card {
       width: 48%;
       margin: 5px auto;
@@ -142,6 +147,10 @@ h2 a {
   }
 }
 @include respond-to(desktop-extra) {
+  .container {
+    max-width: 1000px;
+    margin: auto;
+  }
   .tab{
     display: flex;
     flex-direction: row;
@@ -194,6 +203,7 @@ h2 a {
       max-width: 1000px;
       margin: 0 auto;
     }
+
     .movie-card {
       width: 48%;
       margin: 5px auto;

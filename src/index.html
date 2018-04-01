@@ -11,7 +11,9 @@
         <button class="tab_links active" onclick="openCaption(event, 'films')">Фильмы</button>
         <button class="tab_links" onclick="openCaption(event, 'series')">Сериалы</button>
     </div>
+
     <section class="movies-wrapper" id="films">
+        <div class="container">
         <h1>Фильмы</h1>
         <h2><a href="sort.html?p=getUpcoming">Премьеры</a></h2>
         <div class="movies-block" id="upcoming_film"> </div>
@@ -19,8 +21,10 @@
         <div class="movies-block" id="top_rated_film"></div>
         <h2><a href="sort.html?p=getNowPlaying">Сейчас на экране</a></h2>
         <div class="movies-block" id="now_playing_film"></div>
+        </div>
     </section>
     <section class="movies-wrapper" id="series">
+        <div class="container">
         <h1>Сериалы</h1>
         <h2><a href="sort.html?p=getOnTheAir">Премьеры</a></h2>
             <div class="movies-block" id="upcoming_series"></div>
@@ -28,7 +32,9 @@
             <div class="movies-block" id="top_rated_series"></div>
         <h2><a href="sort.html?p=getAiringToday">Сейчас на экране</a></h2>
             <div class="movies-block" id="now_playing_series"></div>
+        </div>
         </section>
+
 </div>
 //= templates/movieCard.html
 //= templates/footer.html
