@@ -5,28 +5,38 @@
     position: absolute;
     //  visibility: hidden;
     background-color: $main-background;
-    height: 450px;
+    height: 383px;
     z-index: 10;
     width: 100%;
     display: flex;
     justify-content: center;
     top: 0;
-    
+
+    @include respond-to(desktop){
+        height: 473px;
+    }
     @include respond-to(break-medium){
-        height: 368px;
+        height: 393px;
     }
     @include respond-to(break-medium-large){
-        height: 456px;
+        height: 479px;
     }
     @include respond-to(break-desktop){
         height: 616px;
     }
 
-    img.logo{
+    // img.logo{
+    //     position: relative;
+    //     // visibility: hidden;
+    //     z-index: 10;
+    //     top: 60px;
+    // }
+    .logo_img{
         position: relative;
         // visibility: hidden;
         z-index: 10;
-        top: 60px;
+        top: 80px;
+        text-align: center;
     }
 
 
@@ -87,10 +97,10 @@
     }
 }
 
-.search_hidden {
-    top: -100%;
-    transition: 0.5s;
-}
+// .search_hidden {
+//     top: -100%;
+//     transition: 0.5s;
+// }
 
 .search_show {
     top: 0;
