@@ -1983,6 +1983,7 @@ function prepareResult (res, count) {
     return data.results.splice(0, count);
 }
 
+
 function upcommingFilm (res){
 
     const toShow = prepareResult(res, 4);
@@ -2399,9 +2400,11 @@ function sort (event) {
 // метод, который будет выполнен в случае удачного обращения к API MovieDB
 var successGet = function successGet(res) {
 
+    
     // парсим JSON в объект
     var data = JSON.parse(res);
-
+    
+    console.log(data);
     sortResult = data;
 
     renderResult(data);
@@ -2444,35 +2447,44 @@ if(window.location.pathname == '/sort.html'){
 
     var params = getUrlParams();
 
+    console.log(params);
+
+    var page = Object.getOwnPropertyNames(params).includes('page') ? params.page : 2;
+
     if(Object.getOwnPropertyNames(params).includes('p')){
 
         if(params.p === 'getUpcoming'){
             theMovieDb.movies.getUpcoming({
-                "language": "ru-RUS"
+                "language": "ru-RUS",
+                "page" : page,
             }, successGet, errorGet);
         }
 
         if(params.p === 'getTopRated'){
             theMovieDb.movies.getTopRated({ 
-                "language": "ru-RUS"
+                "language": "ru-RUS",
+                "page" : page,
             }, successGet, errorGet);
         }
 
         if(params.p === 'getNowPlaying'){
             theMovieDb.movies.getNowPlaying({ 
-                "language": "ru-RUS"
+                "language": "ru-RUS",
+                "page" : page,
             }, successGet, errorGet);
         }
 
         if(params.p === 'getOnTheAirTV'){
             theMovieDb.tv.getOnTheAir({ 
-                "language": "ru-RUS"
+                "language": "ru-RUS",
+                "page" : page,
             }, successGet, errorGet);
         }
 
         if(params.p === 'getTopRatedTV'){
             theMovieDb.tv.getTopRated({ 
-                "language": "ru-RUS"
+                "language": "ru-RUS",
+                "page" : page,
             }, successGet, errorGet);
         }
         

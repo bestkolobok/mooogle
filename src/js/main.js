@@ -40,6 +40,7 @@ function prepareResult (res, count) {
     return data.results.splice(0, count);
 }
 
+
 function upcommingFilm (res){
 
     const toShow = prepareResult(res, 4);

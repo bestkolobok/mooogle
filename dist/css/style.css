@@ -77,12 +77,12 @@ a {
       -webkit-box-flex: 0;
       -ms-flex: 0 0 98%;
       flex: 0 0 98%; } }
-  @media all and (min-width: 361px) and (max-width: 480px) {
+  @media all and (min-width: 361px) and (max-width: 767px) {
     .movie-card {
       -webkit-box-flex: 0;
       -ms-flex: 0 0 98%;
       flex: 0 0 98%; } }
-  @media all and (min-width: 482px) and (max-width: 1024px) {
+  @media all and (min-width: 1025px) and (max-width: 1440px) {
     .movie-card {
       -webkit-box-flex: 0;
       -ms-flex: 0 0 48.5%;
@@ -94,7 +94,7 @@ a {
     @media all and (min-width: 319px) and (max-width: 360px) {
       .movie-card__wrapper {
         min-height: 175px; } }
-    @media all and (min-width: 361px) and (max-width: 480px) {
+    @media all and (min-width: 361px) and (max-width: 767px) {
       .movie-card__wrapper {
         min-height: 220px; } }
   .movie-card__title {
@@ -103,7 +103,7 @@ a {
     @media all and (min-width: 319px) and (max-width: 360px) {
       .movie-card__title {
         font-size: 20px; } }
-    @media all and (min-width: 361px) and (max-width: 480px) {
+    @media all and (min-width: 361px) and (max-width: 767px) {
       .movie-card__title {
         font-size: 24px; } }
   .movie-card__controls {
@@ -138,10 +138,10 @@ a {
     @media all and (min-width: 319px) and (max-width: 360px) {
       .movie-card .gradient {
         min-height: 175px; } }
-    @media all and (min-width: 361px) and (max-width: 480px) {
+    @media all and (min-width: 361px) and (max-width: 767px) {
       .movie-card .gradient {
         min-height: 220px; } }
-    @media all and (min-width: 482px) and (max-width: 1024px) {
+    @media all and (min-width: 1025px) and (max-width: 1440px) {
       .movie-card .gradient {
         min-height: 250px; } }
 
@@ -479,10 +479,10 @@ head-1__search {
     @media all and (min-width: 319px) and (max-width: 360px) {
       .sort * {
         font-size: 14px; } }
-    @media all and (min-width: 361px) and (max-width: 480px) {
+    @media all and (min-width: 361px) and (max-width: 767px) {
       .sort * {
         font-size: 16px; } }
-    @media all and (min-width: 482px) and (max-width: 1024px) {
+    @media all and (min-width: 1025px) and (max-width: 1440px) {
       .sort * {
         font-size: 18px; } }
   .sort .subcategory-holder {
@@ -492,12 +492,12 @@ head-1__search {
         -webkit-box-flex: 0;
         -ms-flex: 0 0 35%;
         flex: 0 0 35%; } }
-    @media all and (min-width: 361px) and (max-width: 480px) {
+    @media all and (min-width: 361px) and (max-width: 767px) {
       .sort .subcategory-holder {
         -webkit-box-flex: 0;
         -ms-flex: 0 0 35%;
         flex: 0 0 35%; } }
-    @media all and (min-width: 482px) and (max-width: 1024px) {
+    @media all and (min-width: 1025px) and (max-width: 1440px) {
       .sort .subcategory-holder {
         -webkit-box-flex: 0;
         -ms-flex: 0 0 55%;
@@ -518,10 +518,10 @@ head-1__search {
     @media all and (min-width: 319px) and (max-width: 360px) {
       .sort .sortButton-holder::after {
         margin-left: 5px; } }
-    @media all and (min-width: 361px) and (max-width: 480px) {
+    @media all and (min-width: 361px) and (max-width: 767px) {
       .sort .sortButton-holder::after {
         margin-left: 10px; } }
-    @media all and (min-width: 482px) and (max-width: 1024px) {
+    @media all and (min-width: 1025px) and (max-width: 1440px) {
       .sort .sortButton-holder::after {
         margin-left: 15px; } }
 
@@ -873,7 +873,7 @@ table {
 .slider-actor {
   position: relative; }
 
-@media all and (min-width: 482px) and (max-width: 1024px) {
+@media all and (min-width: 1025px) and (max-width: 1440px) {
   .wrapper_box {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -958,7 +958,7 @@ table {
     margin-left: 0;
     margin-bottom: 10px; } }
 
-@media all and (min-width: 1025px) {
+@media all and (min-width: 1441px) {
   .wrapper_box {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1074,7 +1074,7 @@ h2 a {
     .movies-wrapper h2 {
       margin: 10px; } }
 
-@media all and (min-width: 1025px) {
+@media all and (min-width: 1441px) {
   .tab {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1161,7 +1161,7 @@ h2 a {
   -ms-flex-pack: center;
   justify-content: center;
   top: 0; }
-  @media all and (min-width: 482px) and (max-width: 1024px) {
+  @media all and (min-width: 1025px) and (max-width: 1440px) {
     .search {
       height: 473px; } }
   .search .logo_img {
@@ -1231,7 +1231,7 @@ h2 a {
 .footer {
   display: none; }
 
-@media all and (min-width: 482px) and (max-width: 1024px) {
+@media all and (min-width: 1025px) and (max-width: 1440px) {
   .footer {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1258,7 +1258,7 @@ h2 a {
   .footer-bottom-line-item {
     padding: 15px; } }
 
-@media all and (min-width: 1025px) {
+@media all and (min-width: 1441px) {
   .footer {
     display: -webkit-box;
     display: -ms-flexbox;
