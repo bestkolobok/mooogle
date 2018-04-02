@@ -4,6 +4,7 @@
     flex-wrap: nowrap; 
     margin: 20px auto;
     max-width: 1000px;
+    width: 90%;
     * {
         @include respond-to(mobile-extra-small){
             font-size: 14px;
@@ -19,31 +20,18 @@
     }
     .subcategory-holder {
         text-align: left;
-        padding: 0 10px;
-        @include respond-to(mobile-extra-small){
-            flex: 0 0 35%;
-        }
-        @include respond-to(mobile-small){
-            flex: 0 0 35%;
-        }
-        @include respond-to(medium){
-            flex: 0 0 35%;
-        }
-        @include respond-to(medium-large){
+        flex: 0 0 35%;
+        @include respond-to(desktop){
             flex: 0 0 40%;
         }
-        @include respond-to(desktop){
-            flex: 0 0 45%;
-        }
         @include respond-to(desktop-extra){
-            flex: 0 0 45%;
+            flex: 0 0 40%;
         }
     }
     .sortButton-holder {
         text-align: center;
         flex: auto;
         position: relative;
-        padding-right: 10px;
     }
     .sortButton-holder::after {
         content: ' ';
