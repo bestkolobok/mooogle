@@ -538,7 +538,8 @@ head-1__search {
         margin-left: 5px; } }
 
 .wrapper {
-  padding: 15px; }
+  padding: 15px;
+  padding-top: 78px; }
 
 .carousel {
   position: relative;
