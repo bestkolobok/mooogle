@@ -472,7 +472,8 @@ head-1__search {
   flex-direction: row;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  margin: 20px 10px; }
+  margin: 20px auto;
+  max-width: 1000px; }
   .sort * {
     font-family: "Roboto", sanserif;
     color: #372c48; }
@@ -486,7 +487,8 @@ head-1__search {
       .sort * {
         font-size: 18px; } }
   .sort .subcategory-holder {
-    text-align: left; }
+    text-align: left;
+    padding: 0 10px; }
     @media all and (min-width: 319px) and (max-width: 360px) {
       .sort .subcategory-holder {
         -webkit-box-flex: 0;
@@ -497,11 +499,26 @@ head-1__search {
         -webkit-box-flex: 0;
         -ms-flex: 0 0 35%;
         flex: 0 0 35%; } }
+    @media all and (min-width: 768px) and (max-width: 1023px) {
+      .sort .subcategory-holder {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 35%;
+        flex: 0 0 35%; } }
+    @media all and (min-width: 1024px) and (max-width: 1024px) {
+      .sort .subcategory-holder {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 40%;
+        flex: 0 0 40%; } }
     @media all and (min-width: 1025px) and (max-width: 1440px) {
       .sort .subcategory-holder {
         -webkit-box-flex: 0;
-        -ms-flex: 0 0 55%;
-        flex: 0 0 55%; } }
+        -ms-flex: 0 0 45%;
+        flex: 0 0 45%; } }
+    @media all and (min-width: 1441px) {
+      .sort .subcategory-holder {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 45%;
+        flex: 0 0 45%; } }
   .sort .sortButton-holder {
     text-align: center;
     -webkit-box-flex: 1;
@@ -514,16 +531,11 @@ head-1__search {
     position: absolute;
     width: 15px;
     height: 15px;
+    margin-left: 10px;
     background: url(../img/sort-arrows.png) no-repeat; }
     @media all and (min-width: 319px) and (max-width: 360px) {
       .sort .sortButton-holder::after {
         margin-left: 5px; } }
-    @media all and (min-width: 361px) and (max-width: 767px) {
-      .sort .sortButton-holder::after {
-        margin-left: 10px; } }
-    @media all and (min-width: 1025px) and (max-width: 1440px) {
-      .sort .sortButton-holder::after {
-        margin-left: 15px; } }
 
 .wrapper {
   padding: 15px; }
