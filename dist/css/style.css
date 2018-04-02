@@ -1278,7 +1278,7 @@ h2 a {
   border: none;
   position: absolute;
   background-color: #77c1bb;
-  height: 450px;
+  height: 383px;
   z-index: 10;
   width: 100%;
   display: -webkit-box;
@@ -1288,10 +1288,14 @@ h2 a {
   -ms-flex-pack: center;
   justify-content: center;
   top: 0; }
-  .search img.logo {
+  @media all and (min-width: 1025px) and (max-width: 1440px) {
+    .search {
+      height: 473px; } }
+  .search .logo_img {
     position: relative;
     z-index: 10;
-    top: 60px; }
+    top: 80px;
+    text-align: center; }
   .search #search-form {
     position: absolute;
     top: 272px;
@@ -1319,11 +1323,6 @@ h2 a {
       bottom: 0em;
       border: 0;
       padding: 5px; }
-
-.search_hidden {
-  top: -100%;
-  -webkit-transition: 0.5s;
-  transition: 0.5s; }
 
 .search_show {
   top: 0;
