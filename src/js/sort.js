@@ -12,7 +12,11 @@ const sortButtonName = document.getElementById('sortName');
 //блок в который вставляем результат
 const colectionWrapper = document.getElementById('sortedMovie');
 
-var sortResult;
+const sortTitle = document.getElementById('sort-title');
+
+var sortResult = {
+    results: []
+};
 
 
 // метод для сортировки от меньшего к большему
@@ -54,7 +58,7 @@ function sort (event) {
 
 
 // метод, который будет выполнен в случае удачного обращения к API MovieDB
-var successGet = function successGet(res) {
+var successGet = function (res) {
 
     
     // парсим JSON в объект
@@ -66,11 +70,26 @@ var successGet = function successGet(res) {
     renderResult(data);
 };
 
-function renderResult(data){
+var successSearch = function (res) {
+    var data = JSON.parse(res);
+    
+    console.log(data);
+    if(data.results)
+        sortResult.results = [...sortResult.results, ...data.results];
+
+    console.log(sortResult);
+
+    renderResult(data, false);
+}
+
+function renderResult(data, clean = true){
 
     //проходимся по коллекции фильмов из ответа и обьект каждого из фильмов 
     //передаем в ранее "скомпилированный" метод
-    colectionWrapper.innerHTML = '';
+    if(clean)
+        colectionWrapper.innerHTML = '';
+
+
     data.results.forEach(item => {
 
         if(Object.getOwnPropertyNames(item).includes('name')){
@@ -106,6 +125,14 @@ if(window.location.pathname == '/sort.html'){
     console.log(params);
 
     var page = Object.getOwnPropertyNames(params).includes('page') ? params.page : 2;
+
+    if(Object.getOwnPropertyNames(params).includes('q')){
+
+        console.log('ok')
+
+        theMovieDb.search.getMovie({"query":params.q,"language": "ru-RUS"}, successSearch, errorGet);
+        theMovieDb.search.getTv({"query":params.q,"language": "ru-RUS"}, successSearch, errorGet);
+    }
 
     if(Object.getOwnPropertyNames(params).includes('p')){
 
