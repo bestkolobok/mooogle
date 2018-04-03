@@ -2,11 +2,8 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap; 
-    margin: 20px 10px;
-    @include respond-to(large-desktop){
-        width: 85%;
-        margin: 20px auto;
-    }
+    margin: 20px auto;
+    max-width: 1000px;
     * {
         @include respond-to(mobile-extra-small){
             font-size: 14px;
@@ -22,14 +19,24 @@
     }
     .subcategory-holder {
         text-align: left;
+        padding: 0 10px;
         @include respond-to(mobile-extra-small){
             flex: 0 0 35%;
         }
         @include respond-to(mobile-small){
             flex: 0 0 35%;
         }
+        @include respond-to(medium){
+            flex: 0 0 35%;
+        }
+        @include respond-to(medium-large){
+            flex: 0 0 40%;
+        }
         @include respond-to(desktop){
-            flex: 0 0 55%;
+            flex: 0 0 45%;
+        }
+        @include respond-to(desktop-extra){
+            flex: 0 0 45%;
         }
     }
     .sortButton-holder {
@@ -43,18 +50,12 @@
         position: absolute;
         width: 15px;
         height: 15px;
+        margin-left: 10px;
         @include respond-to(mobile-extra-small){
             margin-left: 5px;
-        }
-        @include respond-to(mobile-small){
-            margin-left: 10px;
-        }
-        @include respond-to(desktop){
-            margin-left: 15px;
-        }
-        @include respond-to(large-desktop){
-            margin-left: 20px;
         }
         background: url(../img/sort-arrows.png) no-repeat;
     }
 }
+
+// test commit here

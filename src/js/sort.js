@@ -48,24 +48,19 @@ function sort (event) {
     //в зависимости от текущего типа сортировки применяем тот или инной метод
     const ordered = order === 'ASC' ? sortASC(sortResult.results, param) : sortDESC(sortResult.results, param);
 
-    console.log('{results: ordered}', order);
-    console.log({results: ordered});
-
     //выводим отсортированый массив.
     renderResult({results: ordered});
 }
 
 
 // метод, который будет выполнен в случае удачного обращения к API MovieDB
-var successGetUpcomming = function successGetUpcomming(res) {
+var successGet = function successGet(res) {
 
-    console.log('//////', 'get_movies from db')
-
+    
     // парсим JSON в объект
     var data = JSON.parse(res);
-
+    
     console.log(data);
-
     sortResult = data;
 
     renderResult(data);
@@ -77,7 +72,15 @@ function renderResult(data){
     //передаем в ранее "скомпилированный" метод
     colectionWrapper.innerHTML = '';
     data.results.forEach(item => {
-        
+
+        if(Object.getOwnPropertyNames(item).includes('name')){
+            item.title = item.name;
+        }
+
+        if(Object.getOwnPropertyNames(item).includes('first_air_date')){
+            item.release_date = item.first_air_date
+        }
+      
         colectionWrapper.insertAdjacentHTML('beforeend', compiledCard({
             item
         }));
@@ -87,7 +90,7 @@ function renderResult(data){
 
 // Метод, который будет вызван в случае ошибки при обращении к API MovieDB 
 
-var errorGetUpcomming = function errorGetUpcomming() {
+var errorGet = function errorGet() {
     console.log(arguments);
 };
 
@@ -98,11 +101,64 @@ var errorGetUpcomming = function errorGetUpcomming() {
 
 if(window.location.pathname == '/sort.html'){
 
-    theMovieDb.movies.getUpcoming({
-        "language": "ru-RUS"
-    }, successGetUpcomming, errorGetUpcomming);
+    var params = getUrlParams();
+
+    console.log(params);
+
+    var page = Object.getOwnPropertyNames(params).includes('page') ? params.page : 2;
+
+    if(Object.getOwnPropertyNames(params).includes('p')){
+
+        if(params.p === 'getUpcoming'){
+            theMovieDb.movies.getUpcoming({
+                "language": "ru-RUS",
+                "page" : page,
+            }, successGet, errorGet);
+        }
+
+        if(params.p === 'getTopRated'){
+            theMovieDb.movies.getTopRated({ 
+                "language": "ru-RUS",
+                "page" : page,
+            }, successGet, errorGet);
+        }
+
+        if(params.p === 'getNowPlaying'){
+            theMovieDb.movies.getNowPlaying({ 
+                "language": "ru-RUS",
+                "page" : page,
+            }, successGet, errorGet);
+        }
+
+        if(params.p === 'getOnTheAirTV'){
+            theMovieDb.tv.getOnTheAir({ 
+                "language": "ru-RUS",
+                "page" : page,
+            }, successGet, errorGet);
+        }
+
+        if(params.p === 'getTopRatedTV'){
+            theMovieDb.tv.getTopRated({ 
+                "language": "ru-RUS",
+                "page" : page,
+            }, successGet, errorGet);
+        }
+        
+    }
+
+
 
     sortButtonName.onclick = sort;
     sortButtonDate.onclick = sort;
 
+}
+
+function getUrlParams () {
+    var params = {};
+    var locationParams = window.location.search.replace('?', '').split('&');
+    locationParams.forEach((item)=>{
+        var a = item.split('=');
+        params[a[0]] = a[1];
+    })
+    return params;
 }
