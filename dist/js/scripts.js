@@ -1097,6 +1097,8 @@ theMovieDb.movies = {
             error
         );
     }
+<<<<<<< HEAD
+<<<<<<< HEAD
 };
 
 theMovieDb.networks = {
@@ -1867,6 +1869,1437 @@ const favorites = {
     }
 };
 
+=======
+};
+
+theMovieDb.networks = {
+    getById: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "network/" + options.id + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    }
+};
+
+theMovieDb.people = {
+    getById: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "person/" + options.id + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getMovieCredits: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "person/" + options.id + "/movie_credits" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getTvCredits: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "person/" + options.id + "/tv_credits" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getCredits: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "person/" + options.id + "/combined_credits" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getExternalIds: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "person/" + options.id + "/external_ids" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getImages: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "person/" + options.id + "/images" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+	getTaggedImages: function(options, success, error) {
+		'use strict';
+
+		theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+		 theMovieDb.common.client(
+            {
+                url: "person/" + options.id + "/tagged_images" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+	},
+    getChanges: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "person/" + options.id + "/changes" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getPopular: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, "", "", true);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "person/popular" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getLatest: function (success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 2);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "person/latest" + theMovieDb.common.generateQuery()
+            },
+            success,
+            error
+        );
+    }
+};
+
+theMovieDb.reviews = {
+    getById: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "review/" + options.id + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    }
+};
+
+theMovieDb.search = {
+    getMovie: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["query"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "search/movie" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getCollection: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["query"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "search/collection" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getTv: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["query"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "search/tv" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getPerson: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["query"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "search/person" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getList: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["query"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "search/list" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getCompany: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["query"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "search/company" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getKeyword: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["query"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "search/keyword" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getMulti: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["query"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "search/multi" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    }
+};
+
+theMovieDb.timezones = {
+    getList: function (success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 2);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "timezones/list" + theMovieDb.common.generateQuery()
+            },
+            success,
+            error
+        );
+    }
+};
+
+theMovieDb.tv = {
+    getById: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getAlternativeTitles: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/alternative_titles" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getContentRatings: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/content_ratings" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getCredits: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/credits" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getExternalIds: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/external_ids" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getImages: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/images" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getKeywords: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/keywords" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error            
+        );
+
+    },
+    getRecommendations: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/recommendations" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },    
+    getSimilar: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/similar" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },    
+    getTranslations: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/translations" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getVideos: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/videos" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getAiringToday: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, "", "", true);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/airing_today" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getLatest: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, "", "", true);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/latest" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getOnTheAir: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, "", "", true);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/on_the_air" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getPopular: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, "", "", true);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/popular" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getTopRated: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, "", "", true);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/top_rated" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    }    
+};
+
+theMovieDb.tvSeasons = {
+    getById: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["season_number", "id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/season/" + options.season_number + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getCredits: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["season_number", "id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/season/" + options.season_number + "/credits" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getExternalIds: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["season_number", "id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/season/" + options.season_number + "/external_ids" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getImages: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["season_number", "id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/season/" + options.season_number + "/images" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getVideos: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["season_number", "id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/season/" + options.season_number + "/videos" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    }
+};
+
+=======
+};
+
+theMovieDb.networks = {
+    getById: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "network/" + options.id + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    }
+};
+
+theMovieDb.people = {
+    getById: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "person/" + options.id + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getMovieCredits: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "person/" + options.id + "/movie_credits" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getTvCredits: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "person/" + options.id + "/tv_credits" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getCredits: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "person/" + options.id + "/combined_credits" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getExternalIds: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "person/" + options.id + "/external_ids" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getImages: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "person/" + options.id + "/images" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+	getTaggedImages: function(options, success, error) {
+		'use strict';
+
+		theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+		 theMovieDb.common.client(
+            {
+                url: "person/" + options.id + "/tagged_images" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+	},
+    getChanges: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "person/" + options.id + "/changes" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getPopular: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, "", "", true);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "person/popular" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getLatest: function (success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 2);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "person/latest" + theMovieDb.common.generateQuery()
+            },
+            success,
+            error
+        );
+    }
+};
+
+theMovieDb.reviews = {
+    getById: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "review/" + options.id + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    }
+};
+
+theMovieDb.search = {
+    getMovie: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["query"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "search/movie" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getCollection: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["query"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "search/collection" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getTv: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["query"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "search/tv" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getPerson: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["query"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "search/person" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getList: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["query"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "search/list" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getCompany: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["query"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "search/company" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getKeyword: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["query"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "search/keyword" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getMulti: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["query"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "search/multi" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    }
+};
+
+theMovieDb.timezones = {
+    getList: function (success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 2);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "timezones/list" + theMovieDb.common.generateQuery()
+            },
+            success,
+            error
+        );
+    }
+};
+
+theMovieDb.tv = {
+    getById: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getAlternativeTitles: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/alternative_titles" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getContentRatings: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/content_ratings" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getCredits: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/credits" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getExternalIds: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/external_ids" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getImages: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/images" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getKeywords: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/keywords" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error            
+        );
+
+    },
+    getRecommendations: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/recommendations" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },    
+    getSimilar: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/similar" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },    
+    getTranslations: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/translations" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getVideos: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/videos" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getAiringToday: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, "", "", true);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/airing_today" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getLatest: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, "", "", true);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/latest" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getOnTheAir: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, "", "", true);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/on_the_air" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getPopular: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, "", "", true);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/popular" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getTopRated: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, "", "", true);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/top_rated" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    }    
+};
+
+theMovieDb.tvSeasons = {
+    getById: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["season_number", "id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/season/" + options.season_number + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getCredits: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["season_number", "id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/season/" + options.season_number + "/credits" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getExternalIds: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["season_number", "id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/season/" + options.season_number + "/external_ids" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getImages: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["season_number", "id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/season/" + options.season_number + "/images" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getVideos: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["season_number", "id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/season/" + options.season_number + "/videos" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    }
+};
+
+>>>>>>> first_page
+theMovieDb.tvEpisodes = {
+    getById: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["episode_number", "season_number", "id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/season/" + options.season_number + "/episode/" + options.episode_number + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getCredits: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["episode_number", "season_number", "id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/season/" + options.season_number + "/episode/" + options.episode_number + "/credits" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getExternalIds: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["episode_number", "season_number", "id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/season/" + options.season_number + "/episode/" + options.episode_number + "/external_ids" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getImages: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["episode_number", "season_number", "id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/season/" + options.season_number + "/episode/" + options.episode_number + "/images" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    },
+    getVideos: function (options, success, error) {
+        'use strict';
+
+        theMovieDb.common.validateRequired(arguments, 3, options, ["episode_number", "season_number", "id"]);
+
+        theMovieDb.common.validateCallbacks([success, error]);
+
+        theMovieDb.common.client(
+            {
+                url: "tv/" + options.id + "/season/" + options.season_number + "/episode/" + options.episode_number + "/videos" + theMovieDb.common.generateQuery(options)
+            },
+            success,
+            error
+        );
+    }
+};
+
+
+(function checkStorage () {
+    if(localStorage.Mooogle === undefined){
+        localStorage.Mooogle = JSON.stringify([]);
+    }
+})();
+
+const favorites = {
+    
+    store: [],
+
+    getStore: function() {
+        const mooogleStore = JSON.parse(localStorage.Mooogle);
+
+        console.log(mooogleStore);
+
+        this.store = mooogleStore.favorites === undefined ? [] : mooogleStore.favorites;
+        return this;
+    },
+
+    saveStore: function() {
+        const mooogleStore = JSON.parse(localStorage.Mooogle);
+        mooogleStore.favorites = this.store;
+        localStorage.Mooogle = JSON.stringify(mooogleStore);
+    },
+
+    add: function(id) {
+        
+        this.store = [...this.store, ...[id]];
+        console.log(this)
+        this.saveStore();
+    },
+
+    getAll: function() {
+
+    }
+};
+
+<<<<<<< HEAD
+>>>>>>> moviepage_top
+=======
+>>>>>>> first_page
 favorites.getStore();
 
 window.addEventListener('click', (event)=>{
@@ -1880,6 +3313,332 @@ window.addEventListener('click', (event)=>{
     }
 });
 window.addEventListener("load", function(){
+<<<<<<< HEAD
+
+
+    let swipearea = document.getElementById("wrapper");
+    let button = document.querySelector("#button");
+    let a = document.querySelector(".menu");
+    let search = document.querySelector(".head__search");
+    let lines = document.getElementsByClassName("button__line");
+    let startX = 0;
+    let startY = 0;
+    let endX = 0;
+    let endY = 0;
+
+    swipearea.addEventListener("touchstart", function(e){
+        console.log(e.changedTouches[0].clientX);
+        startX = e.changedTouches[0].clientX;
+        startY = e.changedTouches[0].clientY;
+    }, false)
+
+    swipearea.addEventListener("touchend", function(e){
+        endX = e.changedTouches[0].clientX;
+        endY = e.changedTouches[0].clientY;
+        if(endX-startX>0){
+        	if(a.classList.contains("move-left")){
+						a.classList.remove("move-left");
+        	}
+        	a.classList.add("move-right");
+            lines[1].style.display = "none";
+            lines[0].classList.add("transformed-1");
+            lines[2].classList.add("transformed-2");
+        }
+        else if(endX-startX<=0){
+        	if(a.classList.contains("move-right")){
+        		a.classList.remove("move-right");
+        	}
+        a.classList.add("move-left");
+        lines[1].style.display = "block";
+        lines[0].classList.remove("transformed-1");
+        lines[2].classList.remove("transformed-2");
+      	}
+    }, false)
+    button.addEventListener('click', function(){
+					if(a.classList.contains("move-right")){
+						a.classList.remove("move-right");
+						a.classList.add("move-left");
+                        lines[1].style.display = "block";
+                        lines[0].classList.remove("transformed-1");
+                        lines[2].classList.remove("transformed-2");
+					}
+					else{
+						a.classList.add("move-right");
+						a.classList.remove("move-left");
+                        lines[1].style.display = "none";
+                        lines[0].classList.add("transformed-1");
+                        lines[2].classList.add("transformed-2");
+					}
+    }, false)
+    search.addEventListener('click', function(){
+				document.querySelector(".head").style.display = "none";
+				document.querySelector(".head-1").style.display = "flex";
+    }, false)
+}, false)
+<<<<<<< HEAD
+
+
+var error = function () {
+    console.log(arguments);
+};
+
+const upcommingFilmWrapper = document.getElementById('upcoming_film');
+const TopFilmWrapper = document.getElementById('top_rated_film');
+const PlayingFilmWrapper = document.getElementById('now_playing_film');
+const upcommingSeriesWrapper = document.getElementById('upcoming_series');
+const TopSeriesWrapper = document.getElementById('top_rated_series');
+const PlayingSeriesWrapper = document.getElementById('now_playing_series');
+
+
+//проверки на нулл не убирать, они нужны если страница отличная от стартовой,
+//что бы не выпадали при отсутсвии блоков
+
+
+if(upcommingFilmWrapper !== null)
+    theMovieDb.movies.getUpcoming({ "language": "ru-RUS"  },  upcommingFilm, error);
+    
+if(PlayingFilmWrapper !== null)
+    theMovieDb.movies.getNowPlaying({ "language": "ru-RUS"  }, PlayingFilm, error);
+    
+if(TopFilmWrapper !== null)
+    theMovieDb.movies.getTopRated({ "language": "ru-RUS"  }, TopFilm, error);
+
+if(upcommingSeriesWrapper !== null)
+    theMovieDb.tv.getOnTheAir({ "language": "ru-RUS"  }, upcommingSeries, error);
+
+if(PlayingSeriesWrapper !== null)
+    theMovieDb.tv.getAiringToday({ "language": "ru-RUS"  }, PlayingSeries, error);
+
+if(TopSeriesWrapper !== null)
+    theMovieDb.tv.getTopRated({ "language": "ru-RUS"  }, TopSeries, error);
+
+function prepareResult (res, count) {
+
+    const data = JSON.parse(res);
+    return data.results.splice(0, count);
+}
+
+
+function upcommingFilm (res){
+
+    const toShow = prepareResult(res, 4);
+  
+    toShow.forEach((item, i) => {
+        upcommingFilmWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
+    });
+}
+
+function TopFilm (res){
+
+    const toShow = prepareResult(res, 4);
+
+    toShow.forEach((item, i) => {
+        TopFilmWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
+    });
+}
+
+function PlayingFilm (res){
+
+    const toShow = prepareResult(res, 4);
+
+    toShow.forEach((item, i) => {
+        PlayingFilmWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
+    });
+}
+
+function upcommingSeries (res){
+
+    const toShow = prepareResult(res, 4);
+
+    toShow.forEach((item, i) => {
+        upcommingSeriesWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
+    });
+}
+
+function TopSeries (res){
+
+    const toShow = prepareResult(res, 4);
+
+    toShow.forEach((item, i) => {
+        TopSeriesWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
+    });
+}
+
+function PlayingSeries (res){
+
+    const toShow = prepareResult(res, 4);
+
+    toShow.forEach((item, i) => {
+        PlayingSeriesWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
+    });
+}
+
+function openCaption(evt, caption) {
+    var i, moviesWrapper, tabLinks;
+
+    moviesWrapper = document.getElementsByClassName("movies-wrapper");
+    for (i = 0; i < moviesWrapper.length; i++) {
+        moviesWrapper[i].style.display = "none";
+    }
+
+    tabLinks = document.getElementsByClassName("tab_links");
+
+    for (i = 0; i < tabLinks.length; i++) {
+        tabLinks[i].className = tabLinks[i].className.replace("active", "");
+
+    }
+
+    document.getElementById(caption).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+
+=======
+
+
+var error = function () {
+    console.log(arguments);
+};
+
+const upcommingFilmWrapper = document.getElementById('upcoming_film');
+const TopFilmWrapper = document.getElementById('top_rated_film');
+const PlayingFilmWrapper = document.getElementById('now_playing_film');
+const upcommingSeriesWrapper = document.getElementById('upcoming_series');
+const TopSeriesWrapper = document.getElementById('top_rated_series');
+const PlayingSeriesWrapper = document.getElementById('now_playing_series');
+
+
+//проверки на нулл не убирать, они нужны если страница отличная от стартовой,
+//что бы не выпадали при отсутсвии блоков
+
+
+if(upcommingFilmWrapper !== null)
+    theMovieDb.movies.getUpcoming({ "language": "ru-RUS"  },  upcommingFilm, error);
+    
+if(PlayingFilmWrapper !== null)
+    theMovieDb.movies.getNowPlaying({ "language": "ru-RUS"  }, PlayingFilm, error);
+    
+if(TopFilmWrapper !== null)
+    theMovieDb.movies.getTopRated({ "language": "ru-RUS"  }, TopFilm, error);
+
+if(upcommingSeriesWrapper !== null)
+    theMovieDb.tv.getOnTheAir({ "language": "ru-RUS"  }, upcommingSeries, error);
+
+if(PlayingSeriesWrapper !== null)
+    theMovieDb.tv.getAiringToday({ "language": "ru-RUS"  }, PlayingSeries, error);
+
+if(TopSeriesWrapper !== null)
+    theMovieDb.tv.getTopRated({ "language": "ru-RUS"  }, TopSeries, error);
+
+function prepareResult (res, count) {
+
+    const data = JSON.parse(res);
+    return data.results.splice(0, count);
+}
+
+
+function upcommingFilm (res){
+
+    const toShow = prepareResult(res, 4);
+  
+    toShow.forEach((item, i) => {
+        upcommingFilmWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
+    });
+}
+
+function TopFilm (res){
+
+    const toShow = prepareResult(res, 4);
+
+    toShow.forEach((item, i) => {
+        TopFilmWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
+    });
+}
+
+function PlayingFilm (res){
+
+    const toShow = prepareResult(res, 4);
+
+    toShow.forEach((item, i) => {
+        PlayingFilmWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
+    });
+}
+
+function upcommingSeries (res){
+
+    const toShow = prepareResult(res, 4);
+
+    toShow.forEach((item, i) => {
+        upcommingSeriesWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
+    });
+}
+
+function TopSeries (res){
+
+    const toShow = prepareResult(res, 4);
+
+    toShow.forEach((item, i) => {
+        TopSeriesWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
+    });
+}
+
+function PlayingSeries (res){
+
+    const toShow = prepareResult(res, 4);
+
+    toShow.forEach((item, i) => {
+        PlayingSeriesWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
+    });
+}
+
+function openCaption(evt, caption) {
+    var i, moviesWrapper, tabLinks;
+
+    moviesWrapper = document.getElementsByClassName("movies-wrapper");
+    for (i = 0; i < moviesWrapper.length; i++) {
+        moviesWrapper[i].style.display = "none";
+    }
+
+    tabLinks = document.getElementsByClassName("tab_links");
+
+    for (i = 0; i < tabLinks.length; i++) {
+        tabLinks[i].className = tabLinks[i].className.replace("active", "");
+
+    }
+
+    document.getElementById(caption).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+
+>>>>>>> moviepage_top
+
+if(window.location.pathname == '/movie.html'){
+
+var img = document.querySelector('.card__img');
+var description = document.querySelector('.description__text');
+var date = document.querySelector('.links__time--item');
+var title = document.querySelector('.card__about--title');
+var container = document.querySelector('.images');
+var tableCountry = document.querySelector(".table-country");
+var tableTagline = document.querySelector(".table-tagline");
+var tableFilmtype = document.querySelector(".table-filmtype");
+var tableRuntime = document.querySelector(".table-runtime");
+var tableProducer = document.querySelector(".table-producer");
+var tableFilmContent = document.querySelector(".table-filmcontent");
+var partSlide = document.querySelectorAll(".part-slide");
+var arrowLeft = document.querySelector(".arrow-left");
+var arrowRight = document.querySelector(".arrow-right");
+var ulSlider = document.querySelector(".part-slider");
+var arrowLeftActors = document.querySelector(".arrow-left__actors");
+var arrowRightActors = document.querySelector(".arrow-right__actors");
+
+<<<<<<< HEAD
+=======
+var params = getUrlParams();
+>>>>>>> moviepage_top
+
+=======
 
 
     let swipearea = document.getElementById("wrapper");
@@ -2080,6 +3839,7 @@ var arrowLeftActors = document.querySelector(".arrow-left__actors");
 var arrowRightActors = document.querySelector(".arrow-right__actors");
 
 
+>>>>>>> first_page
 
 
 
@@ -2208,7 +3968,14 @@ var positionPart = 0;
 
 let successPeopleImagesCB = function(res){
   const result = JSON.parse(res);
+<<<<<<< HEAD
+<<<<<<< HEAD
   console.log(result);
+=======
+>>>>>>> moviepage_top
+=======
+  console.log(result);
+>>>>>>> first_page
   let widthPart = 130;
   for(let i = 0; i < partSlide.length; i++){
     partSlide[i].style.backgroundImage = `url("https://image.tmdb.org/t/p/w600_and_h900_bestv2${result.backdrops[i].file_path}")`
@@ -2228,11 +3995,25 @@ let errorPeopleImagesCB = function(){
 }
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> first_page
 theMovieDb.movies.getById({"id":284053, "language":"ru-RUS" }, successCB, errorCB);
 
 theMovieDb.credits.getCredit({"id":284053, "language":"ru-RUS" }, successPeopleCB, errorPeopleCB);
 
 theMovieDb.movies.getImages({"id":284053}, successPeopleImagesCB, errorPeopleImagesCB)
+<<<<<<< HEAD
+=======
+theMovieDb.movies.getById({"id":params.id, "language":"ru-RUS" }, successCB, errorCB);
+
+theMovieDb.credits.getCredit({"id":params.id, "language":"ru-RUS" }, successPeopleCB, errorPeopleCB);
+
+theMovieDb.movies.getImages({"id":params.id}, successPeopleImagesCB, errorPeopleImagesCB)
+>>>>>>> moviepage_top
+=======
+>>>>>>> first_page
 
 const trailer = document.querySelector(".trailer-video");
 var reviews = [];
@@ -2241,7 +4022,14 @@ const trailerHidden = document.querySelector(".trailer");
 
 let successGetTrailer = function (res) {
     const result = JSON.parse(res);
+<<<<<<< HEAD
+<<<<<<< HEAD
     console.log(result);
+=======
+>>>>>>> moviepage_top
+=======
+    console.log(result);
+>>>>>>> first_page
     if (result.youtube.length === 0) {
         trailerHidden.setAttribute("style", "display: none;");
     } else {
@@ -2262,7 +4050,14 @@ let successGetReview = function (res) {
         reviews.push(reviewInfo);
         reviewInfo = {};
     }
+<<<<<<< HEAD
+<<<<<<< HEAD
     console.log(reviews);
+=======
+>>>>>>> moviepage_top
+=======
+    console.log(reviews);
+>>>>>>> first_page
     const html = document.querySelector('#reviews-main').textContent.trim();
     const compiled = _.template(html);
     const r = compiled(reviews);
@@ -2270,7 +4065,14 @@ let successGetReview = function (res) {
 
 
     let posts = document.querySelectorAll(".big-post");
+<<<<<<< HEAD
+<<<<<<< HEAD
     console.log(posts);
+=======
+>>>>>>> moviepage_top
+=======
+    console.log(posts);
+>>>>>>> first_page
     posts.forEach(item => {
         let onClick = event => {
             if (event.target !== event.currentTarget) {
@@ -2293,8 +4095,19 @@ let errorGetReview = function (res) {
     console.log(arguments);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
 theMovieDb.movies.getTrailers({ "id": 284053, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
 theMovieDb.movies.getReviews({ "id": 284053 }, successGetReview, errorGetReview);
+=======
+theMovieDb.movies.getTrailers({ "id": params.id, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
+theMovieDb.movies.getReviews({ "id": params.id }, successGetReview, errorGetReview);
+
+>>>>>>> moviepage_top
+=======
+theMovieDb.movies.getTrailers({ "id": 284053, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
+theMovieDb.movies.getReviews({ "id": 284053 }, successGetReview, errorGetReview);
+>>>>>>> first_page
 
 
 
