@@ -154,7 +154,7 @@ margin-left: 70px;
 }
 
 
-@mixin respond-to(min-width: $break-small) {
+@include respond-to(mobile) {
 
   header{
    //height: 25px;
@@ -241,7 +241,7 @@ margin-left: 95px;
 
 
 
-@mixin respond-to(min-width: $break-desktop){
+@include respond-to(desktop){
 #wrapper{
 
   display: flex;
