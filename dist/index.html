@@ -1,8 +1,13 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Nikita-Andrey
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Mooogle</title>
 	<link rel="stylesheet" href="css/style.css">
@@ -75,6 +80,89 @@
 </div>
    <div class="controls">
 
+=======
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Mooogle</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/favicon.png" type="image/png">
+</head>
+
+<body>
+    <header>
+        <div id="button">
+            <div class="button__line"></div>
+            <div class="button__line"></div>
+            <div class="button__line"></div>
+        </div>
+        <div id="wrapper">
+            <div class="menu">
+                <div class="menu_head">
+                    <div></div>
+                    <p class="menu__title">Mooogle</p>
+                </div>
+                <div id="block" class="menu__img1"><p class="menu__category">Фильмы</p></div>
+                <ul class="menu__films">
+                    <li><a class="link" href="sort.html?p=getUpcoming">Премьеры</a></li>
+                    <li><a class="link" href="sort.html?p=getNowPlaying">Сейчас на экранах</a></li>
+                    <li><a class="link" href="sort.html?p=getTopRated">Топ 100</a></li>
+                </ul>
+                <div id="block" class="menu__img2"><label class="menu__category">Сериалы</label></div>
+                <ul class="menu__films">
+                    <li><a class="link" href="sort.html?p=getOnTheAirTV">Премьеры</a></li>
+                    <li><a class="link" href="sort.html?p=getAiringTodayTV">Сейчас на экранах</a></li>
+                    <li><a class="link" href="sort.html?p=getTopRatedTV">Топ 100</a></li>
+                </ul>
+                <div id="block" class="menu__img3"><label class="menu__category">Избранное</label></div>
+            </div>
+
+
+            <div class="head">
+                <div><img src="../img/logo_1024.png" class="head__logo" alt="logo">
+                    <h1 class="main-title">Mooogle</h1>
+                </div>
+
+                <img src="../img/serch480.png" class="head__search" alt="search">
+            </div>
+
+
+            <div class="head-1">
+                <div>
+                    <img src="../img/serch480.png" class="head-1__search" alt="search">
+                    <form action="/sort.html" method="get">
+                        <input class="head-1__input-search" type="search" placeholder="Search" name="s">
+                    </form>
+                </div>
+
+                <img src="../img/mic480.png" class="head-1__mic" alt="search">
+            </div>
+
+        </div>
+
+    </header>
+<!-- Ниже подключается темплейт карточки фильма 1 -->
+
+
+<div class="main">
+<div class="search_hidden search" id="search">
+    <div class="logo_img">
+        <picture>
+            <source media="(min-width: 1024px)" srcset="img/1024-Composed-layer@1X.png 1x, img/1024-Composed-layer@1X.png 2x">
+            <source media="(min-width: 768px)" srcset="img/logoStart768@1X.png 1x, img/logoStart768@2X.png 2x">
+            <source media="(min-width: 480px)" srcset="img/logoStart480.png">
+            <img class="logo" src="img/logoStart360.png" alt="mooogle_mooo">
+        </picture>
+    </div>
+    <form action="#" id="search-form">
+        <input type="search" name="searchMovie" placeholder="Search" id="search-form__input_search" onfocus="searchInput_onFocus()">
+        <input type="submit" value="" id="search-form__input_submit">
+    </form>
+</div>
+<div id="black_background">
+    <div id="searchMovie"></div>
+</div>
+   <div class="controls">
+
+>>>>>>> Nikita-Andrey
     </div>
     <div class="tab">
         <button class="tab_links active" onclick="openCaption(event, 'films')">Фильмы</button>
@@ -131,10 +219,14 @@
                     <button class="movie-card__button movie-card__button--reminde">
                 </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <div class="movie-card__title" data-id="<%- item.id %>"><a href="movie.html?id=<%- item.id %>&type=<%- type %>" title="<%- name%>"><%- name%> <%- dates%></a></div>
 =======
                 <div class="movie-card__title" data-id="<%- item.id %>"><a href="movie.html?id=<%- item.id %>" title="<%- name%>"><%- name%> <%- dates%></a></div>
 >>>>>>> sort_tab
+=======
+                <div class="movie-card__title" data-id="<%- item.id %>"><a href="movie.html?id=<%- item.id %>" title="<%- name%>"><%- name%> <%- dates%></a></div>
+>>>>>>> Nikita-Andrey
             </div>
         </div>
     </div>
@@ -158,6 +250,7 @@
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
 <script src="js/scripts.js"></script>
 </body>
+<<<<<<< HEAD
 =======
 <!DOCTYPE html>
 <html lang="en">
@@ -315,4 +408,6 @@
 <script src="js/scripts.js"></script>
 </body>
 >>>>>>> moviepage_top
+=======
+>>>>>>> Nikita-Andrey
 </html>

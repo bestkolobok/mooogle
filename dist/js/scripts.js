@@ -1,5 +1,8 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Nikita-Andrey
 /*
  * The MIT License (MIT)
  *
@@ -1833,8 +1836,13 @@ theMovieDb.tvEpisodes = {
 
 
 (function checkStorage () {
+<<<<<<< HEAD
     if(localStorage.favorites === undefined){
         localStorage.setItem("favorites", JSON.stringify([]));
+=======
+    if(localStorage.Mooogle === undefined){
+        localStorage.Mooogle = JSON.stringify([]);
+>>>>>>> Nikita-Andrey
     }
 })();
 
@@ -1852,6 +1860,7 @@ const favorites = {
     },
 
     saveStore: function() {
+<<<<<<< HEAD
 
         console.log('this store', this.store);
 
@@ -1897,10 +1906,16 @@ const favorites = {
 
     errorGetInfo: function(result) {
         console.log(result);
+=======
+        const mooogleStore = JSON.parse(localStorage.Mooogle);
+        mooogleStore.favorites = this.store;
+        localStorage.Mooogle = JSON.stringify(mooogleStore);
+>>>>>>> Nikita-Andrey
     },
 
     add: function(id) {
         
+<<<<<<< HEAD
         if(id.length > 5){
 //movie     
             theMovieDb.movies.getById({"id":id, "language": "ru-RUS",}, this.successGetInfo, this.errorGetInfo);
@@ -1908,6 +1923,11 @@ const favorites = {
 //tvshow
             theMovieDb.tv.getById({"id":id, "language": "ru-RUS",}, this.successGetInfo, this.errorGetInfo);
         }
+=======
+        this.store = [...this.store, ...[id]];
+        console.log(this)
+        this.saveStore();
+>>>>>>> Nikita-Andrey
     },
 
     getAll: function() {
@@ -1933,7 +1953,13 @@ window.addEventListener("load", function(){
     let swipearea = document.getElementById("wrapper");
     let button = document.querySelector("#button");
     let a = document.querySelector(".menu");
+<<<<<<< HEAD
     let search = document.querySelector(".head__search");
+=======
+    let mainPage = document.querySelector(".main")
+    let search = document.querySelector(".head__search");
+    let search1 = document.querySelector(".head-1__search");
+>>>>>>> Nikita-Andrey
     let lines = document.getElementsByClassName("button__line");
     let startX = 0;
     let startY = 0;
@@ -1946,7 +1972,11 @@ window.addEventListener("load", function(){
         startY = e.changedTouches[0].clientY;
     }, false)
 
+<<<<<<< HEAD
     swipearea.addEventListener("touchend", function(e){
+=======
+    mainPage.addEventListener("touchend", function(e){
+>>>>>>> Nikita-Andrey
         endX = e.changedTouches[0].clientX;
         endY = e.changedTouches[0].clientY;
         if(endX-startX>0){
@@ -1958,6 +1988,7 @@ window.addEventListener("load", function(){
             lines[0].classList.add("transformed-1");
             lines[2].classList.add("transformed-2");
         }
+<<<<<<< HEAD
         else if(endX-startX<=0){
         	if(a.classList.contains("move-right")){
         		a.classList.remove("move-right");
@@ -1967,6 +1998,17 @@ window.addEventListener("load", function(){
         lines[0].classList.remove("transformed-1");
         lines[2].classList.remove("transformed-2");
       	}
+=======
+        // else if(endX-startX<=0){
+        // 	if(a.classList.contains("move-right")){
+        // 		a.classList.remove("move-right");
+        // 	}
+        // a.classList.add("move-left");
+        // lines[1].style.display = "block";
+        // lines[0].classList.remove("transformed-1");
+        // lines[2].classList.remove("transformed-2");
+      	// }
+>>>>>>> Nikita-Andrey
     }, false)
     button.addEventListener('click', function(){
 					if(a.classList.contains("move-right")){
@@ -1977,17 +2019,53 @@ window.addEventListener("load", function(){
                         lines[2].classList.remove("transformed-2");
 					}
 					else{
+<<<<<<< HEAD
 						a.classList.add("move-right");
 						a.classList.remove("move-left");
+=======
+                        a.classList.remove("move-left");
+						a.classList.add("move-right");
+>>>>>>> Nikita-Andrey
                         lines[1].style.display = "none";
                         lines[0].classList.add("transformed-1");
                         lines[2].classList.add("transformed-2");
 					}
     }, false)
     search.addEventListener('click', function(){
+<<<<<<< HEAD
 				document.querySelector(".head").style.display = "none";
 				document.querySelector(".head-1").style.display = "flex";
     }, false)
+=======
+        if(window.matchMedia("(max-width: 1023px)").matches) {
+            document.querySelector(".head").style.display = "none";
+            document.querySelector(".head-1").style.display = "flex";
+        }
+    }, false)
+
+    search1.addEventListener('click', function(){
+        if(window.matchMedia("(max-width: 1023px)").matches) {
+            document.querySelector(".head-1").style.display = "none";
+            document.querySelector(".head").style.display = "flex";
+        }
+    }, false)
+// swipearea.addEventListener("touchstart", function(e){
+//     console.log(e.changedTouches[0].clientX);
+//     startX = e.changedTouches[0].clientX;
+//     startY = e.changedTouches[0].clientY;
+// }, false)
+
+    mainPage.addEventListener("click", function(e){
+        if(a.classList.contains("move-right")){
+            a.classList.remove("move-right");
+            a.classList.add("move-left");
+            lines[1].style.display = "block";
+            lines[0].classList.remove("transformed-1");
+            lines[2].classList.remove("transformed-2");
+        }
+    }, false)
+
+>>>>>>> Nikita-Andrey
 }, false)
 
 
@@ -2106,6 +2184,7 @@ function openCaption(evt, caption) {
 }
 
 
+<<<<<<< HEAD
 =======
 /*
  * The MIT License (MIT)
@@ -6075,95 +6154,472 @@ window.addEventListener("load", function(){
 if(upcommingSeriesWrapper !== null)
     theMovieDb.tv.getOnTheAir({ "language": "ru-RUS"  }, upcommingSeries, error);
 >>>>>>> moviepage_top
+=======
 
-if(PlayingSeriesWrapper !== null)
-    theMovieDb.tv.getAiringToday({ "language": "ru-RUS"  }, PlayingSeries, error);
+if(window.location.pathname == '/movie.html'){
 
-if(TopSeriesWrapper !== null)
-    theMovieDb.tv.getTopRated({ "language": "ru-RUS"  }, TopSeries, error);
+var img = document.querySelector('.card__img');
+var description = document.querySelector('.description__text');
+var date = document.querySelector('.links__time--item');
+var title = document.querySelector('.card__about--title');
+var container = document.querySelector('.images');
+var tableCountry = document.querySelector(".table-country");
+var tableTagline = document.querySelector(".table-tagline");
+var tableFilmtype = document.querySelector(".table-filmtype");
+var tableRuntime = document.querySelector(".table-runtime");
+var tableProducer = document.querySelector(".table-producer");
+var tableFilmContent = document.querySelector(".table-filmcontent");
+var partSlide = document.querySelectorAll(".part-slide");
+var arrowLeft = document.querySelector(".arrow-left");
+var arrowRight = document.querySelector(".arrow-right");
+var ulSlider = document.querySelector(".part-slider");
+var arrowLeftActors = document.querySelector(".arrow-left__actors");
+var arrowRightActors = document.querySelector(".arrow-right__actors");
 
-function prepareResult (res, count) {
-
-    const data = JSON.parse(res);
-    return data.results.splice(0, count);
-}
+var params = getUrlParams();
 
 
-function upcommingFilm (res){
 
-    const toShow = prepareResult(res, 4);
+
+var width = 80; 
+var count = 1; 
+var index = 0;
+
+
+var carousel = document.getElementById('carousel');
+var list = carousel.querySelector('.images');
+
+
+// var infinitecarousel = new InfiniteCarousel('.images', 'horizontal', 3, {
+  //     timerDuration: 2000,
+  //     transitionDuration: '1s'
+  //   });
   
-    toShow.forEach((item, i) => {
-        upcommingFilmWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
-    });
+  
+  var position = 0; 
+  
+  
+  
+  let successCB = function(res) {
+    const result = JSON.parse(res);
+    // console.log(result);
+  img.style.backgroundImage = `url('https://image.tmdb.org/t/p/w600_and_h900_bestv2/${result.poster_path}')`;
+  description.textContent = result.overview;
+  date.textContent = result.release_date;
+  title.innerHTML = result.title;
+  tableCountry.textContent = `${result.production_countries[0].iso_3166_1}, ${result.production_countries[0].name}`;
+  tableTagline.textContent = result.tagline;
+  for(let i = 0; i < result.genres.length; i++){
+    tableFilmtype.textContent += `${result.genres[i].name}, `;
+  }
+  tableRuntime.textContent = `${result.runtime} мин`;
 }
 
-function TopFilm (res){
+let errorCB = function() {
+  console.log(arguments);
 
-    const toShow = prepareResult(res, 4);
-
-    toShow.forEach((item, i) => {
-        TopFilmWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
-    });
 }
 
-function PlayingFilm (res){
-
-    const toShow = prepareResult(res, 4);
-
-    toShow.forEach((item, i) => {
-        PlayingFilmWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
-    });
+var galleryItems = {
+  text: [],
+  img: [],
 }
 
-function upcommingSeries (res){
 
-    const toShow = prepareResult(res, 4);
+let successPeopleCB = function(res) {
+  const result = JSON.parse(res);
+  // console.log(result);
+  tableProducer.textContent = result.crew[1].name;
+  tableFilmContent.textContent = result.crew[0].name;
+  for (let i = 0; i < 10; i++){
+    galleryItems.text.push(result.cast[i].name);
+    galleryItems.img.push(`https://image.tmdb.org/t/p/w600_and_h900_bestv2${result.cast[i].profile_path}`);
+  }
+  const html = document.querySelector('#gallery-item').textContent.trim();
+  const compiled = _.template(html);
+  
+  var resultCompiled = compiled(galleryItems);
+  
+  container.innerHTML = resultCompiled;
 
-    toShow.forEach((item, i) => {
-        upcommingSeriesWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
-    });
-}
+  var listElems = carousel.querySelectorAll('.images_item');
 
-function TopSeries (res){
 
-    const toShow = prepareResult(res, 4);
+  var initialPoint;
+  var finalPoint;
 
-    toShow.forEach((item, i) => {
-        TopSeriesWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
-    });
-}
+  list.addEventListener('touchstart', function(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  initialPoint=event.changedTouches[0];
+    for(let i = 0; i < listElems.length; i++){
+      var clone = listElems[i].cloneNode(true);
+      list.appendChild(clone);
 
-function PlayingSeries (res){
-
-    const toShow = prepareResult(res, 4);
-
-    toShow.forEach((item, i) => {
-        PlayingSeriesWrapper.insertAdjacentHTML('beforeend', compiledCard({item}));
-    });
-}
-
-function openCaption(evt, caption) {
-    var i, moviesWrapper, tabLinks;
-
-    moviesWrapper = document.getElementsByClassName("movies-wrapper");
-    for (i = 0; i < moviesWrapper.length; i++) {
-        moviesWrapper[i].style.display = "none";
     }
 
-    tabLinks = document.getElementsByClassName("tab_links");
+  }, false);
 
-    for (i = 0; i < tabLinks.length; i++) {
-        tabLinks[i].className = tabLinks[i].className.replace("active", "");
+  list.addEventListener('touchend', function(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  finalPoint=event.changedTouches[0];
 
+    // for(let i = 0; i < listElems.length; i++){
+    //   var clone = listElems[i].cloneNode(true);
+    //   list.insertBefore(clone, listElems[i]);
+
+    // }
+
+    index++;
+
+  var xAbs = Math.abs(initialPoint.pageX - finalPoint.pageX);
+  if (xAbs > 20) {
+    console.log(listElems.length+index);
+    if (finalPoint.pageX < initialPoint.pageX){
+      position = Math.max(position - width * count, -width * ((listElems.length + index) - count*4));
+      list.style.marginLeft = position + 'px';
+    } else{
+      position = Math.min(position + width * count, 0)
+      list.style.marginLeft = position + 'px';}
+    }
+  }, false);
+  
+  arrowLeftActors.addEventListener("click", function(){
+    position = Math.min(position + width * count, 0)
+    list.style.marginLeft = position + 'px';
+  });
+  arrowRightActors.addEventListener("click", function(){
+    position = Math.max(position - width * count, -width * (8 - count*4));
+    list.style.marginLeft = position + 'px';
+  });
+  
+}
+
+let errorPeopleCB = function(){
+  console.log(arguments);
+}
+
+var countPart = 1;
+var positionPart = 0; 
+ 
+
+let successPeopleImagesCB = function(res){
+  const result = JSON.parse(res);
+  let widthPart = 130;
+  for(let i = 0; i < partSlide.length; i++){
+    partSlide[i].style.backgroundImage = `url("https://image.tmdb.org/t/p/w600_and_h900_bestv2${result.backdrops[i].file_path}")`
+  };
+  arrowLeft.addEventListener("click", function(){
+    positionPart = Math.min(positionPart + widthPart * countPart, 0)
+    ulSlider.style.marginLeft = positionPart + 'px';
+  });
+  arrowRight.addEventListener("click", function(){
+    positionPart = Math.max(positionPart - widthPart * countPart, -widthPart * (8 - countPart*4));
+    ulSlider.style.marginLeft = positionPart + 'px';
+  });
+}
+
+let errorPeopleImagesCB = function(){
+  console.log(arguments);
+}
+
+
+theMovieDb.movies.getById({"id":params.id, "language":"ru-RUS" }, successCB, errorCB);
+
+theMovieDb.credits.getCredit({"id":params.id, "language":"ru-RUS" }, successPeopleCB, errorPeopleCB);
+
+theMovieDb.movies.getImages({"id":params.id}, successPeopleImagesCB, errorPeopleImagesCB)
+
+const trailer = document.querySelector(".trailer-video");
+var reviews = [];
+const reviewContainer = document.querySelector("#reviews-container");
+const trailerHidden = document.querySelector(".trailer");
+
+let successGetTrailer = function (res) {
+    const result = JSON.parse(res);
+    if (result.youtube.length === 0) {
+        trailerHidden.setAttribute("style", "display: none;");
+    } else {
+        trailer.setAttribute("src", `https://www.youtube.com/embed/${result.youtube[0].source}`);
+    }
+}
+
+let errorGetTrailer = function (res) {
+    console.log(arguments);
+}
+
+let successGetReview = function (res) {
+    const result = JSON.parse(res);
+    let reviewInfo = {};
+    for (let i = 0; i < result.results.length; i++) {
+        reviewInfo.author = result.results[i].author;
+        reviewInfo.content = result.results[i].content;
+        reviews.push(reviewInfo);
+        reviewInfo = {};
+    }
+    const html = document.querySelector('#reviews-main').textContent.trim();
+    const compiled = _.template(html);
+    const r = compiled(reviews);
+    reviewContainer.innerHTML = r;
+
+
+    let posts = document.querySelectorAll(".big-post");
+    posts.forEach(item => {
+        let onClick = event => {
+            if (event.target !== event.currentTarget) {
+                if (item.classList.contains("reviews-text-big")) {
+                    item.classList.remove("reviews-text-big");
+                    item.classList.add("reviews-text");
+                    item.innerHTML = `${reviews[0].content.slice(0, 152)}...<a class="more-info"><span>еще</span></a>`;
+                } else {
+                    item.classList.add("reviews-text-big");
+                    item.classList.remove("reviews-text");
+                    item.innerHTML = `${reviews[0].content}<a class="more-info"><span>свернуть</span></a>`;
+                }
+            }
+        };
+        item.addEventListener("click", onClick);
+    });
+}
+
+let errorGetReview = function (res) {
+    console.log(arguments);
+}
+
+theMovieDb.movies.getTrailers({ "id": params.id, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
+theMovieDb.movies.getReviews({ "id": params.id }, successGetReview, errorGetReview);
+
+
+
+
+}
+
+
+
+//находтим и подготавливаем шаблон карточки фильма для дальнейшей работы
+const card = document.getElementById('movie-card').textContent.trim();
+
+//компилируем наш шаблон в метод с помощью Lodash для дальгейшего использования, где либо
+const compiledCard = _.template(card);
+
+    
+
+
+window.addEventListener("click", function(e){
+
+    if(e.target.classList.contains('movie-card__title')){
+        this.location.replace('/movie.html');
+    }
+})
+
+
+
+let movie_collection = document.getElementById('black_background');
+let search_blcok = document.getElementById('search');
+let lastSignIn = localStorage.setItem("lastSignIn", new Date().getDate());
+let inputSearch = document.getElementsByClassName('head-1__input-search')[0];
+
+//место, куда пользователь вводит запрос
+let searchInput_onFocus = function () {
+    document.getElementById('search-form__input_search').style.border = 'none';
+};
+
+inputSearch.addEventListener('keypress', function (event) {
+   if (event.key === 'Enter') {
+       window.location.href = `http://${window.location.host}/search.html?text=${event.value}`;
+   }
+});
+
+// check if it is first login at current day
+if(new Date().getDate() !== parseInt(localStorage.getItem('lastSignIn'))) {
+    showSearch();
+}
+
+const onClick = (event) => {
+    if (event.target.className === "head-1__search" || event.target.className === "head__search" || event.target.classList.contains('search-form__input_search')) {
+        showSearch();
+    } else if (search_blcok.classList.contains('search_show') && !event.target.classList.contains('search') && !event.target.classList.contains('logo') && event.target.nodeName !== 'INPUT') {
+        hideSeacrh();
+    }
+};
+
+function showSearch() {
+    search_blcok.classList.remove('search_hidden');
+    search_blcok.classList.add('search_show');
+    movie_collection.classList.add('black_background');
+}
+
+function hideSeacrh() {
+    search_blcok.classList.add('search_hidden');
+    search_blcok.classList.remove('search_show');
+    movie_collection.classList.remove('black_background');
+}
+
+if(search_blcok !== null) {
+    document.addEventListener("click", onClick);
+}
+
+/*jshint esversion: 6 */
+
+
+
+//кнопка сортировки по ИД
+const sortButtonDate = document.getElementById('sortByDate');
+
+//кнопка сортировки по имени
+const sortButtonName = document.getElementById('sortName');
+
+//блок в который вставляем результат
+const colectionWrapper = document.getElementById('sortedMovie');
+
+var sortResult;
+
+
+// метод для сортировки от меньшего к большему
+function sortASC (data, param) {
+    //return data.sort((a, b) => a[param] > b[param])
+    return data.sort((a, b) => a[param].localeCompare(b[param]));
+}
+
+// метод для сортировки от большего к меньшему
+function sortDESC (data, param) {
+    //return data.sort((a, b) => b[param] > a[param])
+    return data.sort((a, b) =>b[param].localeCompare(a[param]));
+}
+
+
+// метод, который будет повешен на событие onclick всех кнопок сортировки
+function sort (event) {
+
+    // определяем по чему был клик
+    const button = event.target;
+
+    //определяем из поля data-param описанного на кнопке, по какому параметру будем сортировать
+    const param = button.dataset.param;
+>>>>>>> Nikita-Andrey
+
+    //определяем из поля data-order описанного на кнопке, какой порядок сортировки будем использовать
+    const order = button.dataset.order;
+
+    //Определяем "направление" сортировки в текущий момент, и записываем в параметр кнопки data-order противоположное значение,
+    //что бы при следующем нажатии сортировка сработала в другом "направлении".
+    const changedOrder = order === 'ASC' ? 'DESC' : 'ASC';
+    button.dataset.order = changedOrder;
+
+    //в зависимости от текущего типа сортировки применяем тот или инной метод
+    const ordered = order === 'ASC' ? sortASC(sortResult.results, param) : sortDESC(sortResult.results, param);
+
+    //выводим отсортированый массив.
+    renderResult({results: ordered});
+}
+
+
+// метод, который будет выполнен в случае удачного обращения к API MovieDB
+var successGet = function successGet(res) {
+
+    
+    // парсим JSON в объект
+    var data = JSON.parse(res);
+    
+    console.log(data);
+    sortResult = data;
+
+    renderResult(data);
+};
+
+function renderResult(data){
+
+    //проходимся по коллекции фильмов из ответа и обьект каждого из фильмов 
+    //передаем в ранее "скомпилированный" метод
+    colectionWrapper.innerHTML = '';
+    data.results.forEach(item => {
+
+        if(Object.getOwnPropertyNames(item).includes('name')){
+            item.title = item.name;
+        }
+
+        if(Object.getOwnPropertyNames(item).includes('first_air_date')){
+            item.release_date = item.first_air_date
+        }
+      
+        colectionWrapper.insertAdjacentHTML('beforeend', compiledCard({
+            item
+        }));
+    });
+}
+
+
+// Метод, который будет вызван в случае ошибки при обращении к API MovieDB 
+
+var errorGet = function errorGet() {
+    console.log(arguments);
+};
+
+
+//обращение к методу библиотеки для получения списка предстоящих премьер
+//данный метод приведен в качестве примера использования шаблона карточки фильма.
+//За более детальной информацией обратитесь к документации библиотеки
+
+if(window.location.pathname == '/sort.html'){
+
+    var params = getUrlParams();
+
+    console.log(params);
+
+    var page = Object.getOwnPropertyNames(params).includes('page') ? params.page : 2;
+
+    if(Object.getOwnPropertyNames(params).includes('p')){
+
+        if(params.p === 'getUpcoming'){
+            theMovieDb.movies.getUpcoming({
+                "language": "ru-RUS",
+                "page" : page,
+            }, successGet, errorGet);
+        }
+
+        if(params.p === 'getTopRated'){
+            theMovieDb.movies.getTopRated({ 
+                "language": "ru-RUS",
+                "page" : page,
+            }, successGet, errorGet);
+        }
+
+        if(params.p === 'getNowPlaying'){
+            theMovieDb.movies.getNowPlaying({ 
+                "language": "ru-RUS",
+                "page" : page,
+            }, successGet, errorGet);
+        }
+
+        if(params.p === 'getOnTheAirTV'){
+            theMovieDb.tv.getOnTheAir({ 
+                "language": "ru-RUS",
+                "page" : page,
+            }, successGet, errorGet);
+        }
+
+        if(params.p === 'getTopRatedTV'){
+            theMovieDb.tv.getTopRated({ 
+                "language": "ru-RUS",
+                "page" : page,
+            }, successGet, errorGet);
+        }
+        
     }
 
-    document.getElementById(caption).style.display = "block";
-    evt.currentTarget.className += " active";
+
+
+    sortButtonName.onclick = sort;
+    sortButtonDate.onclick = sort;
+
 }
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Nikita-Andrey
 function getUrlParams () {
     var params = {};
     var locationParams = window.location.search.replace('?', '').split('&');
@@ -6173,6 +6629,7 @@ function getUrlParams () {
     })
     return params;
 }
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> moviepage_top
@@ -6768,3 +7225,5 @@ function getUrlParams () {
     return params;
 }
 >>>>>>> moviepage_top
+=======
+>>>>>>> Nikita-Andrey
