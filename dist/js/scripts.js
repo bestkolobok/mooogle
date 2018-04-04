@@ -1885,9 +1885,13 @@ window.addEventListener("load", function(){
     let swipearea = document.getElementById("wrapper");
     let button = document.querySelector("#button");
     let a = document.querySelector(".menu");
+<<<<<<< Updated upstream
     let mainPage = document.querySelector(".main")
     let search = document.querySelector(".head__search");
     let search1 = document.querySelector(".head-1__search");
+=======
+    let search = document.querySelector(".head__search");
+>>>>>>> Stashed changes
     let lines = document.getElementsByClassName("button__line");
     let startX = 0;
     let startY = 0;
@@ -1900,7 +1904,11 @@ window.addEventListener("load", function(){
         startY = e.changedTouches[0].clientY;
     }, false)
 
+<<<<<<< Updated upstream
     mainPage.addEventListener("touchend", function(e){
+=======
+    swipearea.addEventListener("touchend", function(e){
+>>>>>>> Stashed changes
         endX = e.changedTouches[0].clientX;
         endY = e.changedTouches[0].clientY;
         if(endX-startX>0){
@@ -1912,6 +1920,7 @@ window.addEventListener("load", function(){
             lines[0].classList.add("transformed-1");
             lines[2].classList.add("transformed-2");
         }
+<<<<<<< Updated upstream
         // else if(endX-startX<=0){
         // 	if(a.classList.contains("move-right")){
         // 		a.classList.remove("move-right");
@@ -1921,6 +1930,17 @@ window.addEventListener("load", function(){
         // lines[0].classList.remove("transformed-1");
         // lines[2].classList.remove("transformed-2");
       	// }
+=======
+        else if(endX-startX<=0){
+        	if(a.classList.contains("move-right")){
+        		a.classList.remove("move-right");
+        	}
+        a.classList.add("move-left");
+        lines[1].style.display = "block";
+        lines[0].classList.remove("transformed-1");
+        lines[2].classList.remove("transformed-2");
+      	}
+>>>>>>> Stashed changes
     }, false)
     button.addEventListener('click', function(){
 					if(a.classList.contains("move-right")){
@@ -1931,14 +1951,20 @@ window.addEventListener("load", function(){
                         lines[2].classList.remove("transformed-2");
 					}
 					else{
+<<<<<<< Updated upstream
                         a.classList.remove("move-left");
 						a.classList.add("move-right");
+=======
+						a.classList.add("move-right");
+						a.classList.remove("move-left");
+>>>>>>> Stashed changes
                         lines[1].style.display = "none";
                         lines[0].classList.add("transformed-1");
                         lines[2].classList.add("transformed-2");
 					}
     }, false)
     search.addEventListener('click', function(){
+<<<<<<< Updated upstream
         if(window.matchMedia("(max-width: 1023px)").matches) {
             document.querySelector(".head").style.display = "none";
             document.querySelector(".head-1").style.display = "flex";
@@ -1967,6 +1993,11 @@ window.addEventListener("load", function(){
         }
     }, false)
 
+=======
+				document.querySelector(".head").style.display = "none";
+				document.querySelector(".head-1").style.display = "flex";
+    }, false)
+>>>>>>> Stashed changes
 }, false)
 
 
