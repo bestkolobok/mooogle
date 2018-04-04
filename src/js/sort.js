@@ -1,18 +1,13 @@
 
 /*jshint esversion: 6 */
-
-
-
-//кнопка сортировки по ИД
 const sortButtonDate = document.getElementById('sortByDate');
-
-//кнопка сортировки по имени
 const sortButtonName = document.getElementById('sortName');
-
-//блок в который вставляем результат
 const colectionWrapper = document.getElementById('sortedMovie');
+const sortTitle = document.getElementById('sort-title');
 
-var sortResult;
+var sortResult = {
+    results: []
+};
 
 
 // метод для сортировки от меньшего к большему
@@ -52,25 +47,35 @@ function sort (event) {
     renderResult({results: ordered});
 }
 
+var successGet = function (res) {
 
-// метод, который будет выполнен в случае удачного обращения к API MovieDB
-var successGet = function successGet(res) {
-
-    
-    // парсим JSON в объект
     var data = JSON.parse(res);
-    
-    console.log(data);
+
     sortResult = data;
 
     renderResult(data);
 };
 
-function renderResult(data){
+var successSearch = function (res) {
+    var data = JSON.parse(res);
+    
+    console.log(data);
+    if(data.results)
+        sortResult.results = [...sortResult.results, ...data.results];
+
+    console.log(sortResult);
+
+    renderResult(data, false);
+}
+
+function renderResult(data, clean = true){
 
     //проходимся по коллекции фильмов из ответа и обьект каждого из фильмов 
     //передаем в ранее "скомпилированный" метод
-    colectionWrapper.innerHTML = '';
+    if(clean)
+        colectionWrapper.innerHTML = '';
+
+
     data.results.forEach(item => {
 
         if(Object.getOwnPropertyNames(item).includes('name')){
@@ -95,70 +100,80 @@ var errorGet = function errorGet() {
 };
 
 
-//обращение к методу библиотеки для получения списка предстоящих премьер
-//данный метод приведен в качестве примера использования шаблона карточки фильма.
-//За более детальной информацией обратитесь к документации библиотеки
-
 if(window.location.pathname == '/sort.html'){
 
     var params = getUrlParams();
-
-    console.log(params);
-
     var page = Object.getOwnPropertyNames(params).includes('page') ? params.page : 2;
+
+    if(Object.getOwnPropertyNames(params).includes('q')){
+
+        sortTitle.innerText = 'Результат поиска';
+        theMovieDb.search.getMovie({"query":params.q,"language": "ru-RUS"}, successSearch, errorGet);
+        theMovieDb.search.getTv({"query":params.q,"language": "ru-RUS"}, successSearch, errorGet);
+    }
 
     if(Object.getOwnPropertyNames(params).includes('p')){
 
-        if(params.p === 'getUpcoming'){
-            theMovieDb.movies.getUpcoming({
-                "language": "ru-RUS",
-                "page" : page,
-            }, successGet, errorGet);
+
+        switch (params.p){
+            case 'getUpcoming':
+                sortTitle.innerText = 'Премьеры';
+                theMovieDb.movies.getUpcoming({
+                    "language": "ru-RUS",
+                    "page" : page,
+                }, successGet, errorGet);
+            break;
+    
+            case 'getTopRated':
+                sortTitle.innerText = 'Самые рейтинговые';
+                theMovieDb.movies.getTopRated({ 
+                    "language": "ru-RUS",
+                    "page" : page,
+                }, successGet, errorGet);
+            break;
+    
+            case 'getNowPlaying':
+                sortTitle.innerText = 'Сейчас на экранах';
+                theMovieDb.movies.getNowPlaying({ 
+                    "language": "ru-RUS",
+                    "page" : page,
+                }, successGet, errorGet);
+            break;
+    
+            case 'getOnTheAirTV':
+                sortTitle.innerText = 'Сериалы в эфире';  
+                theMovieDb.tv.getOnTheAir({ 
+                    "language": "ru-RUS",
+                    "page" : page,
+                }, successGet, errorGet);
+            break;
+    
+            case 'getTopRatedTV':
+                sortTitle.innerText = 'Сериалы самые рейтинговые';
+                theMovieDb.tv.getTopRated({ 
+                    "language": "ru-RUS",
+                    "page" : page,
+                }, successGet, errorGet);
+            break;
         }
 
-        if(params.p === 'getTopRated'){
-            theMovieDb.movies.getTopRated({ 
-                "language": "ru-RUS",
-                "page" : page,
-            }, successGet, errorGet);
-        }
 
-        if(params.p === 'getNowPlaying'){
-            theMovieDb.movies.getNowPlaying({ 
-                "language": "ru-RUS",
-                "page" : page,
-            }, successGet, errorGet);
-        }
-
-        if(params.p === 'getOnTheAirTV'){
-            theMovieDb.tv.getOnTheAir({ 
-                "language": "ru-RUS",
-                "page" : page,
-            }, successGet, errorGet);
-        }
-
-        if(params.p === 'getTopRatedTV'){
-            theMovieDb.tv.getTopRated({ 
-                "language": "ru-RUS",
-                "page" : page,
-            }, successGet, errorGet);
-        }
         
     }
 
-
-
     sortButtonName.onclick = sort;
     sortButtonDate.onclick = sort;
-
 }
 
 function getUrlParams () {
+
     var params = {};
     var locationParams = window.location.search.replace('?', '').split('&');
+
     locationParams.forEach((item)=>{
         var a = item.split('=');
         params[a[0]] = a[1];
     })
+
     return params;
 }
