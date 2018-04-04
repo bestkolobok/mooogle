@@ -2010,6 +2010,7 @@ function prepareResult (res, count) {
     return data.results.splice(0, count);
 }
 
+
 function upcommingFilm (res){
 
     const toShow = prepareResult(res, 4);
@@ -2105,6 +2106,7 @@ var ulSlider = document.querySelector(".part-slider");
 var arrowLeftActors = document.querySelector(".arrow-left__actors");
 var arrowRightActors = document.querySelector(".arrow-right__actors");
 
+var params = getUrlParams();
 
 
 
@@ -2234,7 +2236,6 @@ var positionPart = 0;
 
 let successPeopleImagesCB = function(res){
   const result = JSON.parse(res);
-  console.log(result);
   let widthPart = 130;
   for(let i = 0; i < partSlide.length; i++){
     partSlide[i].style.backgroundImage = `url("https://image.tmdb.org/t/p/w600_and_h900_bestv2${result.backdrops[i].file_path}")`
@@ -2254,11 +2255,11 @@ let errorPeopleImagesCB = function(){
 }
 
 
-theMovieDb.movies.getById({"id":269149, "language":"ru-RUS" }, successCB, errorCB);
+theMovieDb.movies.getById({"id":params.id, "language":"ru-RUS" }, successCB, errorCB);
 
-theMovieDb.credits.getCredit({"id":269149, "language":"ru-RUS" }, successPeopleCB, errorPeopleCB);
+theMovieDb.credits.getCredit({"id":params.id, "language":"ru-RUS" }, successPeopleCB, errorPeopleCB);
 
-theMovieDb.movies.getImages({"id":269149}, successPeopleImagesCB, errorPeopleImagesCB)
+theMovieDb.movies.getImages({"id":params.id}, successPeopleImagesCB, errorPeopleImagesCB)
 
 const trailer = document.querySelector(".trailer-video");
 var reviews = [];
@@ -2267,7 +2268,6 @@ const trailerHidden = document.querySelector(".trailer");
 
 let successGetTrailer = function (res) {
     const result = JSON.parse(res);
-    console.log(result);
     if (result.youtube.length === 0) {
         trailerHidden.setAttribute("style", "display: none;");
     } else {
@@ -2288,7 +2288,6 @@ let successGetReview = function (res) {
         reviews.push(reviewInfo);
         reviewInfo = {};
     }
-    console.log(reviews);
     const html = document.querySelector('#reviews-main').textContent.trim();
     const compiled = _.template(html);
     const r = compiled(reviews);
@@ -2296,7 +2295,6 @@ let successGetReview = function (res) {
 
 
     let posts = document.querySelectorAll(".big-post");
-    console.log(posts);
     posts.forEach(item => {
         let onClick = event => {
             if (event.target !== event.currentTarget) {
@@ -2319,8 +2317,9 @@ let errorGetReview = function (res) {
     console.log(arguments);
 }
 
-theMovieDb.movies.getTrailers({ "id": 269149, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
-theMovieDb.movies.getReviews({ "id": 269149 }, successGetReview, errorGetReview);
+theMovieDb.movies.getTrailers({ "id": params.id, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
+theMovieDb.movies.getReviews({ "id": params.id }, successGetReview, errorGetReview);
+
 
 
 
@@ -2348,26 +2347,48 @@ window.addEventListener("click", function(e){
 
 let movie_collection = document.getElementById('black_background');
 let search_blcok = document.getElementById('search');
+let lastSignIn = localStorage.setItem("lastSignIn", new Date().getDate());
+let inputSearch = document.getElementsByClassName('head-1__input-search')[0];
 
 //место, куда пользователь вводит запрос
 let searchInput_onFocus = function () {
-    document.getElementById('search-form_input_search').style.border = 'none';
+    document.getElementById('search-form__input_search').style.border = 'none';
 };
 
+inputSearch.addEventListener('keypress', function (event) {
+   if (event.key === 'Enter') {
+       window.location.href = `http://${window.location.host}/search.html?text=${event.value}`;
+   }
+});
+
+// check if it is first login at current day
+if(new Date().getDate() !== parseInt(localStorage.getItem('lastSignIn'))) {
+    showSearch();
+}
+
 const onClick = (event) => {
-    if (event.target.className === "head-1__search" || event.target.className === "head-1__input-search" || event.target.className === "head__search" || event.target.classList.contains('search-form_input_search')) {
-        search_blcok.classList.remove('search_hidden');
-        search_blcok.classList.add('search_show');
-        movie_collection.classList.add('black_background');
+    if (event.target.className === "head-1__search" || event.target.className === "head__search" || event.target.classList.contains('search-form__input_search')) {
+        showSearch();
     } else if (search_blcok.classList.contains('search_show') && !event.target.classList.contains('search') && !event.target.classList.contains('logo') && event.target.nodeName !== 'INPUT') {
-        search_blcok.classList.add('search_hidden');
-        search_blcok.classList.remove('search_show');
-        movie_collection.classList.remove('black_background');
+        hideSeacrh();
     }
 };
 
-if(search_blcok !== null)
+function showSearch() {
+    search_blcok.classList.remove('search_hidden');
+    search_blcok.classList.add('search_show');
+    movie_collection.classList.add('black_background');
+}
+
+function hideSeacrh() {
+    search_blcok.classList.add('search_hidden');
+    search_blcok.classList.remove('search_show');
+    movie_collection.classList.remove('black_background');
+}
+
+if(search_blcok !== null) {
     document.addEventListener("click", onClick);
+}
 
 /*jshint esversion: 6 */
 
@@ -2418,24 +2439,19 @@ function sort (event) {
     //в зависимости от текущего типа сортировки применяем тот или инной метод
     const ordered = order === 'ASC' ? sortASC(sortResult.results, param) : sortDESC(sortResult.results, param);
 
-    console.log('{results: ordered}', order);
-    console.log({results: ordered});
-
     //выводим отсортированый массив.
     renderResult({results: ordered});
 }
 
 
 // метод, который будет выполнен в случае удачного обращения к API MovieDB
-var successGetUpcomming = function successGetUpcomming(res) {
+var successGet = function successGet(res) {
 
-    console.log('//////', 'get_movies from db')
-
+    
     // парсим JSON в объект
     var data = JSON.parse(res);
-
+    
     console.log(data);
-
     sortResult = data;
 
     renderResult(data);
@@ -2447,7 +2463,15 @@ function renderResult(data){
     //передаем в ранее "скомпилированный" метод
     colectionWrapper.innerHTML = '';
     data.results.forEach(item => {
-        
+
+        if(Object.getOwnPropertyNames(item).includes('name')){
+            item.title = item.name;
+        }
+
+        if(Object.getOwnPropertyNames(item).includes('first_air_date')){
+            item.release_date = item.first_air_date
+        }
+      
         colectionWrapper.insertAdjacentHTML('beforeend', compiledCard({
             item
         }));
@@ -2457,7 +2481,7 @@ function renderResult(data){
 
 // Метод, который будет вызван в случае ошибки при обращении к API MovieDB 
 
-var errorGetUpcomming = function errorGetUpcomming() {
+var errorGet = function errorGet() {
     console.log(arguments);
 };
 
@@ -2468,11 +2492,64 @@ var errorGetUpcomming = function errorGetUpcomming() {
 
 if(window.location.pathname == '/sort.html'){
 
-    theMovieDb.movies.getUpcoming({
-        "language": "ru-RUS"
-    }, successGetUpcomming, errorGetUpcomming);
+    var params = getUrlParams();
+
+    console.log(params);
+
+    var page = Object.getOwnPropertyNames(params).includes('page') ? params.page : 2;
+
+    if(Object.getOwnPropertyNames(params).includes('p')){
+
+        if(params.p === 'getUpcoming'){
+            theMovieDb.movies.getUpcoming({
+                "language": "ru-RUS",
+                "page" : page,
+            }, successGet, errorGet);
+        }
+
+        if(params.p === 'getTopRated'){
+            theMovieDb.movies.getTopRated({ 
+                "language": "ru-RUS",
+                "page" : page,
+            }, successGet, errorGet);
+        }
+
+        if(params.p === 'getNowPlaying'){
+            theMovieDb.movies.getNowPlaying({ 
+                "language": "ru-RUS",
+                "page" : page,
+            }, successGet, errorGet);
+        }
+
+        if(params.p === 'getOnTheAirTV'){
+            theMovieDb.tv.getOnTheAir({ 
+                "language": "ru-RUS",
+                "page" : page,
+            }, successGet, errorGet);
+        }
+
+        if(params.p === 'getTopRatedTV'){
+            theMovieDb.tv.getTopRated({ 
+                "language": "ru-RUS",
+                "page" : page,
+            }, successGet, errorGet);
+        }
+        
+    }
+
+
 
     sortButtonName.onclick = sort;
     sortButtonDate.onclick = sort;
 
+}
+
+function getUrlParams () {
+    var params = {};
+    var locationParams = window.location.search.replace('?', '').split('&');
+    locationParams.forEach((item)=>{
+        var a = item.split('=');
+        params[a[0]] = a[1];
+    })
+    return params;
 }
