@@ -6,32 +6,64 @@ h2 a {
   color: #000000;
 }
 @include respond-to(mobile-extra-small) {
-.tab{
-    display: none;
- }
-
-.movies-wrapper {
-  margin: 10px;
-  
-
-  .movie-card:nth-child(4), .movie-card:nth-child(5), .movie-card:nth-child(6) {
+  .tab{
     display: none;
   }
-  .movies-block {
-display: flex;
-    flex-direction: column;
-  }
-.movie-card {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-  h2 {
+
+  .movies-wrapper {
     margin: 10px;
+
+
+    .movie-card:nth-child(4), .movie-card:nth-child(5), .movie-card:nth-child(6) {
+      display: none;
+    }
+    .movies-block {
+      display: flex;
+      flex-direction: column;
+    }
+    .movie-card {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    h1, h2 {
+      margin: 10px;
+      color: #4c4e50;
+      font-family: "Roboto", sanserif;
+      padding-left: 0%;
+    }
   }
 }
-}
+@include respond-to(mobile-small) {
+  .tab{
+    display: none;
+  }
 
-@include respond-to(desktop-extra) {
+  .movies-wrapper {
+    margin: 10px;
+
+
+    .movie-card:nth-child(4), .movie-card:nth-child(5), .movie-card:nth-child(6) {
+      display: none;
+    }
+    .movies-block {
+      display: flex;
+      flex-direction: column;
+    }
+    .movie-card {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    h1, h2 {
+      margin: 10px;
+      color: #4c4e50;
+      font-family: "Roboto", sanserif;
+      padding-left: 0%;
+    }
+  }
+}
+@include respond-to(desktop) {
   .tab{
     display: flex;
     flex-direction: row;
@@ -55,12 +87,12 @@ display: flex;
         outline: none;
       }
     }
-.active  {
-  color:#372c48;
-  font-weight: bold;
-  border-bottom: 1px #372c48 solid;
-  box-shadow: 0px 1px 0px 0px #9f9ba6, inset 0px -1px 0px 0px #766e81;
-}
+    .active  {
+      color:#372c48;
+      font-weight: bold;
+      border-bottom: 1px #372c48 solid;
+      box-shadow: 0px 1px 0px 0px #9f9ba6, inset 0px -1px 0px 0px #766e81;
+    }
   }
   #series{
     display: none;
@@ -69,7 +101,94 @@ display: flex;
     margin: 0;
     border-top: 1px solid rgb(205, 205, 205);
     box-shadow: -20px 30px 14px -27px #cdcdcd inset, -23px -27px 17px -31px #e4e4e4;
-    
+
+    h1{
+      display: none;
+    }
+
+    .movie-card:nth-child(4), .movie-card:nth-child(5), .movie-card:nth-child(6) {
+      display: block;
+    }
+    .movies-block {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      max-width: 717px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 717px;
+      margin: auto;
+    }
+    .movie-card {
+      width: 48%;
+      margin: 5px auto;
+      margin-bottom: 45px;
+    }
+    h2 {
+      margin: 34px 0;
+      padding-left: 7%;
+      color: #4c4e50;
+      font-family: "Roboto", sanserif;
+      font-size: 16px;
+    }
+    .movie-card__title {
+      margin-top: 152px;
+      font-family: "Roboto", sanserif;
+      color: #fff;
+    }
+  }
+
+  .movie-card__wrapper {
+    //max-height: 177px;
+    max-width: 350px;
+
+  }
+}
+@include respond-to(desktop-extra) {
+  .container {
+    max-width: 1000px;
+    margin: auto;
+  }
+  .tab{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    button{
+      background-color: #fff;
+      border: 0;
+      padding: 16px 26px;
+      text-transform: uppercase;
+      color: #736b7f;
+      border-bottom: 1px #fff solid;
+      &:hover{
+        color:#372c48;
+        font-weight: bold;
+        border-bottom: 1px #372c48 solid;
+        box-shadow: 0px 1px 0px 0px #9f9ba6, inset 0px -1px 0px 0px #766e81;
+      }
+
+      &:focus {
+        border:none;
+        outline: none;
+      }
+    }
+    .active  {
+      color:#372c48;
+      font-weight: bold;
+      border-bottom: 1px #372c48 solid;
+      box-shadow: 0px 1px 0px 0px #9f9ba6, inset 0px -1px 0px 0px #766e81;
+    }
+  }
+  #series{
+    display: none;
+  }
+  .movies-wrapper {
+    margin: 0;
+    border-top: 1px solid rgb(205, 205, 205);
+    box-shadow: -20px 30px 14px -27px #cdcdcd inset, -23px -27px 17px -31px #e4e4e4;
+
     h1{
       display: none;
     }
@@ -84,14 +203,18 @@ display: flex;
       max-width: 1000px;
       margin: 0 auto;
     }
+
     .movie-card {
       width: 48%;
       margin: 5px auto;
       margin-bottom: 45px;
     }
     h2 {
-      margin: 10px;
-      padding-left: 20%;
+      margin: 34px 0;
+      padding-left: 19%;
+      color: #4c4e50;
+      font-family: "Roboto", sanserif;
+      font-size: 16px;
     }
     .movie-card__title {
       margin-top: 172px;
@@ -103,6 +226,6 @@ display: flex;
   .movie-card__wrapper {
     height: 250px;
     width: 482px;
-    
+
   }
 }

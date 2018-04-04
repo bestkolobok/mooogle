@@ -176,22 +176,33 @@ table{
   flex-wrap: nowrap;
   align-content: center;
   width: 100%;
+    &-title h2 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 20px;
+      color: #5e576a;
+      margin-bottom: 15px;
+    }
+    &-main {
+      width: 100%;
+      height: 269px;
+    }
+    &-video {
+      width: 100%;
+      height: 100%;
+    }
 }
 
-.trailer-title h2 {
-  font-family: 'Roboto', sans-serif;
-  font-size: 20px;
-  color: #5e576a;
-  margin-bottom: 15px;
-}
 
-.trailer-main {
-  width: 100%;
-}
 
-.trailer-video {
-  width: 100%;
-  height: 200px;
+
+#reviews-container {
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+     justify-content: center;
+     align-items: flex-start;
+     align-content: flex-start;
+     color: red;
 }
 
 .reviews {
@@ -201,33 +212,49 @@ table{
   flex-wrap: nowrap;
   align-content: center;
   width: 100%;
-}
 
-.reviews-title h2 {
-  font-family: 'Roboto', sans-serif;
-  font-size: 20px;
-  color: #5e576a;
-  margin: 20px 0;
-}
+      &-title h2 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 20px;
+      color: #5e576a;
+      margin: 20px 0;
+    }
 
-#reviews-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  align-content: flex-start;
-}
+    &-avatar {
+      width: 15%;
+      height: 50px;
+      color: #212121;
+      font-family: 'Roboto', sans-serif;
+      font-size: 2em;
+    }
+    &-post {
+      width: 60%;
+      margin-left: 10px;
+      margin-bottom: 20px;
 
-.reviews-avatar {
-  width: 10%;
-  min-width: 50px;
-  height: 50px;
-  color: #212121;
-  font-family: 'Roboto', sans-serif;
-  font-size: 2em;
+    }
+    &-text {
+      max-height: 160px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 5px;
+      font-family: 'Roboto', sans-serif;
+      color: #5e576a;
+    }
+    &-text-big {
+      margin-top: 5px;
+      font-family: 'Roboto', sans-serif;
+      color: #5e576a;
+    }
+    &-date {
+      font-family: 'Roboto', sans-serif;
+      color: #5e576a;
+      width: 15%;
+      display: inline-block;
+      vertical-align: top;
+      margin-left: 15px;
+    }
 }
-
 .avatar {
   display: inline-flex;
   width: 50px;
@@ -239,13 +266,6 @@ table{
   text-transform: uppercase;
   border-radius: 50%;
 }
-
-.reviews-post {
-  width: 60%;
-  margin-left: 10px;
-  margin-bottom: 10px;
-}
-
 .username {
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
@@ -253,35 +273,6 @@ table{
   font-weight: bold;
   margin-top: 0;
   margin-bottom: 10px;
-}
-
-.reviews-text {
-  max-height: 160px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin-top: 5px;
-  font-family: 'Roboto', sans-serif;
-  color: #5e576a;
-  /* display: -webkit-box;
-  -webkit-line-clamp: 7;
-  -webkit-box-orient: vertical; */
-
-}
-
-.reviews-text-big {
-  margin-top: 5px;
-  font-family: 'Roboto', sans-serif;
-  color: #5e576a;
-}
-
-.reviews-date {
-  font-family: 'Roboto', sans-serif;
-  color: #5e576a;
-  width: 15%;
-  display: inline-block;
-  vertical-align: top;
-  margin-left: 5px;
-  font-size: 0.8em;
 }
 
 .more-info {
@@ -457,34 +448,53 @@ table{
       display: none;
     }
   }
-  .trailer-main {
-    justify-content: center;
-    width: 70%;
-    margin: auto;
+      
+  .trailer{
+    &-title h2 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 20px;
+      color: #5e576a;
+      margin-bottom: 15px;
+      margin-left: 25px;
+    }
+    &-main {
+      justify-content: center;
+      width: 70%;
+      margin: 25px auto auto auto;
+      height: 435px;
+    }
+     &-video {
+       height: 100%;
+    }
   }
+
+
  
-  .trailer-video {
-    height: 300px;
-  }
- 
-  .reviews-avatar {
-    width: 10%;
-    min-width: 55px;
-    margin-top: 0;
-  }
- 
-  .reviews-date {
-    width: 10%;
-    min-width: 55px;
-    margin-left: 10px;
-    margin-top: 0;
-  }
- 
-  .reviews-post {
-    width: 70%;
-    margin-left: 0;
-    margin-bottom: 10px;
-  }
+  .reviews{
+    &-title h2 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 20px;
+      color: #5e576a;
+      margin-bottom: 30px;
+      margin-left: 25px;
+    } 
+    &-avatar {
+      width: 10%;
+      min-width: 55px;
+      margin-top: 0px;
+    }
+    &-date {
+      width: 10%;
+      min-width: 55px;
+      margin-left: 10px;
+      margin-top: 0;
+    }
+    &-post {
+      width: 70%;
+      margin-left: 0;
+      margin-bottom: 30px;
+    }
+  }  
 }
 
 @include respond-to(desktop-extra) {
@@ -587,10 +597,11 @@ table{
     justify-content: center;
     width: 70%;
     margin: auto;
+    height: 435px;
   }
  
   .trailer-video {
-    height: 435px;
+    height: 100%;
   }
  
   .reviews-avatar {
@@ -607,6 +618,6 @@ table{
   .reviews-post {
     width: 80%;
     margin-left: 0;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
   }
 }
