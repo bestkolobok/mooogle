@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style.css">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Mooogle</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="img/favicon.png" type="image/png">
 </head>
 <body>
 <header>
@@ -21,7 +22,7 @@
 			</div>
 			<div id="block" class="menu__img1"><label class="menu__category">Фильмы</label></div>
 			<ul class="menu__films">
-				<li><a class="link" href="/sort.html">Премьеры</a></li>
+				<li><a class="link" href="/sort.html">П��емьеры</a></li>
     		<li><a class="link" href="/sort.html">Сейчас на экранах</a></li>
     		<li><a class="link" href="/sort.html">Топ 100</a></li>
 			</ul>
@@ -59,7 +60,7 @@
         <picture>
             <source media="(min-width: 1024px)" srcset="img/1024-Composed-layer@1X.png 1x, img/1024-Composed-layer@1X.png 2x">
             <source media="(min-width: 768px)" srcset="img/logoStart768@1X.png 1x, img/logoStart768@2X.png 2x">
-            <source media="(min-width: 480px)" srcset="img/logoStart480.png">
+            <!-- <source media="(min-width: 480px)" srcset="img/logoStart480.png"> -->
             <img class="logo" src="img/logoStart360.png" alt="mooogle_mooo">
         </picture>
     </div>
@@ -78,7 +79,9 @@
         <button class="tab_links active" onclick="openCaption(event, 'films')">Фильмы</button>
         <button class="tab_links" onclick="openCaption(event, 'series')">Сериалы</button>
     </div>
+
     <section class="movies-wrapper" id="films">
+        <div class="container">
         <h1>Фильмы</h1>
         <h2><a href="sort.html?p=getUpcoming">Премьеры</a></h2>
         <div class="movies-block" id="upcoming_film"> </div>
@@ -86,8 +89,10 @@
         <div class="movies-block" id="top_rated_film"></div>
         <h2><a href="sort.html?p=getNowPlaying">Сейчас на экране</a></h2>
         <div class="movies-block" id="now_playing_film"></div>
+        </div>
     </section>
     <section class="movies-wrapper" id="series">
+        <div class="container">
         <h1>Сериалы</h1>
         <h2><a href="sort.html?p=getOnTheAirTV">Премьеры</a></h2>
             <div class="movies-block" id="upcoming_series"></div>
@@ -95,7 +100,9 @@
             <div class="movies-block" id="top_rated_series"></div>
         <h2><a href="sort.html?p=getAiringTodayTV">Сейчас на экране</a></h2>
             <div class="movies-block" id="now_playing_series"></div>
+        </div>
         </section>
+
 </div>
 
 <!-- В темплейт передается только один обект -->
@@ -129,15 +136,15 @@
 
     <footer class="footer">
         <div class="footer-icons">
-            <span><img src="../img\if_Facebook.png" alt="facebook icon"></span>
-            <span><img src="../img\if_YouTube.png" alt="youtube icon"></span>
-            <span><img src="../img\if_Google.png" alt="google plus icon"></span>
-            <span><img src="../img\if_Intsagram.png" alt="instagram icon"></span>
+            <span class="footer-img"><a href="#"><img src="../img\if_Facebook.png" alt="facebook icon"></a></span>
+            <span class="footer-img"><a href="#"><img src="../img\if_YouTube.png" alt="youtube icon"></a></span>
+            <span class="footer-img"><a href="#"><img src="../img\if_Google.png" alt="google plus icon"></a></span>
+            <span class="footer-img"><a href="#"><img src="../img\if_Intsagram.png" alt="instagram icon"></a></span>
         </div>
         <div class="footer-bottom-line">
-            <span class="footer-bottom-line-item">Главная</span>
-            <span class="footer-bottom-line-item">Контакты</span>
-            <span class="footer-bottom-line-item">Правообладателям</span>            
+            <span><a href="#" class="footer-bottom-line-item">Главная</a></span>
+            <span><a href="#" class="footer-bottom-line-item">Контакты</a></span>
+            <span><a href="#" class="footer-bottom-line-item">Правообладателям</a></span>            
         </div>
     </footer>
 </body>

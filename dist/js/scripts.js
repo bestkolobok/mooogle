@@ -2079,6 +2079,7 @@ var ulSlider = document.querySelector(".part-slider");
 var arrowLeftActors = document.querySelector(".arrow-left__actors");
 var arrowRightActors = document.querySelector(".arrow-right__actors");
 
+var params = getUrlParams();
 
 
 
@@ -2208,7 +2209,6 @@ var positionPart = 0;
 
 let successPeopleImagesCB = function(res){
   const result = JSON.parse(res);
-  console.log(result);
   let widthPart = 130;
   for(let i = 0; i < partSlide.length; i++){
     partSlide[i].style.backgroundImage = `url("https://image.tmdb.org/t/p/w600_and_h900_bestv2${result.backdrops[i].file_path}")`
@@ -2228,11 +2228,11 @@ let errorPeopleImagesCB = function(){
 }
 
 
-theMovieDb.movies.getById({"id":284053, "language":"ru-RUS" }, successCB, errorCB);
+theMovieDb.movies.getById({"id":params.id, "language":"ru-RUS" }, successCB, errorCB);
 
-theMovieDb.credits.getCredit({"id":284053, "language":"ru-RUS" }, successPeopleCB, errorPeopleCB);
+theMovieDb.credits.getCredit({"id":params.id, "language":"ru-RUS" }, successPeopleCB, errorPeopleCB);
 
-theMovieDb.movies.getImages({"id":284053}, successPeopleImagesCB, errorPeopleImagesCB)
+theMovieDb.movies.getImages({"id":params.id}, successPeopleImagesCB, errorPeopleImagesCB)
 
 const trailer = document.querySelector(".trailer-video");
 var reviews = [];
@@ -2241,7 +2241,6 @@ const trailerHidden = document.querySelector(".trailer");
 
 let successGetTrailer = function (res) {
     const result = JSON.parse(res);
-    console.log(result);
     if (result.youtube.length === 0) {
         trailerHidden.setAttribute("style", "display: none;");
     } else {
@@ -2262,7 +2261,6 @@ let successGetReview = function (res) {
         reviews.push(reviewInfo);
         reviewInfo = {};
     }
-    console.log(reviews);
     const html = document.querySelector('#reviews-main').textContent.trim();
     const compiled = _.template(html);
     const r = compiled(reviews);
@@ -2270,7 +2268,6 @@ let successGetReview = function (res) {
 
 
     let posts = document.querySelectorAll(".big-post");
-    console.log(posts);
     posts.forEach(item => {
         let onClick = event => {
             if (event.target !== event.currentTarget) {
@@ -2293,8 +2290,9 @@ let errorGetReview = function (res) {
     console.log(arguments);
 }
 
-theMovieDb.movies.getTrailers({ "id": 284053, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
-theMovieDb.movies.getReviews({ "id": 284053 }, successGetReview, errorGetReview);
+theMovieDb.movies.getTrailers({ "id": params.id, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
+theMovieDb.movies.getReviews({ "id": params.id }, successGetReview, errorGetReview);
+
 
 
 
@@ -2322,6 +2320,7 @@ window.addEventListener("click", function(e){
 
 let movie_collection = document.getElementById('black_background');
 let search_blcok = document.getElementById('search');
+let lastSignIn = localStorage.setItem("lastSignIn", new Date().getDate());
 let inputSearch = document.getElementsByClassName('head-1__input-search')[0];
 
 //место, куда пользователь вводит запрос
@@ -2336,18 +2335,14 @@ inputSearch.addEventListener('keypress', function (event) {
 });
 
 // check if it is first login at current day
-debugger
 if(new Date().getDate() !== parseInt(localStorage.getItem('lastSignIn'))) {
     showSearch();
-    localStorage.setItem("lastSignIn", new Date().getDate());
 }
 
 const onClick = (event) => {
-    if (event.target.className === "head-1__search" || event.target.className === "head__search" 
-    || event.target.classList.contains('search-form__input_search')) {
+    if (event.target.className === "head-1__search" || event.target.className === "head__search" || event.target.classList.contains('search-form__input_search')) {
         showSearch();
-    } else if (search_blcok.classList.contains('search_show') && !event.target.classList.contains('search') 
-    && !event.target.classList.contains('logo') && event.target.nodeName !== 'INPUT') {
+    } else if (search_blcok.classList.contains('search_show') && !event.target.classList.contains('search') && !event.target.classList.contains('logo') && event.target.nodeName !== 'INPUT') {
         hideSeacrh();
     }
 };
