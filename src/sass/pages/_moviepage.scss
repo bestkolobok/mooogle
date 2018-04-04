@@ -362,32 +362,52 @@ table{
   position: relative;
 }
 
-@include respond-to(medium){
-  .wrapper{
+@include respond-to(medium) {
+  .wrapper {
     padding: 25px;
     padding-top: 38px;
   }
-  .wrapper_box{
+  .wrapper_box {
     display: flex;
     flex-flow: column wrap;
-    .slider{
+
+    .slider {
       order: 2;
       margin-top: 72px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .trailer{
+    .trailer {
       order: 1;
+    }
+    .carousel {
+      width: 324px;
     }
   }
 
   .arrow-left__actors {
-    display: block
+    display: block;
+    width: 8px;
+    height: 14px;
   }
   .arrow-right__actors {
-    display: block
+    display: block;
+    width: 8px;
+    height: 14px;
   }
 
   .slider-cadrs {
     display: block;
+    .part{
+      width: 524px;
+    }
+  }
+
+  .images{
+    li{
+      width: 70px;
+    }
   }
 
   .card {
@@ -494,13 +514,17 @@ table{
   .wrapper_box{
     display: flex;
     flex-flow: column wrap;
-    .slider{
-      order: 2;
-      margin-top: 72px;
-    }
+
     .trailer{
       order: 1;
     }
+  }
+  .slider{
+    order: 2;
+    margin-top: 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .arrow-left__actors {
