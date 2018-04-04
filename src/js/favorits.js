@@ -52,6 +52,7 @@ const favorites = {
         let dataToSave = {
             title: data.title,
             release_date: data.release_date,
+            first_air_date: data.first_air_date,
             id: data.id,
             genres: data.genres
         }
