@@ -1,6 +1,5 @@
 let movie_collection = document.getElementById('black_background');
 let search_blcok = document.getElementById('search');
-let lastSignIn = localStorage.setItem("lastSignIn", new Date().getDate());
 let inputSearch = document.getElementsByClassName('head-1__input-search')[0];
 
 //место, куда пользователь вводит запрос
@@ -15,14 +14,18 @@ inputSearch.addEventListener('keypress', function (event) {
 });
 
 // check if it is first login at current day
+debugger
 if(new Date().getDate() !== parseInt(localStorage.getItem('lastSignIn'))) {
     showSearch();
+    localStorage.setItem("lastSignIn", new Date().getDate());
 }
 
 const onClick = (event) => {
-    if (event.target.className === "head-1__search" || event.target.className === "head__search" || event.target.classList.contains('search-form__input_search')) {
+    if (event.target.className === "head-1__search" || event.target.className === "head__search" 
+    || event.target.classList.contains('search-form__input_search')) {
         showSearch();
-    } else if (search_blcok.classList.contains('search_show') && !event.target.classList.contains('search') && !event.target.classList.contains('logo') && event.target.nodeName !== 'INPUT') {
+    } else if (search_blcok.classList.contains('search_show') && !event.target.classList.contains('search') 
+    && !event.target.classList.contains('logo') && event.target.nodeName !== 'INPUT') {
         hideSeacrh();
     }
 };

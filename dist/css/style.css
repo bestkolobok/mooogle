@@ -1187,7 +1187,7 @@ h2 a {
     .search #search-form__input_submit {
       position: absolute;
       background: none;
-      background-image: url(../../img/search-arrow_360.png);
+      background-image: url(../../img/serch360.png);
       background-repeat: no-repeat;
       width: 28px;
       height: 28px;
@@ -1196,6 +1196,11 @@ h2 a {
       bottom: 0em;
       border: 0;
       padding: 5px; }
+
+.search_hidden {
+  top: -100%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s; }
 
 .search_show {
   top: 0;
