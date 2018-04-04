@@ -2106,6 +2106,10 @@ function openCaption(evt, caption) {
 
 if(window.location.pathname == '/movie.html'){
 
+//-----------------------------------------------------top-start--------------------------------------------------------
+
+
+//Vars
 var img = document.querySelector('.card__img');
 var description = document.querySelector('.description__text');
 var date = document.querySelector('.links__time--item');
@@ -2124,43 +2128,47 @@ var ulSlider = document.querySelector(".part-slider");
 var arrowLeftActors = document.querySelector(".arrow-left__actors");
 var arrowRightActors = document.querySelector(".arrow-right__actors");
 
+// Parse url
 var params = getUrlParams();
 
-
-
-
+//Slider
 var width = 80; 
 var count = 1; 
 var index = 0;
-
-
 var carousel = document.getElementById('carousel');
 var list = carousel.querySelector('.images');
+var position = 0; 
 
-
-// var infinitecarousel = new InfiniteCarousel('.images', 'horizontal', 3, {
-  //     timerDuration: 2000,
-  //     transitionDuration: '1s'
-  //   });
+// Render slider
+var galleryItems = {
+  text: [],
+  img: [],
+}
   
-  
-  var position = 0; 
-  
-  
+// Description
   
   let successCB = function(res) {
     const result = JSON.parse(res);
-    // console.log(result);
+    if(params.type === 'movie'){
+      date.textContent = result.release_date;
+      title.innerHTML = result.title;
+      tableRuntime.textContent = `${result.runtime} мин`;
+      tableCountry.textContent = `${result.production_countries[0].iso_3166_1}, ${result.production_countries[0].name}`;
+      tableTagline.textContent = result.tagline;
+    } else {
+      date.textContent = result.last_air_date;
+      title.innerHTML = result.name;
+      tableRuntime.textContent = `${result.episode_run_time[0]} мин`;
+      tableCountry.textContent = `${result.origin_country[0]}`;
+      tableTagline.textContent = result.original_name;
+    }
+    console.log(result);
   img.style.backgroundImage = `url('https://image.tmdb.org/t/p/w600_and_h900_bestv2/${result.poster_path}')`;
-  description.textContent = result.overview;
-  date.textContent = result.release_date;
-  title.innerHTML = result.title;
-  tableCountry.textContent = `${result.production_countries[0].iso_3166_1}, ${result.production_countries[0].name}`;
-  tableTagline.textContent = result.tagline;
   for(let i = 0; i < result.genres.length; i++){
     tableFilmtype.textContent += `${result.genres[i].name}, `;
   }
-  tableRuntime.textContent = `${result.runtime} мин`;
+  description.textContent = result.overview;
+  
 }
 
 let errorCB = function() {
@@ -2168,15 +2176,10 @@ let errorCB = function() {
 
 }
 
-var galleryItems = {
-  text: [],
-  img: [],
-}
-
+// Actors slider
 
 let successPeopleCB = function(res) {
   const result = JSON.parse(res);
-  // console.log(result);
   tableProducer.textContent = result.crew[1].name;
   tableFilmContent.textContent = result.crew[0].name;
   for (let i = 0; i < 10; i++){
@@ -2212,14 +2215,7 @@ let successPeopleCB = function(res) {
   event.preventDefault();
   event.stopPropagation();
   finalPoint=event.changedTouches[0];
-
-    // for(let i = 0; i < listElems.length; i++){
-    //   var clone = listElems[i].cloneNode(true);
-    //   list.insertBefore(clone, listElems[i]);
-
-    // }
-
-    index++;
+  index++;
 
   var xAbs = Math.abs(initialPoint.pageX - finalPoint.pageX);
   if (xAbs > 20) {
@@ -2252,6 +2248,8 @@ var countPart = 1;
 var positionPart = 0; 
  
 
+// Backdrops images
+
 let successPeopleImagesCB = function(res){
   const result = JSON.parse(res);
   let widthPart = 130;
@@ -2272,12 +2270,7 @@ let errorPeopleImagesCB = function(){
   console.log(arguments);
 }
 
-
-theMovieDb.movies.getById({"id":params.id, "language":"ru-RUS" }, successCB, errorCB);
-
-theMovieDb.credits.getCredit({"id":params.id, "language":"ru-RUS" }, successPeopleCB, errorPeopleCB);
-
-theMovieDb.movies.getImages({"id":params.id}, successPeopleImagesCB, errorPeopleImagesCB)
+//--------------------------------------------------------------top-end---------------------------------------------------------------
 
 const trailer = document.querySelector(".trailer-video");
 var reviews = [];
@@ -2335,8 +2328,19 @@ let errorGetReview = function (res) {
     console.log(arguments);
 }
 
-theMovieDb.movies.getTrailers({ "id": params.id, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
-theMovieDb.movies.getReviews({ "id": params.id }, successGetReview, errorGetReview);
+if(params.type === 'movie'){
+  theMovieDb.movies.getById({"id":params.id, "language":"ru-RUS" }, successCB, errorCB);
+  theMovieDb.credits.getCredit({"id":params.id, "language":"ru-RUS" }, successPeopleCB, errorPeopleCB);
+  theMovieDb.movies.getImages({"id":params.id}, successPeopleImagesCB, errorPeopleImagesCB)
+  theMovieDb.movies.getTrailers({ "id": params.id, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
+  theMovieDb.movies.getReviews({ "id": params.id }, successGetReview, errorGetReview);
+} else {
+  theMovieDb.tv.getById({"id":params.id, "language":"ru-RUS" }, successCB, errorCB);
+  theMovieDb.credits.getCredit({"id":params.id, "language":"ru-RUS" }, successPeopleCB, errorPeopleCB);
+  theMovieDb.tv.getImages({"id":params.id}, successPeopleImagesCB, errorPeopleImagesCB)
+  theMovieDb.tv.getTrailers({ "id": params.id, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
+  theMovieDb.tv.getReviews({ "id": params.id }, successGetReview, errorGetReview);
+}
 
 
 
