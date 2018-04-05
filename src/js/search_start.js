@@ -14,7 +14,6 @@ inputSearch.addEventListener('keypress', function (event) {
 });
 
 // check if it is first login at current day
-debugger
 if(new Date().getDate() !== parseInt(localStorage.getItem('lastSignIn'))) {
     showSearch();
     localStorage.setItem("lastSignIn", new Date().getDate());
@@ -27,6 +26,8 @@ const onClick = (event) => {
     } else if (search_blcok.classList.contains('search_show') && !event.target.classList.contains('search') 
     && !event.target.classList.contains('logo') && event.target.nodeName !== 'INPUT') {
         hideSeacrh();
+    } else {
+        return null;
     }
 };
 
