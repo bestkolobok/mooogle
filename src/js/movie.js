@@ -4,17 +4,17 @@ if(window.location.pathname == '/movie.html'){
 
 
 //Vars
-var img = document.querySelector('.card__img');
-var description = document.querySelector('.description__text');
-var date = document.querySelector('.links__time--item');
-var title = document.querySelector('.card__about--title');
-var container = document.querySelector('.images');
-var tableCountry = document.querySelector(".table-country");
-var tableTagline = document.querySelector(".table-tagline");
-var tableFilmtype = document.querySelector(".table-filmtype");
-var tableRuntime = document.querySelector(".table-runtime");
-var tableProducer = document.querySelector(".table-producer");
-var tableFilmContent = document.querySelector(".table-filmcontent");
+const IMAGES_IN_SLIDER = document.querySelector('.card__img');
+const MAIN_DESCRIPTION_IN_MOVIEPAGE = document.querySelector('.description__text');
+const DATE_IN_MOVIEPAGE = document.querySelector('.links__time--item');
+const MAIN_TITLE_IN_MOVIEPAGE = document.querySelector('.card__about--title');
+const CONTAINER_OF_SLIDER_ACTORS = document.querySelector('.images');
+const COUNTRY_NAME_IN_MAIN_TABLE = document.querySelector(".table-country");
+const TAG_LINE_IN_MAIN_TABLE = document.querySelector(".table-tagline");
+const FILM_TYPE_IN_MAIN_TABLE = document.querySelector(".table-filmtype");
+const RUN_TIME_IN_MAIN_TABLE = document.querySelector(".table-runtime");
+const PRODUCER_NAME_IN_MAIN_TABLE = document.querySelector(".table-producer");
+const ARTDIRECTOR_NAME_IN_MAIN_TABLE = document.querySelector(".table-filmcontent");
 var partSlide = document.querySelectorAll(".part-slide");
 var arrowLeft = document.querySelector(".arrow-left");
 var arrowRight = document.querySelector(".arrow-right");
@@ -44,24 +44,24 @@ var galleryItems = {
   let successCB = function(res) {
     const result = JSON.parse(res);
     if(params.type === 'movie'){
-      date.textContent = result.release_date;
-      title.innerHTML = result.title;
-      tableRuntime.textContent = `${result.runtime} мин`;
-      tableCountry.textContent = `${result.production_countries[0].iso_3166_1}, ${result.production_countries[0].name}`;
-      tableTagline.textContent = result.tagline;
+      DATE_IN_MOVIEPAGE.textContent = result.release_date;
+      MAIN_TITLE_IN_MOVIEPAGE.innerHTML = result.title;
+      RUN_TIME_IN_MAIN_TABLE.textContent = `${result.runtime} мин`;
+      COUNTRY_NAME_IN_MAIN_TABLE.textContent = `${result.production_countries[0].iso_3166_1}, ${result.production_countries[0].name}`;
+      TAG_LINE_IN_MAIN_TABLE.textContent = result.tagline;
     } else {
-      date.textContent = result.last_air_date;
-      title.innerHTML = result.name;
-      tableRuntime.textContent = `${result.episode_run_time[0]} мин`;
-      tableCountry.textContent = `${result.origin_country[0]}`;
-      tableTagline.textContent = result.original_name;
+      DATE_IN_MOVIEPAGE.textContent = result.last_air_date;
+      MAIN_TITLE_IN_MOVIEPAGE.innerHTML = result.name;
+      RUN_TIME_IN_MAIN_TABLE.textContent = `${result.episode_run_time[0]} мин`;
+      COUNTRY_NAME_IN_MAIN_TABLE.textContent = `${result.origin_country[0]}`;
+      TAG_LINE_IN_MAIN_TABLE.textContent = result.original_name;
     }
     console.log(result);
-  img.style.backgroundImage = `url('https://image.tmdb.org/t/p/w600_and_h900_bestv2/${result.poster_path}')`;
+  IMAGES_IN_SLIDER.style.backgroundImage = `url('https://image.tmdb.org/t/p/w600_and_h900_bestv2/${result.poster_path}')`;
   for(let i = 0; i < result.genres.length; i++){
-    tableFilmtype.textContent += `${result.genres[i].name}, `;
+    FILM_TYPE_IN_MAIN_TABLE.textContent += `${result.genres[i].name}, `;
   }
-  description.textContent = result.overview;
+  MAIN_DESCRIPTION_IN_MOVIEPAGE.textContent = result.overview;
   
 }
 
@@ -74,9 +74,10 @@ let errorCB = function() {
 
 let successPeopleCB = function(res) {
   const result = JSON.parse(res);
-  tableProducer.textContent = result.crew[1].name;
-  tableFilmContent.textContent = result.crew[0].name;
-  for (let i = 0; i < 10; i++){
+  console.log(result);
+  PRODUCER_NAME_IN_MAIN_TABLE.textContent = result.crew[1].name;
+  ARTDIRECTOR_NAME_IN_MAIN_TABLE.textContent = result.crew[0].name;
+  for (let i = 0; i < 8; i++){
     galleryItems.text.push(result.cast[i].name);
     galleryItems.img.push(`https://image.tmdb.org/t/p/w600_and_h900_bestv2${result.cast[i].profile_path}`);
   }
@@ -85,7 +86,7 @@ let successPeopleCB = function(res) {
   
   var resultCompiled = compiled(galleryItems);
   
-  container.innerHTML = resultCompiled;
+  CONTAINER_OF_SLIDER_ACTORS.innerHTML = resultCompiled;
 
   var listElems = carousel.querySelectorAll('.images_item');
 
@@ -146,6 +147,7 @@ var positionPart = 0;
 
 let successPeopleImagesCB = function(res){
   const result = JSON.parse(res);
+  console.log(result);
   let widthPart = 130;
   for(let i = 0; i < partSlide.length; i++){
     partSlide[i].style.backgroundImage = `url("https://image.tmdb.org/t/p/w600_and_h900_bestv2${result.backdrops[i].file_path}")`
@@ -230,7 +232,7 @@ if(params.type === 'movie'){
   theMovieDb.movies.getReviews({ "id": params.id }, successGetReview, errorGetReview);
 } else {
   theMovieDb.tv.getById({"id":params.id, "language":"ru-RUS" }, successCB, errorCB);
-  theMovieDb.credits.getCredit({"id":params.id, "language":"ru-RUS" }, successPeopleCB, errorPeopleCB);
+  theMovieDb.tv.getCredits({"id":params.id, "language":"ru-RUS" }, successPeopleCB, errorPeopleCB);
   theMovieDb.tv.getImages({"id":params.id}, successPeopleImagesCB, errorPeopleImagesCB)
   theMovieDb.tv.getTrailers({ "id": params.id, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
   theMovieDb.tv.getReviews({ "id": params.id }, successGetReview, errorGetReview);
