@@ -154,7 +154,9 @@ margin-left: 70px;
 }
 
 
-@mixin respond-to(min-width: $break-small) {
+//@mixin respond-to(min-width: $break-small)
+@media screen and (min-width: 479px)
+{
 
   header{
    //height: 25px;
@@ -241,7 +243,9 @@ margin-left: 95px;
 
 
 
-@mixin respond-to(min-width: $break-desktop){
+//@mixin respond-to(min-width: $break-desktop)
+@media screen and (min-width: 1023px)
+{
 #wrapper{
 
   display: flex;
@@ -344,106 +348,32 @@ margin-left: 95px;
     margin-left: 96px;
   }
 }
-//@mixin respond-to(min-width: $break-extra-desktop){
-//  #wrapper{
-//  display: flex;
-//  justify-content: space-between;
-//
-//}
-//
-//header{
-//  height: 65px;
-//  padding: 0 23px 0 24px;
-//}
-//.menu_head{
-//  height: 144px;
-//  background: #77c1bb;
-//  margin-bottom: 26px;
-//  padding: 24px 0 0 0;
-//
-//}
-//.menu_head div{
-//  width: 69px;
-//  height: 65px;
-//  margin-left:38px ;
-//  background-image:url(../img/logo_1024.png) ;
-//}
-//.head-1{
-//  margin-top: 24px;
-//  height: 24px;
-//  display: flex;
-//  width: 250px;
-//  border-bottom: 1px solid #5b7f88;
-//}
-//div.head {
-//  width:200px;
-//  //max-height: 25px;
-//}
-//
-//.head-1__mic {
-//  display: none;
-//}
-//.head-1 div .head-1__search {
-//  width: 19px;
-//  height: 18px;
-//  margin: 0 13px 0 0;
-//}
-//.head__search{
-//  display: none;
-//}
-//.head__logo{
-//  height: 65px;
-//  width: 68px;
-//  margin:0 0 0 31px;
-//}
-//.main-title{
-//  margin-top: 20px;
-//  margin-left: -13px;
-//  font-size: 20px;
-//}
-//.button__line{
-//  width: 24px;
-//  height: 3px;
-//}
-//#button{
-//  margin-top: 23px;
-//}
-//.menu{
-//  //margin-top: 43px;
-//  margin-top: 0;
-//  padding: 0;
-//  width: 256px;
-//  top: 0px;
-//}
-//
-//.move-left{
-//  left: -256px;
-//}
-//.move-right{
-//  left: 0;
-//  margin: 0;
-//}
-//.menu__title{
-//  display: block;
-//  font-family: 'Roboto-Medium', sans-serif;
-//  color: #372c48;
-//  font-size: 20px;
-//  margin: 16px 0 0 32px;
-//}
-//#block{
-//  margin: 26px 0 0 32px;
-//}
-//.menu__category{
-//  margin-left: 48px;
-//  font-size: 13px;
-//  line-height: 25px;
-//}
-//.link {
-//  line-height: 16px;
-//  font-size: 10px;
-//}
-//.menu__films{
-//  margin-left: 96px;
-//}
-//
-//}
+//@mixin respond-to(min-width: $break-extra-desktop)
+@media screen and (min-width: 1440px)
+ {
+  #wrapper{
+  display: flex;
+  justify-content: space-between;
+
+}
+
+  .main-title{
+    margin-top: 2px;
+    margin-left: 0px;
+    font-size: 20px;
+  }
+  .head__logo {
+    height: 24px;
+    width: 25px;
+    margin: 0 9px 0 32px;
+  }
+  #button{
+    margin-top: 27px;
+  }
+  .menu_head div{
+    width: 69px;
+    height: 65px;
+    margin-left:38px
+  }
+
+  }
