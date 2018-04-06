@@ -154,8 +154,8 @@ margin-left: 70px;
 }
 
 
-//@mixin respond-to(min-width: $break-small)
-@media screen and (min-width: 479px)
+
+@include respond-to(medium)
 {
 
   header{
@@ -243,8 +243,8 @@ margin-left: 95px;
 
 
 
-//@mixin respond-to(min-width: $break-desktop)
-@media screen and (min-width: 1023px)
+
+@include respond-to(desktop)
 {
 #wrapper{
 
@@ -348,8 +348,8 @@ margin-left: 95px;
     margin-left: 96px;
   }
 }
-//@mixin respond-to(min-width: $break-extra-desktop)
-@media screen and (min-width: 1440px)
+
+@include respond-to(desktop-extra)
  {
   #wrapper{
   display: flex;
