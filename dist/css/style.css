@@ -436,18 +436,16 @@ header {
   .head__search {
     display: none; }
   .head__logo {
-    height: 65px;
-    width: 68px;
-    margin: 0 0 0 31px; }
+    height: 24px;
+    width: 25px;
+    margin: 0 8px 0 31px; }
   .main-title {
-    margin-top: 20px;
-    margin-left: -13px;
     font-size: 20px; }
   .button__line {
-    width: 24px;
+    width: 23px;
     height: 3px; }
   #button {
-    margin-top: 23px; }
+    margin-top: 25px; }
   .menu {
     margin-top: 0;
     padding: 0;
