@@ -59,17 +59,13 @@ var successGet = function (res) {
 var successSearch = function (res) {
     var data = JSON.parse(res);
     
-    console.log(data);
     if(data.results)
         sortResult.results = [...sortResult.results, ...data.results];
-
-    console.log(sortResult);
 
     renderResult(data, false);
 }
 
 function renderResult(data, clean = true){
-
     //проходимся по коллекции фильмов из ответа и обьект каждого из фильмов 
     //передаем в ранее "скомпилированный" метод
     if(clean)
@@ -78,11 +74,11 @@ function renderResult(data, clean = true){
 
     data.results.forEach(item => {
 
-        if(Object.getOwnPropertyNames(item).includes('name')){
+        if (item.hasOwnProperty('name')){
             item.title = item.name;
         }
 
-        if(Object.getOwnPropertyNames(item).includes('first_air_date')){
+        if (item.hasOwnProperty('first_air_date')){
             item.release_date = item.first_air_date
         }
       
@@ -90,6 +86,12 @@ function renderResult(data, clean = true){
             item
         }));
     });
+}
+
+var showFavorites = function () {
+    const favoritesItems = favorites.getAll();
+    sortResult = {results: favoritesItems};
+    renderResult({results: favoritesItems})
 }
 
 
@@ -103,17 +105,16 @@ var errorGet = function errorGet() {
 if(window.location.pathname == '/sort.html'){
 
     var params = getUrlParams();
-    var page = Object.getOwnPropertyNames(params).includes('page') ? params.page : 2;
+    var page = params.hasOwnProperty() ? params.page : 2;
 
-    if(Object.getOwnPropertyNames(params).includes('q')){
+    if(params.hasOwnProperty('q')){
 
         sortTitle.innerText = 'Результат поиска';
         theMovieDb.search.getMovie({"query":params.q,"language": "ru-RUS"}, successSearch, errorGet);
         theMovieDb.search.getTv({"query":params.q,"language": "ru-RUS"}, successSearch, errorGet);
     }
 
-    if(Object.getOwnPropertyNames(params).includes('p')){
-
+    if(params.hasOwnProperty('p')){
 
         switch (params.p){
             case 'getUpcoming':
@@ -154,6 +155,10 @@ if(window.location.pathname == '/sort.html'){
                     "language": "ru-RUS",
                     "page" : page,
                 }, successGet, errorGet);
+            break;
+            case 'favoritesAll':
+                sortTitle.innerText = 'Избранное';
+                showFavorites();
             break;
         }
 

@@ -169,11 +169,7 @@ header {
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
-<<<<<<< HEAD
   padding: 15px 19px 17px 17px;
-=======
-  padding: 18px 25px 21px 24px;
->>>>>>> Nikita-Andrey
   background: #77c1bb;
   z-index: 99; }
 
@@ -339,68 +335,7 @@ header {
 .menu__title {
   display: none; }
 
-@media screen and (min-width: 479px) {
-  header {
-    padding: 22px 37px 21px 22px; }
-  .head__logo {
-    height: 33px;
-    width: 34px;
-    margin: 0 11px 0 23px; }
-  .main-title {
-    margin-top: 4px;
-    font-size: 26px; }
-  .button__line {
-    width: 27px;
-    height: 3px; }
-  .head__search {
-    width: 20px;
-    height: 20px; }
-  .head-1 {
-    height: 32px; }
-  .head-1 div .head-1__search {
-    width: 25px;
-    height: 26px;
-    margin: 0 14px 0 27px; }
-  .head-1__mic {
-    width: 21px;
-    height: 26px; }
-  .menu {
-    margin-top: 56px;
-    padding: 22px 0 0 22px;
-    width: 406px;
-    left: -406px; }
-  .move-left {
-    left: -406px; }
-  .move-right {
-    left: 0; }
-  #button {
-    margin-top: 11px;
-    width: 27px;
-    height: 19px; }
-  .menu__img1 {
-    background: url(../img/film360.png) no-repeat; }
-  .menu__img2 {
-    background: url(../img/TVseries360.png) no-repeat;
-    margin-top: 26px; }
-  .menu__img3 {
-    background: url(../img/favorites360.png) no-repeat;
-    margin-top: 30px; }
-  .menu__category {
-    margin-left: 74px;
-    font-size: 17px;
-    line-height: 30px; }
-  .link {
-    line-height: 30px;
-    font-size: 15px; }
-  .menu__films {
-    margin-left: 95px; }
-  #block {
-    height: 18px;
-    width: 22px; }
-  .menu__title {
-    display: none; } }
-
-@media screen and (min-width: 1023px) {
+@media all and (min-width: 1025px) and (max-width: 1440px) {
   #wrapper {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1144,9 +1079,6 @@ h2 a {
       font-family: "Roboto", sanserif;
       padding-left: 0%; } }
 
-<<<<<<< HEAD
-@media all and (min-width: 1025px) and (max-width: 1440px) {
-=======
 @media all and (min-width: 768px) and (max-width: 1023px) {
   .tab {
     display: -webkit-box;
@@ -1224,7 +1156,6 @@ h2 a {
     max-width: 350px; } }
 
 @media all and (min-width: 1024px) and (max-width: 1024px) {
->>>>>>> sort_tab
   .tab {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1300,8 +1231,6 @@ h2 a {
   .movie-card__wrapper {
     max-width: 350px; } }
 
-<<<<<<< HEAD
-=======
 @media all and (min-width: 1025px) and (max-width: 1440px) {
   .container {
     max-width: 1000px;
@@ -1379,7 +1308,6 @@ h2 a {
     height: 250px;
     width: 482px; } }
 
->>>>>>> sort_tab
 @media all and (min-width: 1441px) {
   .container {
     max-width: 1000px;
