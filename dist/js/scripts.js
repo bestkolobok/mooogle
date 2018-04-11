@@ -2121,12 +2121,12 @@ const FILM_TYPE_IN_MAIN_TABLE = document.querySelector(".table-filmtype");
 const RUN_TIME_IN_MAIN_TABLE = document.querySelector(".table-runtime");
 const PRODUCER_NAME_IN_MAIN_TABLE = document.querySelector(".table-producer");
 const ARTDIRECTOR_NAME_IN_MAIN_TABLE = document.querySelector(".table-filmcontent");
-var partSlide = document.querySelectorAll(".part-slide");
-var arrowLeft = document.querySelector(".arrow-left");
-var arrowRight = document.querySelector(".arrow-right");
-var ulSlider = document.querySelector(".part-slider");
-var arrowLeftActors = document.querySelector(".arrow-left__actors");
-var arrowRightActors = document.querySelector(".arrow-right__actors");
+const IMAGES_IN_SLIDER_BACKDROPS = document.querySelectorAll(".part-slide");
+const ARROW_LEFT_IN_SLIDER = document.querySelector(".arrow-left");
+const ARROW_RIGHT_IN_SLIDER = document.querySelector(".arrow-right");
+const CONTAINER_OF_SLIDER_BACKDROPS = document.querySelector(".part-slider");
+const ARROW_LEFT_IN_SLIDER_BACKDROPS = document.querySelector(".arrow-left__actors");
+const ARROW_RIGHT_IN_SLIDER_BACKDROPS = document.querySelector(".arrow-right__actors");
 
 // Parse url
 var params = getUrlParams();
@@ -2230,11 +2230,11 @@ let successPeopleCB = function(res) {
     }
   }, false);
   
-  arrowLeftActors.addEventListener("click", function(){
+  ARROW_LEFT_IN_SLIDER_BACKDROPS.addEventListener("click", function(){
     position = Math.min(position + width * count, 0)
     list.style.marginLeft = position + 'px';
   });
-  arrowRightActors.addEventListener("click", function(){
+  ARROW_RIGHT_IN_SLIDER_BACKDROPS.addEventListener("click", function(){
     position = Math.max(position - width * count, -width * (8 - count*4));
     list.style.marginLeft = position + 'px';
   });
@@ -2255,16 +2255,16 @@ let successPeopleImagesCB = function(res){
   const result = JSON.parse(res);
   console.log(result);
   let widthPart = 130;
-  for(let i = 0; i < partSlide.length; i++){
-    partSlide[i].style.backgroundImage = `url("https://image.tmdb.org/t/p/w600_and_h900_bestv2${result.backdrops[i].file_path}")`
+  for(let i = 0; i < IMAGES_IN_SLIDER_BACKDROPS.length; i++){
+    IMAGES_IN_SLIDER_BACKDROPS[i].style.backgroundImage = `url("https://image.tmdb.org/t/p/w600_and_h900_bestv2${result.backdrops[i].file_path}")`
   };
-  arrowLeft.addEventListener("click", function(){
+  ARROW_LEFT_IN_SLIDER.addEventListener("click", function(){
     positionPart = Math.min(positionPart + widthPart * countPart, 0)
-    ulSlider.style.marginLeft = positionPart + 'px';
+    CONTAINER_OF_SLIDER_BACKDROPS.style.marginLeft = positionPart + 'px';
   });
-  arrowRight.addEventListener("click", function(){
+  ARROW_RIGHT_IN_SLIDER.addEventListener("click", function(){
     positionPart = Math.max(positionPart - widthPart * countPart, -widthPart * (8 - countPart*4));
-    ulSlider.style.marginLeft = positionPart + 'px';
+    CONTAINER_OF_SLIDER_BACKDROPS.style.marginLeft = positionPart + 'px';
   });
 }
 
