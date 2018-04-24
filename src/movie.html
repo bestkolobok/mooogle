@@ -128,7 +128,7 @@
                     <h2>Отзывы</h2>
                 </div>
 
-                <div id="reviews-container">
+                <div id="reviews-container" class="reviews-container">
                 </div>
 
             </div>
@@ -136,20 +136,22 @@
 
 	<script type="text/template" id="reviews-main">
 		<% for (i=0; i < reviews.length; i++) { %>
-			<div class="reviews-avatar">
-				<span class="avatar"><%= reviews[i].author.charAt(0) %></span>
-			</div>
-			<div class="reviews-post">
-				<p class="username"><%= reviews[i].author %></p>
-				<% if (reviews[i].content.length <= 156) { %>
-					<p class="reviews-text"><%= reviews[i].content %></p>
-				<% } else { %>
-					<p class="reviews-text big-post"><%= `${reviews[i].content.slice(0, 152)}...` %><a class="more-info"><span>еще</span></a></p>
-				<% } %>
-			</div>
-			<div class="reviews-date">
-				<p class="reviews-date-item">23 дек</p>
-			</div>
+            <div class="reviews-row">
+                <div class="reviews-avatar">
+                    <span class="avatar"><%= reviews[i].author.charAt(0) %></span>
+                </div>
+                <div class="reviews-post">
+                    <p class="username"><%= reviews[i].author %></p>
+                    <% if (reviews[i].content.length <= 156) { %>
+                        <p class="reviews-text"><%= reviews[i].content %></p>
+                    <% } else { %>
+                        <p class="reviews-text big-post"><%= `${reviews[i].content.slice(0, 152)}...` %><a class="more-info"><span>еще</span></a></p>
+                    <% } %>
+                </div>
+                <div class="reviews-date">
+                    <p class="reviews-date-item">23 дек</p>
+                </div>
+            </div>
 		<% } %>
     </script>
 </div>
