@@ -159,6 +159,52 @@ li {
 #wrapper {
   width: 100%; }
 
+.menu {
+  position: absolute;
+  padding: 18px 0 0 18px;
+  margin-top: 41px;
+  left: -340px;
+  height: 100vh;
+  width: 305px;
+  background: #ffffff;
+  z-index: 99; }
+  .menu .menu__img1 {
+    background: url(../img/film480.png) no-repeat; }
+  .menu .menu__img2 {
+    background: url(../img/TVseries480.png) no-repeat;
+    margin-top: 38px; }
+  .menu .menu__img3 {
+    background: url(../img/favorites480.png) no-repeat;
+    margin-top: 32px; }
+  .menu #block {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 18px;
+    width: 20px;
+    background-size: contain; }
+    .menu #block .menu__category {
+      font-family: "Roboto-Medium", sans-serif;
+      margin-left: 54px;
+      font-size: 14px;
+      line-height: 24px;
+      color: #372c48; }
+      .menu #block .menu__category:hover {
+        color: #77c1bb; }
+  .menu .menu__films {
+    margin-left: 70px; }
+    .menu .menu__films li a {
+      line-height: 24px;
+      font-size: 12px;
+      text-decoration: none;
+      color: #372c48;
+      font-family: "Roboto-Medium", sans-serif; }
+      .menu .menu__films li a:hover {
+        color: #77c1bb; }
+
 header {
   width: 100%;
   display: -webkit-box;
@@ -172,6 +218,14 @@ header {
   padding: 15px 19px 17px 17px;
   background: #77c1bb;
   z-index: 99; }
+  header #button {
+    margin-top: 6px;
+    height: 12px;
+    width: 20px; }
+    header #button .button__line {
+      width: 20px;
+      height: 3px;
+      background: #372c48; }
 
 .head {
   display: -webkit-box;
@@ -184,30 +238,17 @@ header {
   -ms-flex-pack: justify;
   justify-content: space-between;
   width: 100%; }
-
-.head div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; }
-
-.link {
-  line-height: 24px;
-  font-size: 12px;
-  text-decoration: none;
-  color: #372c48;
-  font-family: 'Roboto-Medium', sans-serif; }
-
-.link:hover {
-  color: #77c1bb; }
-
-.head__logo {
-  height: 24px;
-  width: 25px;
-  margin: 0 8px 0 18px; }
-
-.head__search {
-  width: 18px;
-  height: 18px; }
+  .head div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+  .head .head__logo {
+    height: 24px;
+    width: 25px;
+    margin: 0 8px 0 18px; }
+  .head .head__search {
+    width: 18px;
+    height: 18px; }
 
 .head-1 {
   height: 24px;
@@ -219,19 +260,17 @@ header {
   -ms-flex-align: center;
   align-items: center;
   width: 100%; }
-
-.head-1 div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center; }
-
-.head-1 div .head-1__search {
-  width: 17px;
-  height: 19px;
-  margin: 0 14px 0 25px; }
+  .head-1 div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+    .head-1 div .head-1__search {
+      width: 17px;
+      height: 19px;
+      margin: 0 14px 0 25px; }
 
 .head-1__input-search {
   width: 150px;
@@ -245,14 +284,9 @@ header {
 
 .main-title {
   margin-top: 4px;
-  font-family: 'Roboto-Medium', sans-serif;
+  font-family: "Roboto-Medium", sans-serif;
   font-size: 20px;
   color: #372c48; }
-
-#button {
-  margin-top: 6px;
-  height: 12px;
-  width: 20px; }
 
 .button__line:nth-child(2) {
   margin-top: 3px;
@@ -272,21 +306,6 @@ header {
   -webkit-transition: 0.5s;
   transition: 0.5s; }
 
-.button__line {
-  width: 20px;
-  height: 3px;
-  background: #372c48; }
-
-.menu {
-  position: absolute;
-  padding: 18px 0 0 18px;
-  margin-top: 41px;
-  left: -340px;
-  height: 100vh;
-  width: 305px;
-  background: #ffffff;
-  z-index: 99; }
-
 .move-right {
   left: 0;
   -webkit-transition: 0.5s;
@@ -297,44 +316,73 @@ header {
   -webkit-transition: 0.5s;
   transition: 0.5s; }
 
-#block {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  height: 18px;
-  width: 20px;
-  background-size: contain; }
-
-.menu__img1 {
-  background: url(../img/film480.png) no-repeat; }
-
-.menu__img2 {
-  background: url(../img/TVseries480.png) no-repeat;
-  margin-top: 38px; }
-
-.menu__img3 {
-  background: url(../img/favorites480.png) no-repeat;
-  margin-top: 32px; }
-
-.menu__category {
-  font-family: 'Roboto-Medium', sans-serif;
-  margin-left: 54px;
-  font-size: 14px;
-  line-height: 24px;
-  color: #372c48; }
-
-.menu__category:hover {
-  color: #77c1bb; }
-
-.menu__films {
-  margin-left: 70px; }
-
 .menu__title {
   display: none; }
 
+<<<<<<< HEAD
+=======
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  header {
+    padding: 22px 37px 21px 22px; }
+    header #button {
+      margin-top: 11px;
+      width: 27px;
+      height: 19px; }
+      header #button .button__line {
+        width: 27px;
+        height: 3px; }
+  .head__logo {
+    height: 33px;
+    width: 34px;
+    margin: 0 11px 0 23px; }
+  .main-title {
+    margin-top: 4px;
+    font-size: 26px; }
+  .head__search {
+    width: 20px;
+    height: 20px; }
+  .head-1 {
+    height: 32px; }
+    .head-1 div .head-1__search {
+      width: 25px;
+      height: 26px;
+      margin: 0 14px 0 27px; }
+  .head-1__mic {
+    width: 21px;
+    height: 26px; }
+  .menu {
+    margin-top: 53px;
+    padding: 22px 0 0 22px;
+    width: 406px;
+    left: -406px; }
+    .menu .menu__img1 {
+      background: url(../img/film360.png) no-repeat; }
+    .menu .menu__img2 {
+      background: url(../img/TVseries360.png) no-repeat;
+      margin-top: 26px; }
+    .menu .menu__img3 {
+      background: url(../img/favorites360.png) no-repeat;
+      margin-top: 30px; }
+    .menu .menu__films {
+      margin-left: 95px; }
+      .menu .menu__films li a {
+        line-height: 30px;
+        font-size: 15px; }
+  .move-left {
+    left: -406px; }
+  .move-right {
+    left: 0; }
+  .menu__category {
+    margin-left: 74px;
+    font-size: 17px;
+    line-height: 30px; }
+  #block {
+    height: 18px;
+    width: 22px; }
+  .menu__title {
+    display: none; } }
+
+>>>>>>> Nikita-Andrey
 @media all and (min-width: 1025px) and (max-width: 1440px) {
   #wrapper {
     display: -webkit-box;
@@ -346,16 +394,11 @@ header {
   header {
     height: 65px;
     padding: 0 23px 0 24px; }
-  .menu_head {
-    height: 144px;
-    background: #77c1bb;
-    margin-bottom: 26px;
-    padding: 24px 0 0 0; }
-  .menu_head div {
-    width: 69px;
-    height: 65px;
-    margin-left: 38px;
-    background-image: url(../img/logo_1024.png); }
+    header #button {
+      margin-top: 25px; }
+      header #button .button__line {
+        width: 23px;
+        height: 3px; }
   .head-1 {
     margin-top: 24px;
     height: 24px;
@@ -375,45 +418,118 @@ header {
   .head__search {
     display: none; }
   .head__logo {
-    height: 65px;
-    width: 68px;
-    margin: 0 0 0 31px; }
+    height: 24px;
+    width: 25px;
+    margin: 0 8px 0 31px; }
   .main-title {
-    margin-top: 20px;
-    margin-left: -13px;
     font-size: 20px; }
-  .button__line {
-    width: 24px;
-    height: 3px; }
-  #button {
-    margin-top: 23px; }
   .menu {
     margin-top: 0;
     padding: 0;
     width: 256px;
     top: 0px; }
+    .menu #block {
+      margin: 26px 0 0 32px; }
+    .menu .menu__category {
+      margin-left: 48px;
+      font-size: 13px;
+      line-height: 25px; }
+    .menu .menu__films {
+      margin-left: 96px; }
+      .menu .menu__films li a {
+        line-height: 16px;
+        font-size: 10px; }
+    .menu .menu_head {
+      height: 144px;
+      background: #77c1bb;
+      margin-bottom: 26px;
+      padding: 24px 0 0 0; }
+      .menu .menu_head .menu__title {
+        display: block;
+        font-family: "Roboto-Medium", sans-serif;
+        color: #372c48;
+        font-size: 20px;
+        margin: 16px 0 0 32px; }
+      .menu .menu_head div {
+        width: 69px;
+        height: 65px;
+        margin-left: 38px;
+        background-image: url(../img/logo_1024.png); }
   .move-left {
     left: -256px; }
   .move-right {
     left: 0;
-    margin: 0; }
-  .menu__title {
-    display: block;
-    font-family: 'Roboto-Medium', sans-serif;
-    color: #372c48;
-    font-size: 20px;
-    margin: 16px 0 0 32px; }
-  #block {
-    margin: 26px 0 0 32px; }
-  .menu__category {
-    margin-left: 48px;
-    font-size: 13px;
-    line-height: 25px; }
-  .link {
-    line-height: 16px;
-    font-size: 10px; }
-  .menu__films {
-    margin-left: 96px; } }
+    margin: 0; } }
+
+@media all and (min-width: 1441px) {
+  #wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between; }
+  .head-1 {
+    margin-top: 24px;
+    height: 24px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 250px;
+    border-bottom: 1px solid #5b7f88; }
+  .head-1__mic {
+    display: none; }
+  .head-1 div .head-1__search {
+    width: 19px;
+    height: 18px;
+    margin: 0 13px 0 0; }
+  .head__search {
+    display: none; }
+  header {
+    height: 65px;
+    padding: 0 23px 0 24px; }
+    header #button {
+      margin-top: 27px; }
+  .head__logo {
+    height: 24px;
+    width: 25px;
+    margin: 0 9px 0 32px; }
+    .head__logo .main-title {
+      margin-top: 2px;
+      margin-left: 0px;
+      font-size: 20px; }
+  .menu {
+    margin-top: 0;
+    padding: 0;
+    width: 256px;
+    top: 0px; }
+    .menu #block {
+      margin: 26px 0 0 32px; }
+      .menu #block .menu__category {
+        margin-left: 48px;
+        font-size: 14px;
+        line-height: 25px; }
+    .menu .menu__films {
+      margin-left: 96px; }
+      .menu .menu__films li a {
+        line-height: 16px;
+        font-size: 10px; }
+    .menu .menu_head {
+      height: 144px;
+      background: #77c1bb;
+      margin-bottom: 26px;
+      padding: 24px 0 0 0; }
+      .menu .menu_head .menu__title {
+        display: block;
+        font-family: "Roboto-Medium", sans-serif;
+        color: #372c48;
+        font-size: 20px;
+        margin: 16px 0 0 32px; }
+      .menu .menu_head div {
+        width: 69px;
+        height: 65px;
+        margin-left: 38px;
+        background-image: url(../img/logo_1024.png); } }
 
 .category {
   font-family: "Roboto";
@@ -1056,6 +1172,7 @@ table {
     min-width: 55px;
     margin-left: 10px;
     margin-top: 0; }
+<<<<<<< HEAD
   .reviews-post {
     width: 70%;
     margin-left: 0;
@@ -1146,8 +1263,10 @@ table {
     width: 10%;
     margin-left: 10px;
     margin-top: 0; }
+=======
+>>>>>>> Nikita-Andrey
   .reviews-post {
-    width: 80%;
+    width: 70%;
     margin-left: 0;
     margin-bottom: 30px; } }
 
@@ -1295,6 +1414,7 @@ h2 a {
       font-family: "Roboto", sanserif;
       padding-left: 0%; } }
 
+<<<<<<< HEAD
 @media all and (min-width: 768px) and (max-width: 960px) {
   .tab {
     display: -webkit-box;
@@ -1372,6 +1492,9 @@ h2 a {
     max-width: 350px; } }
 
 @media all and (min-width: 961px) and (max-width: 1024px) {
+=======
+@media all and (min-width: 1025px) and (max-width: 1440px) {
+>>>>>>> Nikita-Andrey
   .tab {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1447,6 +1570,7 @@ h2 a {
   .movie-card__wrapper {
     max-width: 350px; } }
 
+<<<<<<< HEAD
 @media all and (min-width: 1025px) and (max-width: 1440px) {
   .container {
     max-width: 1000px;
@@ -1524,6 +1648,8 @@ h2 a {
     height: 250px;
     width: 482px; } }
 
+=======
+>>>>>>> Nikita-Andrey
 @media all and (min-width: 1441px) {
   .container {
     max-width: 1000px;
@@ -1672,7 +1798,11 @@ h2 a {
     .search #search-form__input_submit {
       position: absolute;
       background: none;
+<<<<<<< HEAD
       background-image: url(../../img/search-arrow360.png);
+=======
+      background-image: url(../../img/serch360.png);
+>>>>>>> Nikita-Andrey
       background-repeat: no-repeat;
       width: 28px;
       height: 28px;
@@ -1701,6 +1831,11 @@ h2 a {
         .search #search-form__input_submit {
           display: none;
           background-image: none; } }
+
+.search_hidden {
+  top: -100%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s; }
 
 .search_hidden {
   top: -100%;

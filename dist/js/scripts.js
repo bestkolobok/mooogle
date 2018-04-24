@@ -1954,15 +1954,6 @@ window.addEventListener("load", function(){
             lines[0].classList.add("transformed-1");
             lines[2].classList.add("transformed-2");
         }
-        // else if(endX-startX<=0){
-        // 	if(a.classList.contains("move-right")){
-        // 		a.classList.remove("move-right");
-        // 	}
-        // a.classList.add("move-left");
-        // lines[1].style.display = "block";
-        // lines[0].classList.remove("transformed-1");
-        // lines[2].classList.remove("transformed-2");
-      	// }
     }, false)
     button.addEventListener('click', function(){
 					if(a.classList.contains("move-right")){
@@ -1993,11 +1984,6 @@ window.addEventListener("load", function(){
             document.querySelector(".head").style.display = "flex";
         }
     }, false)
-// swipearea.addEventListener("touchstart", function(e){
-//     console.log(e.changedTouches[0].clientX);
-//     startX = e.changedTouches[0].clientX;
-//     startY = e.changedTouches[0].clientY;
-// }, false)
 
     mainPage.addEventListener("click", function(e){
         if(a.classList.contains("move-right")){
