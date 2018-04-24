@@ -22,28 +22,29 @@
                     <div></div>
                     <p class="menu__title">Mooogle</p>
                 </li>
-                <li id="block" class="menu__img1"><p class="menu__category">Фильмы</p></li>
+                <li id="block" class="menu__img1">
+                    <p class="menu__category">Фильмы</p>
+                </li>
                 <ul class="menu__films">
                     <li><a href="sort.html?p=getUpcoming">Премьеры</a></li>
                     <li><a href="sort.html?p=getNowPlaying">Сейчас на экранах</a></li>
                     <li><a href="sort.html?p=getTopRated">Топ 100</a></li>
                 </ul>
-                <li id="block" class="menu__img2"><p class="menu__category">Сериалы</p></li>
+                <li id="block" class="menu__img2">
+                    <p class="menu__category">Сериалы</p>
+                </li>
                 <ul class="menu__films">
                     <li><a href="sort.html?p=getOnTheAirTV">Премьеры</a></li>
                     <li><a href="sort.html?p=getAiringTodayTV">Сейчас на экранах</a></li>
                     <li><a href="sort.html?p=getTopRatedTV">Топ 100</a></li>
                 </ul>
-<<<<<<< HEAD
-                <div id="block" class="menu__img3"><label class="menu__category">Избранное</label></div>
-                    <ul class="menu__films">
-                        <li><a class="link" href="sort.html?p=favoritesAll">Все</a></li>
-                    </ul>
-            </div>
-=======
-                <li id="block" class="menu__img3"><p class="menu__category">Избранное</p></li>
+                <li id="block" class="menu__img3">
+                    <p class="menu__category">Избранное</p>
+                </li>
+                <ul class="menu__films"> 
+                    <li><a class="link" href="sort.html?p=favoritesAll">Все</a></li> 
+                </ul>
             </ul>
->>>>>>> Nikita-Andrey
 
 
             <div class="head">
@@ -59,7 +60,7 @@
                 <div>
                     <img src="../img/serch480.png" class="head-1__search" alt="search">
                     <form action="/sort.html" method="get">
-                        <input class="head-1__input-search" type="search" placeholder="Search" name="s">
+                        <input class="head-1__input-search" type="search" placeholder="Search" name="q">
                     </form>
                 </div>
 
@@ -198,7 +199,7 @@
                     <h2>Отзывы</h2>
                 </div>
 
-                <div id="reviews-container">
+                <div id="reviews-container" class="reviews-container">
                 </div>
 
             </div>
@@ -206,20 +207,22 @@
 
 	<script type="text/template" id="reviews-main">
 		<% for (i=0; i < reviews.length; i++) { %>
-			<div class="reviews-avatar">
-				<span class="avatar"><%= reviews[i].author.charAt(0) %></span>
-			</div>
-			<div class="reviews-post">
-				<p class="username"><%= reviews[i].author %></p>
-				<% if (reviews[i].content.length <= 156) { %>
-					<p class="reviews-text"><%= reviews[i].content %></p>
-				<% } else { %>
-					<p class="reviews-text big-post"><%= `${reviews[i].content.slice(0, 152)}...` %><a class="more-info"><span>еще</span></a></p>
-				<% } %>
-			</div>
-			<div class="reviews-date">
-				<p class="reviews-date-item">23 дек</p>
-			</div>
+            <div class="reviews-row">
+                <div class="reviews-avatar">
+                    <span class="avatar"><%= reviews[i].author.charAt(0) %></span>
+                </div>
+                <div class="reviews-post">
+                    <p class="username"><%= reviews[i].author %></p>
+                    <% if (reviews[i].content.length <= 156) { %>
+                        <p class="reviews-text"><%= reviews[i].content %></p>
+                    <% } else { %>
+                        <p class="reviews-text big-post"><%= `${reviews[i].content.slice(0, 152)}...` %><a class="more-info"><span>еще</span></a></p>
+                    <% } %>
+                </div>
+                <div class="reviews-date">
+                    <p class="reviews-date-item">23 дек</p>
+                </div>
+            </div>
 		<% } %>
     </script>
 </div>
