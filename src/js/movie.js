@@ -1,60 +1,68 @@
 if(window.location.pathname == '/movie.html'){
 
-var img = document.querySelector('.card__img');
-var description = document.querySelector('.description__text');
-var date = document.querySelector('.links__time--item');
-var title = document.querySelector('.card__about--title');
-var container = document.querySelector('.images');
-var tableCountry = document.querySelector(".table-country");
-var tableTagline = document.querySelector(".table-tagline");
-var tableFilmtype = document.querySelector(".table-filmtype");
-var tableRuntime = document.querySelector(".table-runtime");
-var tableProducer = document.querySelector(".table-producer");
-var tableFilmContent = document.querySelector(".table-filmcontent");
-var partSlide = document.querySelectorAll(".part-slide");
-var arrowLeft = document.querySelector(".arrow-left");
-var arrowRight = document.querySelector(".arrow-right");
-var ulSlider = document.querySelector(".part-slider");
-var arrowLeftActors = document.querySelector(".arrow-left__actors");
-var arrowRightActors = document.querySelector(".arrow-right__actors");
+//-----------------------------------------------------top-start--------------------------------------------------------
 
+
+//Vars
+const IMAGES_IN_SLIDER = document.querySelector('.card__img');
+const MAIN_DESCRIPTION_IN_MOVIEPAGE = document.querySelector('.description__text');
+const DATE_IN_MOVIEPAGE = document.querySelector('.links__time--item');
+const MAIN_TITLE_IN_MOVIEPAGE = document.querySelector('.card__about--title');
+const CONTAINER_OF_SLIDER_ACTORS = document.querySelector('.images');
+const COUNTRY_NAME_IN_MAIN_TABLE = document.querySelector(".table-country");
+const TAG_LINE_IN_MAIN_TABLE = document.querySelector(".table-tagline");
+const FILM_TYPE_IN_MAIN_TABLE = document.querySelector(".table-filmtype");
+const RUN_TIME_IN_MAIN_TABLE = document.querySelector(".table-runtime");
+const PRODUCER_NAME_IN_MAIN_TABLE = document.querySelector(".table-producer");
+const ARTDIRECTOR_NAME_IN_MAIN_TABLE = document.querySelector(".table-filmcontent");
+const IMAGES_IN_SLIDER_BACKDROPS = document.querySelectorAll(".part-slide");
+const ARROW_LEFT_IN_SLIDER = document.querySelector(".arrow-left");
+const ARROW_RIGHT_IN_SLIDER = document.querySelector(".arrow-right");
+const CONTAINER_OF_SLIDER_BACKDROPS = document.querySelector(".part-slider");
+const ARROW_LEFT_IN_SLIDER_BACKDROPS = document.querySelector(".arrow-left__actors");
+const ARROW_RIGHT_IN_SLIDER_BACKDROPS = document.querySelector(".arrow-right__actors");
+
+// Parse url
 var params = getUrlParams();
 
-
-
-
+//Slider
 var width = 80; 
 var count = 1; 
 var index = 0;
-
-
 var carousel = document.getElementById('carousel');
 var list = carousel.querySelector('.images');
+var position = 0; 
 
-
-// var infinitecarousel = new InfiniteCarousel('.images', 'horizontal', 3, {
-  //     timerDuration: 2000,
-  //     transitionDuration: '1s'
-  //   });
+// Render slider
+var galleryItems = {
+  text: [],
+  img: [],
+}
   
-  
-  var position = 0; 
-  
-  
+// Description
   
   let successCB = function(res) {
     const result = JSON.parse(res);
-    // console.log(result);
-  img.style.backgroundImage = `url('https://image.tmdb.org/t/p/w600_and_h900_bestv2/${result.poster_path}')`;
-  description.textContent = result.overview;
-  date.textContent = result.release_date;
-  title.innerHTML = result.title;
-  tableCountry.textContent = `${result.production_countries[0].iso_3166_1}, ${result.production_countries[0].name}`;
-  tableTagline.textContent = result.tagline;
+    if(params.type === 'movie'){
+      DATE_IN_MOVIEPAGE.textContent = result.release_date;
+      MAIN_TITLE_IN_MOVIEPAGE.innerHTML = result.title;
+      RUN_TIME_IN_MAIN_TABLE.textContent = `${result.runtime} мин`;
+      COUNTRY_NAME_IN_MAIN_TABLE.textContent = `${result.production_countries[0].iso_3166_1}, ${result.production_countries[0].name}`;
+      TAG_LINE_IN_MAIN_TABLE.textContent = result.tagline;
+    } else {
+      DATE_IN_MOVIEPAGE.textContent = result.last_air_date;
+      MAIN_TITLE_IN_MOVIEPAGE.innerHTML = result.name;
+      RUN_TIME_IN_MAIN_TABLE.textContent = `${result.episode_run_time[0]} мин`;
+      COUNTRY_NAME_IN_MAIN_TABLE.textContent = `${result.origin_country[0]}`;
+      TAG_LINE_IN_MAIN_TABLE.textContent = result.original_name;
+    }
+    console.log(result);
+  IMAGES_IN_SLIDER.style.backgroundImage = `url('https://image.tmdb.org/t/p/w600_and_h900_bestv2/${result.poster_path}')`;
   for(let i = 0; i < result.genres.length; i++){
-    tableFilmtype.textContent += `${result.genres[i].name}, `;
+    FILM_TYPE_IN_MAIN_TABLE.textContent += `${result.genres[i].name}, `;
   }
-  tableRuntime.textContent = `${result.runtime} мин`;
+  MAIN_DESCRIPTION_IN_MOVIEPAGE.textContent = result.overview;
+  
 }
 
 let errorCB = function() {
@@ -62,18 +70,14 @@ let errorCB = function() {
 
 }
 
-var galleryItems = {
-  text: [],
-  img: [],
-}
-
+// Actors slider
 
 let successPeopleCB = function(res) {
   const result = JSON.parse(res);
-  // console.log(result);
-  tableProducer.textContent = result.crew[1].name;
-  tableFilmContent.textContent = result.crew[0].name;
-  for (let i = 0; i < 10; i++){
+  console.log(result);
+  PRODUCER_NAME_IN_MAIN_TABLE.textContent = result.crew[1].name;
+  ARTDIRECTOR_NAME_IN_MAIN_TABLE.textContent = result.crew[0].name;
+  for (let i = 0; i < 8; i++){
     galleryItems.text.push(result.cast[i].name);
     galleryItems.img.push(`https://image.tmdb.org/t/p/w600_and_h900_bestv2${result.cast[i].profile_path}`);
   }
@@ -82,7 +86,7 @@ let successPeopleCB = function(res) {
   
   var resultCompiled = compiled(galleryItems);
   
-  container.innerHTML = resultCompiled;
+  CONTAINER_OF_SLIDER_ACTORS.innerHTML = resultCompiled;
 
   var listElems = carousel.querySelectorAll('.images_item');
 
@@ -106,14 +110,7 @@ let successPeopleCB = function(res) {
   event.preventDefault();
   event.stopPropagation();
   finalPoint=event.changedTouches[0];
-
-    // for(let i = 0; i < listElems.length; i++){
-    //   var clone = listElems[i].cloneNode(true);
-    //   list.insertBefore(clone, listElems[i]);
-
-    // }
-
-    index++;
+  index++;
 
   var xAbs = Math.abs(initialPoint.pageX - finalPoint.pageX);
   if (xAbs > 20) {
@@ -127,11 +124,11 @@ let successPeopleCB = function(res) {
     }
   }, false);
   
-  arrowLeftActors.addEventListener("click", function(){
+  ARROW_LEFT_IN_SLIDER_BACKDROPS.addEventListener("click", function(){
     position = Math.min(position + width * count, 0)
     list.style.marginLeft = position + 'px';
   });
-  arrowRightActors.addEventListener("click", function(){
+  ARROW_RIGHT_IN_SLIDER_BACKDROPS.addEventListener("click", function(){
     position = Math.max(position - width * count, -width * (8 - count*4));
     list.style.marginLeft = position + 'px';
   });
@@ -146,19 +143,22 @@ var countPart = 1;
 var positionPart = 0; 
  
 
+// Backdrops images
+
 let successPeopleImagesCB = function(res){
   const result = JSON.parse(res);
+  console.log(result);
   let widthPart = 130;
-  for(let i = 0; i < partSlide.length; i++){
-    partSlide[i].style.backgroundImage = `url("https://image.tmdb.org/t/p/w600_and_h900_bestv2${result.backdrops[i].file_path}")`
+  for(let i = 0; i < IMAGES_IN_SLIDER_BACKDROPS.length; i++){
+    IMAGES_IN_SLIDER_BACKDROPS[i].style.backgroundImage = `url("https://image.tmdb.org/t/p/w600_and_h900_bestv2${result.backdrops[i].file_path}")`
   };
-  arrowLeft.addEventListener("click", function(){
+  ARROW_LEFT_IN_SLIDER.addEventListener("click", function(){
     positionPart = Math.min(positionPart + widthPart * countPart, 0)
-    ulSlider.style.marginLeft = positionPart + 'px';
+    CONTAINER_OF_SLIDER_BACKDROPS.style.marginLeft = positionPart + 'px';
   });
-  arrowRight.addEventListener("click", function(){
+  ARROW_RIGHT_IN_SLIDER.addEventListener("click", function(){
     positionPart = Math.max(positionPart - widthPart * countPart, -widthPart * (8 - countPart*4));
-    ulSlider.style.marginLeft = positionPart + 'px';
+    CONTAINER_OF_SLIDER_BACKDROPS.style.marginLeft = positionPart + 'px';
   });
 }
 
@@ -166,12 +166,7 @@ let errorPeopleImagesCB = function(){
   console.log(arguments);
 }
 
-
-theMovieDb.movies.getById({"id":params.id, "language":"ru-RUS" }, successCB, errorCB);
-
-theMovieDb.credits.getCredit({"id":params.id, "language":"ru-RUS" }, successPeopleCB, errorPeopleCB);
-
-theMovieDb.movies.getImages({"id":params.id}, successPeopleImagesCB, errorPeopleImagesCB)
+//--------------------------------------------------------------top-end---------------------------------------------------------------
 
 const trailer = document.querySelector(".trailer-video");
 var reviews = [];
@@ -229,8 +224,19 @@ let errorGetReview = function (res) {
     console.log(arguments);
 }
 
-theMovieDb.movies.getTrailers({ "id": params.id, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
-theMovieDb.movies.getReviews({ "id": params.id }, successGetReview, errorGetReview);
+if(params.type === 'movie'){
+  theMovieDb.movies.getById({"id":params.id, "language":"ru-RUS" }, successCB, errorCB);
+  theMovieDb.credits.getCredit({"id":params.id, "language":"ru-RUS" }, successPeopleCB, errorPeopleCB);
+  theMovieDb.movies.getImages({"id":params.id}, successPeopleImagesCB, errorPeopleImagesCB)
+  theMovieDb.movies.getTrailers({ "id": params.id, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
+  theMovieDb.movies.getReviews({ "id": params.id }, successGetReview, errorGetReview);
+} else {
+  theMovieDb.tv.getById({"id":params.id, "language":"ru-RUS" }, successCB, errorCB);
+  theMovieDb.tv.getCredits({"id":params.id, "language":"ru-RUS" }, successPeopleCB, errorPeopleCB);
+  theMovieDb.tv.getImages({"id":params.id}, successPeopleImagesCB, errorPeopleImagesCB)
+  theMovieDb.tv.getTrailers({ "id": params.id, "language": "ru-RUS" }, successGetTrailer, errorGetTrailer);
+  theMovieDb.tv.getReviews({ "id": params.id }, successGetReview, errorGetReview);
+}
 
 
 

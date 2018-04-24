@@ -1,35 +1,35 @@
 //= templates/header.html
-<div class="wrapper">
+<div class="wrapper main">
     <div class="card">
         <div class="card__img">
         </div>
         <div class="card__about">
-            <h1 class="card__about--title">Темные времена(2017)</h1>
+            <h1 class="card__about--title"></h1>
             <div class="links">
                 <div class="links__block">
                     <a href="#" class="links__block--star"></a>
                     <a href="#" class="links__block--ring"></a>
                 </div>
                 <div class="links__time">
-                    <p class="links__time--item">12.12.12</p>
+                    <p class="links__time--item"></p>
                 </div>
             </div>
             <table>
                 <tr>
                     <td>страна</td>
-                    <td class="table-country">США, Великобритания</td>
+                    <td class="table-country"></td>
                 </tr>
                 <tr>
                     <td>слоган</td>
-                    <td class="table-tagline">Никогда не сдавайся</td>
+                    <td class="table-tagline"></td>
                 </tr>
                 <tr>
                     <td>режиссер</td>
-                    <td class="table-producer">Джо Райт</td>
+                    <td class="table-producer"></td>
                 </tr>
                 <tr>
                     <td>сценарий</td>
-                    <td class="table-filmcontent">Энтони МакКартен</td>
+                    <td class="table-filmcontent"></td>
                 </tr>
                 <tr>
                     <td>жанр</td>
@@ -37,13 +37,12 @@
                 </tr>
                 <tr>
                     <td>время</td>
-                    <td class="table-runtime">125 мин</td>
+                    <td class="table-runtime"></td>
                 </tr>
             </table>
             <div class="description">
-                <h1 class="description__title">Про фильм</h1>
+                <h1 class="description__title"></h1>
                 <p class="description__text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus reprehenderit temporibus itaque. Veniam quia harum esse necessitatibus dolorum vel fuga eius id quisquam illum doloremque magnam molestias modi, tempora officia?Voluptas illo soluta inventore esse sapiente ab accusantium quam eveniet! Eos assumenda harum nostrum cum natus! Obcaecati temporibus quaerat eius necessitatibus laudantium ipsa, voluptates fuga reiciendis voluptatum, ullam, quidem unde!
                 </p>
             </div>
         </div>
@@ -129,7 +128,7 @@
                     <h2>Отзывы</h2>
                 </div>
 
-                <div id="reviews-container">
+                <div id="reviews-container" class="reviews-container">
                 </div>
 
             </div>
@@ -137,20 +136,22 @@
 
 	<script type="text/template" id="reviews-main">
 		<% for (i=0; i < reviews.length; i++) { %>
-			<div class="reviews-avatar">
-				<span class="avatar"><%= reviews[i].author.charAt(0) %></span>
-			</div>
-			<div class="reviews-post">
-				<p class="username"><%= reviews[i].author %></p>
-				<% if (reviews[i].content.length <= 156) { %>
-					<p class="reviews-text"><%= reviews[i].content %></p>
-				<% } else { %>
-					<p class="reviews-text big-post"><%= `${reviews[i].content.slice(0, 152)}...` %><a class="more-info"><span>еще</span></a></p>
-				<% } %>
-			</div>
-			<div class="reviews-date">
-				<p class="reviews-date-item">23 дек</p>
-			</div>
+            <div class="reviews-row">
+                <div class="reviews-avatar">
+                    <span class="avatar"><%= reviews[i].author.charAt(0) %></span>
+                </div>
+                <div class="reviews-post">
+                    <p class="username"><%= reviews[i].author %></p>
+                    <% if (reviews[i].content.length <= 156) { %>
+                        <p class="reviews-text"><%= reviews[i].content %></p>
+                    <% } else { %>
+                        <p class="reviews-text big-post"><%= `${reviews[i].content.slice(0, 152)}...` %><a class="more-info"><span>еще</span></a></p>
+                    <% } %>
+                </div>
+                <div class="reviews-date">
+                    <p class="reviews-date-item">23 дек</p>
+                </div>
+            </div>
 		<% } %>
     </script>
 </div>
