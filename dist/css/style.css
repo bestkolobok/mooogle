@@ -242,6 +242,10 @@ header {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex; }
+  .head .head__item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
   .head .head__logo {
     height: 24px;
     width: 25px;
