@@ -3,7 +3,7 @@
     vertical-align: top;
     border: none;
     position: absolute;
-    //visibility: hidden;
+    // visibility: hidden;
     background-color: $main-background;
     height: 383px;
     z-index: 10;
@@ -12,16 +12,19 @@
     justify-content: center;
     top: 0;
 
-    @include respond-to(desktop){
+    @include respond-to(mobile-small){
         height: 473px;
     }
-    @include respond-to(break-medium){
+    @include respond-to(medium){
         height: 393px;
     }
-    @include respond-to(break-medium-large){
+    @include respond-to(medium-large){
         height: 479px;
     }
-    @include respond-to(break-desktop){
+    @include respond-to(desktop){
+        height: 616px;
+    }
+    @include respond-to(desktop-extra){
         height: 616px;
     }
 
@@ -34,7 +37,7 @@
     .logo_img{
         position: relative;
         // visibility: hidden;
-        z-index: 10;
+        // z-index: 10;
         top: 80px;
         text-align: center;
     }
@@ -46,20 +49,24 @@
         width: 233px;
         height: 28px;
     
-        @include respond-to(break-small){
-            width: 311px;
-            height: 28px;
+        @include respond-to(mobile-small){
+            width: 321px;
         }
-        @include respond-to(break-medium){
-            top: 310px;
+        @include respond-to(medium){
+            top: 315px;
             width: 226px;
         }
-        @include respond-to(break-large){
-            top: 380px;
+        @include respond-to(medium-large){
+            top: 343px;
+            width: 226px;
+        }
+        @include respond-to(desktop){
+            top: 511px;
             width: 401px;
         }
-        @include respond-to(break-extra-desktop){
-            top: 480px;
+        @include respond-to(desktop-extra){
+            top: 511px;
+            width: 401px;
         }
         
 
@@ -79,7 +86,7 @@
         &__input_submit{
             position: absolute;
             background: none;
-            background-image: url(../../img/serch360.png);
+            background-image: url(../../img/search-arrow360.png);
             background-repeat: no-repeat;
             width: 28px;
             height: 28px;
@@ -88,9 +95,26 @@
             bottom: 0em;
             border: 0;
             padding: 5px;
-            
-            @include respond-to(break-medium){
+
+            @include respond-to(mobile-small){
+                background-image: url(../../img/search-arrow480.png);
+                bottom: 3px;
+            }
+            @include respond-to(medium){
                 display: none;
+                background-image: none;
+            }
+            @include respond-to(medium-large){
+                display: none;
+                background-image: none;
+            }
+            @include respond-to(desktop){
+                display: none;
+                background-image: none;
+            }
+            @include respond-to(desktop-extra){
+                display: none;
+                background-image: none;
             }
         }
         

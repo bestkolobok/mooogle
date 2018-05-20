@@ -183,27 +183,30 @@ table{
       margin-bottom: 15px;
     }
     &-main {
-      width: 100%;
-      height: 269px;
+      position: relative;
+      height: 0;
+      padding-top: 30px;
+      padding-bottom: 56.25%;
+      overflow: hidden;
     }
     &-video {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
     }
 }
 
 
-
-
-#reviews-container {
+ #reviews-container {
      display: flex;
      flex-direction: row;
      flex-wrap: wrap;
      justify-content: center;
      align-items: flex-start;
      align-content: flex-start;
-     color: red;
-}
+  }
 
 .reviews {
   display: flex;
@@ -219,16 +222,21 @@ table{
       color: #5e576a;
       margin: 20px 0;
     }
-
+    &-row {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
     &-avatar {
       width: 15%;
       height: 50px;
+      max-width: 60px;
       color: #212121;
       font-family: 'Roboto', sans-serif;
       font-size: 2em;
     }
     &-post {
-      width: 60%;
+      width: 65%;
       margin-left: 10px;
       margin-bottom: 20px;
 
@@ -248,13 +256,16 @@ table{
     }
     &-date {
       font-family: 'Roboto', sans-serif;
+      font-size: 0.9em;
       color: #5e576a;
       width: 15%;
       display: inline-block;
       vertical-align: top;
-      margin-left: 15px;
+      margin-left: 5px;
     }
-}
+
+} 
+
 .avatar {
   display: inline-flex;
   width: 50px;
@@ -362,17 +373,169 @@ table{
   position: relative;
 }
 
-@include respond-to(desktop) {
+@include respond-to(medium) {
+  .wrapper {
+    padding: 25px;
+    padding-top: 38px;
+  }
+  .wrapper_box {
+    display: flex;
+    flex-flow: column wrap;
+
+    .slider {
+      order: 2;
+      margin-top: 72px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .trailer {
+      order: 1;
+    }
+    .carousel {
+      width: 324px;
+    }
+  }
+
+  .arrow-left__actors {
+    display: block;
+    width: 8px;
+    height: 14px;
+  }
+  .arrow-right__actors {
+    display: block;
+    width: 8px;
+    height: 14px;
+  }
+
+  .slider-cadrs {
+    display: block;
+    .part{
+      width: 524px;
+    }
+  }
+
+  .images{
+    li{
+      width: 70px;
+    }
+  }
+
+  .card {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 68px;
+
+
+    &__img{
+      height: 293px;
+      width: 272px;
+      padding-right: 22px;
+    }
+
+    &__about {
+      width: 430px;
+      &--title {
+        position: static;
+        color: #000;
+        top: none;
+        left: none;
+        font-size: 16px;
+      }
+    }
+  }
+
+  table{
+    display: block;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    font-family: 'MyriadPro', sans-serif;
+    font-size: 12px;
+    width: 430px;
+    border: none;
+
+    td{
+      padding: 10px 15px;
+      width:20%;
+    }
+    tr:nth-of-type(odd){
+      background-color: #addad6;
+    }
+  }
+
+  .description {
+    &__title {
+      display: inline;
+      font-size: 16px;
+      font-family: 'Roboto', sans-serif;
+      color: #000;
+    }
+    &__text{
+      font-size: 10px;
+      margin-top: 12px;
+    }
+  }
+
+  .links {
+    padding-top: 18px;
+    &__block{
+      &--star{
+        // background: url("../img/blue_star.png") no-repeat;
+        padding-right: 22px;
+      }
+      &--ring{
+        // background: url("../img/blue_ring.png") no-repeat;
+      }
+    }
+    &__time{
+      display: none;
+    }
+  }
+  .trailer-main {
+    justify-content: center;
+    width: 70%;
+    margin: auto;
+  }
+
+  .trailer-video {
+    height: 300px;
+  }
+
+  .reviews-avatar {
+    width: 10%;
+    min-width: 55px;
+    margin-top: 0;
+  }
+
+  .reviews-date {
+    width: 10%;
+    min-width: 55px;
+    margin-left: 10px;
+    margin-top: 0;
+  }
+
+  .reviews-post {
+    width: 70%;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+}
+
+@include respond-to(medium-large) {
   .wrapper_box{
     display: flex;
     flex-flow: column wrap;
-    .slider{
-      order: 2;
-      margin-top: 72px;
-    }
+
     .trailer{
       order: 1;
     }
+  }
+  .slider{
+    order: 2;
+    margin-top: 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .arrow-left__actors {
@@ -448,27 +611,31 @@ table{
       display: none;
     }
   }
-      
-  .trailer{
-    &-title h2 {
-      font-family: 'Roboto', sans-serif;
-      font-size: 20px;
-      color: #5e576a;
-      margin-bottom: 15px;
-      margin-left: 25px;
-    }
+
+  .trailer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  width: 100%;
     &-main {
-      justify-content: center;
+      position: relative;
       width: 70%;
-      margin: 25px auto auto auto;
-      height: 435px;
+      height: 0;
+      margin: auto;
+      padding-top: 10px;
+      padding-bottom: 39.375%;
+      overflow: hidden;
     }
-     &-video {
-       height: 100%;
+    &-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
   }
-
-
  
   .reviews{
     &-title h2 {
@@ -477,6 +644,11 @@ table{
       color: #5e576a;
       margin-bottom: 30px;
       margin-left: 25px;
+    }
+    &-row {
+      display: flex;
+      justify-content: center;
+      width: 100%;
     } 
     &-avatar {
       width: 10%;
@@ -497,7 +669,7 @@ table{
   }  
 }
 
-@include respond-to(desktop-extra) {
+@include respond-to(desktop) {
   .wrapper_box{
     display: flex;
     flex-flow: column wrap;
@@ -620,4 +792,205 @@ table{
     margin-left: 0;
     margin-bottom: 30px;
   }
+}
+
+@include respond-to(desktop-extra) {
+  .wrapper_box{
+    display: flex;
+    flex-flow: column wrap;
+    .slider{
+      order: 2;
+      margin-top: 72px;
+    }
+    .trailer{
+      order: 1;
+    }
+  }
+
+  .arrow-left__actors {
+    display: block
+  }
+  .arrow-right__actors {
+    display: block
+  }
+
+  .slider-cadrs {
+    display: block;
+  }
+
+  .card {
+    display: flex;
+    justify-content: space-between;
+    padding: 68px 22px;
+
+    &__img{
+      max-width: 406px;
+      height: 438px;
+    }
+
+    &__about {
+      width: 550px;
+      &--title {
+        position: static;
+        color: #000;
+        top: none;
+        left: none;
+      }
+    }
+  }
+
+  table{
+    display: block;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    font-family: 'MyriadPro', sans-serif;
+    font-size: 16px;
+    width: 550px;
+    border: none;
+
+    td{
+      padding: 10px 15px;
+      width:20%;
+    }
+    tr:nth-of-type(odd){
+      background-color: #addad6;
+    }
+  }
+
+  .description {
+    &__title {
+      display: inline;
+      font-size: 20px;
+      font-family: 'Roboto', sans-serif;
+      color: #000;
+    }
+  }
+
+  .links {
+    padding-top: 18px;
+    &__block{
+      &--star{
+        // background: url("../img/blue_star.png") no-repeat;
+        padding-right: 22px;
+      }
+      &--ring{
+        // background: url("../img/blue_ring.png") no-repeat;
+      }
+    }
+    &__time{
+      display: none;
+    }
+  }
+
+  .wrapper {
+    width: 1045px;
+    margin: 0 auto;
+  }
+
+  .trailer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  width: 100%;
+    &-main {
+      position: relative;
+      width: 70%;
+      height: 0;
+      margin: auto;
+      padding-top: 10px;
+      padding-bottom: 39.375%;
+      overflow: hidden;
+    }
+    &-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .reviews-avatar {
+    width: 7%;
+    margin-top: 0;
+  }
+ 
+  .reviews-date {
+    width: 10%;
+    margin-left: 10px;
+    margin-top: 0;
+  }
+ 
+  .reviews-post {
+    width: 80%;
+    margin-left: 0;
+    margin-bottom: 30px;
+  }
+
+}
+
+@include respond-to(mobile-extra-small) {
+  .reviews-date {
+    font-size: 0.8em;
+  }
+}
+
+@include respond-to(medium) {
+  .trailer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  width: 100%;
+    &-main {
+      position: relative;
+      width: 60%;
+      height: 0;
+      margin: auto;
+      padding-top: 10px;
+      padding-bottom: 33.75%;
+      overflow: hidden;
+    }
+    &-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .reviews{
+    &-title h2 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 20px;
+      color: #5e576a;
+      margin-bottom: 30px;
+      margin-left: 25px;
+    }
+    &-row {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    } 
+    &-avatar {
+      width: 10%;
+      min-width: 55px;
+      margin-top: 0px;
+    }
+    &-date {
+      width: 10%;
+      min-width: 55px;
+      margin-left: 10px;
+      margin-top: 0;
+    }
+    &-post {
+      width: 70%;
+      margin-left: 0;
+      margin-bottom: 30px;
+    }
+  }  
 }

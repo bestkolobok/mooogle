@@ -1,8 +1,8 @@
 
 
 (function checkStorage () {
-    if(localStorage.Mooogle === undefined){
-        localStorage.Mooogle = JSON.stringify([]);
+    if(!localStorage.favorites){
+        localStorage.setItem("favorites", JSON.stringify({}));
     }
 })();
 
@@ -10,42 +10,84 @@ const favorites = {
     
     store: [],
 
-    getStore: function() {
-        const mooogleStore = JSON.parse(localStorage.Mooogle);
+    saveStore: function() {
+      
+        const mooogleStore = {
+            favorites: JSON.parse(localStorage.favorites)
+        }
 
-        console.log(mooogleStore);
+        mooogleStore.favorites[this.store[0].id] = this.store[0]
 
-        this.store = mooogleStore.favorites === undefined ? [] : mooogleStore.favorites;
-        return this;
+        this.store = [];
+
+        localStorage.setItem("favorites", JSON.stringify(mooogleStore.favorites));
+
     },
 
-    saveStore: function() {
-        const mooogleStore = JSON.parse(localStorage.Mooogle);
-        mooogleStore.favorites = this.store;
-        localStorage.Mooogle = JSON.stringify(mooogleStore);
+    successGetInfo: function(result) {
+
+        let data = JSON.parse(result);
+
+        console.log(data);
+        
+
+        if(Object.getOwnPropertyNames(data).includes('name'))
+            data.title = data.name;
+
+        let dataToSave = {
+            title: data.title,
+            release_date: data.release_date,
+            id: data.id,
+            genres: data.genres,
+            poster_path: data.poster_path
+            
+        }
+
+        if(Object.getOwnPropertyNames(data).includes('first_air_date')){
+            dataToSave.release_date = data.first_air_date;
+            dataToSave.first_air_date = data.first_air_date;
+        }
+
+        favorites.store.push(dataToSave);
+
+        favorites.saveStore();
+        
+    },
+
+    errorGetInfo: function(result) {
+        console.log(result);
     },
 
     add: function(id) {
         
-        this.store = [...this.store, ...[id]];
-        console.log(this)
-        this.saveStore();
+        if(id.length > 5){
+//movie     
+            theMovieDb.movies.getById({"id":id, "language": "ru-RUS",}, favorites.successGetInfo, favorites.errorGetInfo);
+        } else {
+//tvshow
+            theMovieDb.tv.getById({"id":id, "language": "ru-RUS",}, favorites.successGetInfo, favorites.errorGetInfo);
+        }
     },
 
     getAll: function() {
+        var favoritesFromLocalStore = localStorage.getItem('favorites');
+        var parsedFavorits = JSON.parse(favoritesFromLocalStore)
+        var arr = [];
 
+        for (const key in parsedFavorits) {
+            arr.push(parsedFavorits[key]);
+        }
+       
+        return arr;
     }
 };
 
-favorites.getStore();
-
-window.addEventListener('click', (event)=>{
+var addToFavorite = (event)=>{
     if(event.target.classList.contains('movie-card__button--favorite'))
     {
-        console.log('movieCard', event.target);
         const movieId = event.target.dataset.id;
-
         favorites.add(movieId);
-
     }
-});
+}
+
+window.addEventListener('click', addToFavorite);
